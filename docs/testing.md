@@ -129,7 +129,7 @@ You also need to create a corresponding Dockerfile for each PHP version in the f
 tests:
     build:
       context: .
-      dockerfile: Dockerfile.php-${PHP_VERSION:-8.3}
+      dockerfile: Dockerfile-php-${PHP_VERSION:-8.3}
 ```
 
 For the above test file where you are testing 3 php versions, following Dockerfile should exist.
