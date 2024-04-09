@@ -2,6 +2,26 @@
 
 We use GitHub actions for testing and maintaining code quality. There are two sets of templates that you can use for running the tests and analyzers.
 
+## Composer setup
+
+Install dev dependencies. Phpunit for testing, laravel pint for formatting and lining, phpstan for static analysis.
+
+```bash
+composer require phpunit/phpunit laravel/pint phpstan/phpstan --dev
+```
+
+Also update scripts so it's easier to use
+
+```json
+"scripts": {
+    "lint": "./vendor/bin/pint --test",
+    "format": "./vendor/bin/pint",
+    "test": "vendor/bin/phpunit --configuration phpunit.xml",
+    "check": "./vendor/bin/phpstan analyse --level max src tests"
+},
+```
+
+
 ## Without using docker
 
 If the library doesn't require docker to function and run tests, use these set of templates to create GitHub action for those libraries.
