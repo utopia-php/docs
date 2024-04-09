@@ -120,7 +120,7 @@ jobs:
           sleep 10
 
       - name: Run Tests
-        run: docker compose exec tests vendor/bin/phpunit --configuration phpunit.xml tests
+        run: docker compose exec tests vendor/bin/phpunit --configuration phpunit.xml
 ```
 
 You also need to create a corresponding Dockerfile for each PHP version in the format `Dockerfile-php-[PHP_VERSION]`. and in the docker compose the service should be defined as the following so that it uses the corresponding Dockerfile for each PHP version test. Where `8.3` is a default version if `PHP_VERSION` environmanet variable is not specified.
