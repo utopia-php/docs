@@ -12,16 +12,20 @@ interface Props {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+
+// Check if this is a library page
+const isLibraryPage = entry.slug.startsWith('libraries/');
+const isRegularPage = !isLibraryPage;
 ---
 
 <DocsLayout title={entry.data.title} description={entry.data.description}>
-	<MobileBreadcrumb client:load group={entry.data.group} title={entry.data.title} />
+	{isRegularPage && <MobileBreadcrumb client:load group={entry.data.group} title={entry.data.title} />}
 	<div class="prose dark:prose-invert max-w-none">
-		<DesktopBreadcrumb client:load group={entry.data.group} title={entry.data.title} />
+		{isRegularPage && <DesktopBreadcrumb client:load group={entry.data.group} title={entry.data.title} />}
 
-		<GettingStartedSection client:load />
+		{isRegularPage && <GettingStartedSection client:load />}
 
-		<h1 class="mt-0 mb-6">{entry.data.title}</h1>
+		{isRegularPage && <h1 class="mt-0 mb-6">{entry.data.title}</h1>}
 		<Content components={MDXComponents} />
 	</div>
 </DocsLayout>

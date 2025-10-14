@@ -3,3 +3,6 @@ export { default as CardGrid } from './CardGrid.svelte';
 export { default as Tabs } from './Tabs.svelte';
 export { default as TabItem } from './TabItem.svelte';
 export { default as ComponentExample } from './ComponentExample.svelte';
+export { default as LibraryCard } from './LibraryCard.svelte';
+export { default as LibraryCategory } from './LibraryCategory.svelte';
+export { default as LibraryHeader } from './LibraryHeader.svelte';

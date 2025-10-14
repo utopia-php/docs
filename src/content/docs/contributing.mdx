@@ -1,0 +1,140 @@
+---
+title: Contributing
+group: Overview
+description: Learn how to contribute to Utopia PHP libraries and help make them better.
+priority: 2
+---
+
+We welcome contributions to Utopia PHP libraries and appreciate your help in making them better. We strive to make contributing to these libraries accessible, educational, and rewarding for developers of all skill levels. All contributions are welcome, including issues, documentation updates, code improvements, blog posts, workshops, and more.
+
+## Getting Started
+
+If you're unsure where to begin, review the following sections to understand what kind of help we need and how you can get involved. For questions, you can reach out to [Eldad Fux (@eldadfux)](https://twitter.com/eldadfux) or [@appwrite_io](https://twitter.com/appwrite_io) on Twitter, or contact the [Appwrite team on Discord](https://discord.gg/GSeTUeA). You can also submit an issue, and a maintainer will guide you through the process.
+
+You can get an in-depth understanding of Utopia PHP libraries in our [Getting Started](/getting-started) guide.
+
+## Code of Conduct
+
+Help us keep Utopia PHP open and inclusive. Please read and follow our [Code of Conduct](https://github.com/utopia-php/.github/blob/main/CODE_OF_CONDUCT.md).
+
+## Submit a Pull Request
+
+Branch naming convention is as following `TYPE-ISSUE_ID-DESCRIPTION` example:
+```
+doc-548-submit-a-pull-request-section-to-contribution-guide
+```
+
+When `TYPE` can be:
+- **feat** - is a new feature
+- **doc** - documentation only changes
+- **cicd** - changes related to CI/CD system
+- **fix** - a bug fix
+- **refactor** - code change that neither fixes a bug nor adds a feature
+
+**All PRs must include a commit message with the changes description!**
+
+For the initial start, fork the project and use git clone command to download the repository to your computer. A standard procedure for working on an issue would be to:
+
+1. `git pull`, before creating a new branch, pull the changes from upstream. Your master needs to be up to date.
+   ```bash
+   $ git pull
+   ```
+
+2. Create new branch from `master` like: `doc-548-submit-a-pull-request-section-to-contribution-guide`
+   ```bash
+   $ git checkout -b [name_of_your_new_branch]
+   ```
+
+3. Work - commit - repeat ( be sure to be in your branch )
+
+4. Push changes to GitHub
+   ```bash
+   $ git push origin [name_of_your_new_branch]
+   ```
+
+5. Submit your changes for review
+
+   If you go to your repository on GitHub, you'll see a `Compare & pull request` button. Click on that button.
+
+6. Start a Pull Request
+
+   Now submit the pull request and click on `Create pull request`.
+
+7. Get a code review approval/reject
+
+8. After approval, merge your PR
+
+9. GitHub will automatically delete the branch after the merge is done. (they can still be restored).
+
+### Testing
+
+Most Utopia PHP libraries use Docker for testing. Here's the general testing process:
+```bash
+# Start the test environment
+docker compose up -d
+
+# Run tests for different environments
+docker compose exec fpm vendor/bin/phpunit --configuration phpunit.xml
+docker compose exec swoole vendor/bin/phpunit --configuration phpunit.xml
+docker compose exec swoole-coroutine vendor/bin/phpunit --configuration phpunit.xml
+```
+
+## Introducing New Features
+
+We encourage contributions to Utopia PHP libraries and want to ensure these libraries maintain their high quality and align with their vision and mission statement.
+
+For us to find the right balance, please open an issue explaining your ideas before introducing a new pull request. This will allow the community to have sufficient discussion about the new feature value and how it fits in the product roadmap and vision.
+
+This is also important for the repository owners to be able to give technical input and different emphasis regarding the feature design and architecture.
+
+Some bigger features might need to go through our [RFC process](https://github.com/appwrite/rfc).
+
+## Other Ways to Help
+
+Pull requests are great, but there are many other areas where you can help:
+
+### Blogging & Speaking
+
+Creating blog posts, giving talks, or developing tutorials about one of the Utopia PHP libraries' many features are excellent ways to contribute and help our project grow.
+
+### Presenting at Meetups
+
+Presenting at meetups and conferences about your Utopia projects is an excellent way to contribute. Your unique challenges and successes in building applications with these libraries can provide valuable speaking material. We're happy to review your conference talk abstract and provide guidance if needed.
+
+### Providing Feedback & Reporting Bugs
+
+Providing feedback helps us understand different use cases and improve our libraries. If you encounter issues, bugs, or have experiences to share, please report them on our GitHub issues page or in our [Discord channel](https://discord.gg/GSeTUeA).
+
+### Submitting New Ideas
+
+If you think any of the Utopia PHP libraries could use a new feature, please open an issue on the respective GitHub repository, stating as much information as you can think about your new idea and its implications. We would also use this issue to gather more information, get more feedback from the community, and have a proper discussion about the new feature.
+
+### Improving Documentation
+
+Submitting documentation updates, enhancements, designs, or bug fixes is always welcome. Even small improvements like spelling or grammar fixes are appreciated.
+
+### Community Support
+
+Helping others in the community by answering questions on Discord, GitHub, or StackOverflow is a valuable contribution. You can also help by teaching others how to contribute to these repositories.
+
+## Library-Specific Information
+
+Each Utopia PHP library has its own repository with specific contribution guidelines. Here are the main libraries and their contribution pages:
+
+- [HTTP Library](https://github.com/utopia-php/http/blob/master/CONTRIBUTING.md)
+- [Database Library](https://github.com/utopia-php/database/blob/master/CONTRIBUTING.md)
+- [Cache Library](https://github.com/utopia-php/cache/blob/master/CONTRIBUTING.md)
+- [Logger Library](https://github.com/utopia-php/logger/blob/master/CONTRIBUTING.md)
+
+For a complete list of all Utopia PHP libraries, visit our [GitHub organization](https://github.com/utopia-php).
+
+## Getting Help
+
+If you need help or have questions about contributing:
+
+- **Discord**: Join our [Discord community](https://discord.gg/GSeTUeA)
+- **Twitter**: Follow [@appwrite_io](https://twitter.com/appwrite_io) and [@eldadfux](https://twitter.com/eldadfux)
+- **GitHub Issues**: Open an issue on the specific library repository
+- **Email**: Contact the maintainers directly
+
+Thank you for contributing to Utopia PHP!

@@ -1,0 +1,159 @@
+---
+title: HTTP
+group: Overview
+description: Micro PHP HTTP framework for building web applications and APIs.
+---
+
+import { Card, CardGrid, LibraryHeader } from '@components/mdx';
+
+<LibraryHeader
+	title="HTTP"
+	description="The Utopia HTTP library is a lightweight, high-performance HTTP framework designed for building modern web applications and APIs. It provides a clean, intuitive API for handling HTTP requests and responses with minimal overhead."
+	tagline="Micro PHP HTTP framework for building web applications and APIs"
+	githubUrl="https://github.com/utopia-php/http"
+	stars={291}
+	category="Network"
+/>
+
+## Overview
+
+The HTTP library is the foundation of many Utopia-based applications, providing essential functionality for web development including routing, middleware support, request/response handling, and more.
+
+## Key Features
+
+<CardGrid>
+	<Card title="Lightweight" icon="sparkles" gradient="blue">
+		Minimal footprint with no external dependencies, perfect for microservices.
+	</Card>
+	<Card title="High Performance" icon="lightbulb" gradient="purple">
+		Optimized for speed with efficient request handling and memory usage.
+	</Card>
+	<Card title="Easy Routing" icon="blocks" gradient="orange">
+		Simple and intuitive routing system with support for dynamic parameters.
+	</Card>
+	<Card title="Middleware Support" icon="brush" gradient="green">
+		Flexible middleware system for authentication, logging, and more.
+	</Card>
+</CardGrid>
+
+## Quick Start
+
+### Installation
+
+```bash
+composer require utopia-php/http
+```
+
+### Basic Usage
+
+```php
+<?php
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+use Utopia\Http\Http;
+use Utopia\Http\Request;
+use Utopia\Http\Response;
+
+$http = new Http('0.0.0.0', 8080);
+
+$http->get('/', function (Request $request, Response $response) {
+    $response->json(['message' => 'Hello from Utopia HTTP!']);
+});
+
+$http->get('/users/{id}', function (Request $request, Response $response) {
+    $id = $request->getParam('id');
+    $response->json(['user_id' => $id]);
+});
+
+$http->start();
+```
+
+## API Reference
+
+### Http Class
+
+The main HTTP server class that handles incoming requests and manages routing.
+
+#### Methods
+
+- `__construct(string $host, int $port)` - Initialize the HTTP server
+- `get(string $path, callable $callback)` - Register a GET route
+- `post(string $path, callable $callback)` - Register a POST route
+- `put(string $path, callable $callback)` - Register a PUT route
+- `delete(string $path, callable $callback)` - Register a DELETE route
+- `start()` - Start the HTTP server
+
+### Request Class
+
+Represents an incoming HTTP request with all its data and metadata.
+
+#### Methods
+
+- `getParam(string $key)` - Get route parameter value
+- `getQuery(string $key)` - Get query parameter value
+- `getHeader(string $key)` - Get request header value
+- `getBody()` - Get request body content
+- `getMethod()` - Get HTTP method
+- `getPath()` - Get request path
+
+### Response Class
+
+Represents an outgoing HTTP response with various helper methods.
+
+#### Methods
+
+- `json(array $data, int $status = 200)` - Send JSON response
+- `text(string $text, int $status = 200)` - Send text response
+- `html(string $html, int $status = 200)` - Send HTML response
+- `setHeader(string $key, string $value)` - Set response header
+- `setStatus(int $status)` - Set HTTP status code
+
+## Examples
+
+### RESTful API
+
+```php
+$http->get('/api/users', function (Request $request, Response $response) {
+    // Get all users
+    $users = ['user1', 'user2', 'user3'];
+    $response->json($users);
+});
+
+$http->post('/api/users', function (Request $request, Response $response) {
+    // Create new user
+    $data = json_decode($request->getBody(), true);
+    // Process user creation...
+    $response->json(['id' => 123, 'created' => true]);
+});
+```
+
+### Middleware
+
+```php
+$http->middleware(function (Request $request, Response $response, callable $next) {
+    // Log request
+    error_log("Request: " . $request->getMethod() . " " . $request->getPath());
+    $next($request, $response);
+});
+```
+
+## Performance
+
+The HTTP library is designed for high performance with:
+
+- **Minimal Memory Usage**: Efficient memory management with no unnecessary allocations
+- **Fast Routing**: Optimized routing algorithm for quick request matching
+- **Non-blocking I/O**: Support for async operations where possible
+- **Zero Dependencies**: No external dependencies to slow down startup
+
+## GitHub Repository
+
+[View on GitHub](https://github.com/utopia-php/http) • ⭐ 291 stars
+
+## Related Libraries
+
+- [Database](/database) - Database abstraction layer
+- [Cache](/cache) - Caching solutions
+- [Logger](/logger) - Structured logging
+

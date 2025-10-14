@@ -1,140 +1,132 @@
 ---
-title: Getting started
-group: Overview
-description: Learn how to set up and start using the documentation template.
+title: Getting Started
+group: Getting Started
+description: Learn how to get started with Utopia PHP libraries and build your first microservice application.
 priority: 1
 ---
 
-## Quick start
+import { Card, CardGrid } from '@components/mdx';
+
+## Getting Started with Utopia PHP
+
+*Micro PHP libraries for modern applications*
+
+Utopia PHP is a collection of micro libraries designed to help you build high-performance microservice applications with modern PHP. Each library is focused, lightweight, and easy to use. These are the building blocks that help Appwrite serve billions of monthly requests and over 350k backends for web and mobile projects.
+
+## Quick Start
+
+### 1. Choose Your Libraries
+
+Start by selecting the libraries you need for your project. Each library is independent and can be installed separately:
 
 ```bash
-# Clone the repository
-git clone https://github.com/appwrite/template-for-documentation.git
-
-# Navigate to the project
-cd docs-template
-
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
+composer require utopia-php/http
+composer require utopia-php/database
+composer require utopia-php/cache
 ```
 
-## Project structure
+### 2. Basic HTTP Server
 
-```
-.
-├── public/
-├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── content/
-│   │   ├── docs/
-│   │   └── config.ts
-│   ├── layouts/
-│   ├── pages/
-│   └── styles/
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
-```
+Here's a simple example using the HTTP library:
 
-## Adding content
+```php
+<?php
 
-### Content files
+require_once __DIR__ . '/vendor/autoload.php';
 
-Add your documentation content in MDX format under `src/content/docs/`:
+use Utopia\Http\Http;
+use Utopia\Http\Request;
+use Utopia\Http\Response;
 
-```md
----
-title: Getting started
-description: Learn how to use our product
-group: Overview
-priority: 2
----
+$http = new Http('0.0.0.0', 8080);
 
-# Getting started
-
-Welcome to our documentation...
-```
-
-### Navigation structure
-
-The sidebar navigation is automatically generated from your content structure. The order of navigation groups is defined in `src/content/config.ts`:
-
-```typescript
-// Define groups in desired order
-const groups = ['Overview', 'Foundations', 'Components'] as const;
-
-const docs = defineCollection({
-	type: 'content',
-	schema: z.object({
-		title: z.string(),
-		description: z.string(),
-		group: z.enum(groups).optional(), // Groups will appear in the order defined above
-		order: z.number().optional(),
-		priority: z.number().optional()
-	})
+$http->get('/', function (Request $request, Response $response) {
+    $response->json(['message' => 'Hello from Utopia PHP!']);
 });
+
+$http->start();
 ```
 
-Each MDX file can include these frontmatter fields:
+### 3. Add Database Support
 
-| Field         | Type   | Required | Description                                    |
-| ------------- | ------ | -------- | ---------------------------------------------- |
-| `title`       | string | Yes      | Page title                                     |
-| `description` | string | Yes      | Page description                               |
-| `group`       | enum   | No       | Navigation group (must match config.ts groups) |
-| `priority`    | number | No       | Navigation order priority (higher = earlier)   |
+```php
+<?php
 
-### Navigation priority
+use Utopia\Database\Database;
+use Utopia\Database\Document;
 
-The `priority` field gives you fine-grained control over page order within groups:
+$database = new Database();
 
-```md
----
-title: Home
-group: Overview
-priority: 1 # Appears first
----
+// Create a collection
+$database->createCollection('users');
 
----
-
-title: Getting started
-group: Overview
-priority: 2 # Appears second
-
----
-
----
-
-title: Design tokens
-group: Overview
-priority: 3 # Appears third
-
----
+// Insert a document
+$user = $database->createDocument('users', new Document([
+    'name' => 'John Doe',
+    'email' => 'john@example.com'
+]));
 ```
 
-If `priority` is not set, items are sorted alphabetically by title.
+## Key Features
 
-### Group order
+<CardGrid>
+	<Card title="Micro Libraries" icon="blocks" gradient="blue">
+		Each library is focused on a single responsibility, making them lightweight and easy to understand.
+	</Card>
+	<Card title="High Performance" icon="sparkles" gradient="purple">
+		Built for speed with minimal overhead and optimized for microservice architectures.
+	</Card>
+	<Card title="Easy to Use" icon="lightbulb" gradient="orange">
+		Simple APIs with great developer experience and small learning curves.
+	</Card>
+	<Card title="Modern PHP" icon="brush" gradient="green">
+		Built with modern PHP features and best practices for type safety and performance.
+	</Card>
+</CardGrid>
 
-Groups appear in the order they're defined in `config.ts`. To change the order of navigation groups:
+## Library Categories
 
-1. Update the `groups` array in `src/content/config.ts`
-2. The sidebar will automatically reflect the new order
-3. TypeScript ensures group names in MDX files match the config
+### Network Libraries
+- **HTTP**: Lightweight HTTP framework
+- **WebSocket**: WebSocket server abstraction
+- **DNS**: DNS server operations
+- **Fetch**: HTTP client library
+- **Domains**: Domain parsing and validation
 
-## Development commands
+### Data Libraries
+- **Database**: Database abstraction layer
+- **Cache**: Caching solutions
+- **Storage**: File and object storage
+- **Queue**: Background job processing
+- **Image**: Image manipulation
+- **AB**: A/B testing framework
+- **Abuse**: Abuse detection and prevention
+- **Locale**: Internationalization support
 
-```bash
-# Start development server
-npm run dev
+### Logging & Monitoring
+- **Logger**: Structured logging
+- **Audit**: Audit trail functionality
 
-# Build for production
-npm run build
+### Services
+- **Messaging**: Message queue and pub/sub
+- **Analytics**: Analytics and metrics collection
 
-# Preview production build
-npm run preview
-```
+### Utilities
+- **CLI**: Command-line interface framework
+- **Config**: Configuration management
+- **System**: System utilities
+- **Registry**: Dependency management
+- **Preloader**: Memory preloading
+
+## Next Steps
+
+1. **Explore Libraries**: Browse the [libraries section](/libraries) to find what you need
+2. **Read Documentation**: Each library has detailed documentation and examples
+3. **Join Community**: Connect with other developers on GitHub
+4. **Contribute**: Help improve Utopia PHP by contributing to the project
+
+## Need Help?
+
+- Check the [GitHub repositories](https://github.com/orgs/utopia-php/repositories) for issues and discussions
+- Read the individual library documentation
+- Look at the [demo project](https://github.com/utopia-php/demo) for complete examples
