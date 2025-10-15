@@ -9,18 +9,21 @@ export interface TocItem {
 
 interface DocsTocProps {
   items?: TocItem[]
+  maxLevel?: number
 }
 
-export function DocsToc({ items }: DocsTocProps) {
+export function DocsToc({ items, maxLevel = 4 }: DocsTocProps) {
   const [activeId, setActiveId] = React.useState<string>('')
   const [tocItems, setTocItems] = React.useState<TocItem[]>(items || [])
 
   React.useEffect(() => {
     // Auto-generate TOC from page headings if not provided
     if (!items) {
-      const headings = document.querySelectorAll(
-        '.docs-content h2, .docs-content h3, .docs-content h4',
-      )
+      const selector = Array.from({ length: maxLevel - 1 }, (_, i) => 
+        `.docs-content h${i + 2}`
+      ).join(', ')
+      
+      const headings = document.querySelectorAll(selector)
       const generatedItems: TocItem[] = Array.from(headings).map((heading) => {
         const id =
           heading.id ||
@@ -37,7 +40,7 @@ export function DocsToc({ items }: DocsTocProps) {
       })
       setTocItems(generatedItems)
     }
-  }, [items])
+  }, [items, maxLevel])
 
   React.useEffect(() => {
     // Scroll spy functionality

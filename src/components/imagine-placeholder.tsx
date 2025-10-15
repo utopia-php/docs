@@ -5,7 +5,7 @@ import { useServerFn } from '@tanstack/react-start'
 import { signOutFn } from '@/server/functions/auth'
 import { useAuth } from '@/hooks/use-auth'
 
-export function ImaginePlaceholder() {
+export function UtopiaPlaceholder() {
   const { currentUser } = useAuth()
   const signOut = useServerFn(signOutFn)
   const location = useLocation()
@@ -16,10 +16,10 @@ export function ImaginePlaceholder() {
       <img
         src={
           theme === 'dark'
-            ? '/imagine-logo-dark.svg'
-            : '/imagine-logo-light.svg'
+            ? '/logo-dark.svg'
+            : '/logo-light.svg'
         }
-        alt="Imagine Logo"
+        alt="Utopia.php Logo"
         className="size-14"
       />
 

@@ -1,7 +1,7 @@
 {
-  "name": "Utopia PHP Documentation",
-  "short_name": "Utopia PHP",
-  "description": "Documentation for Utopia PHP framework",
+  "name": "Utopia.php Documentation",
+  "short_name": "Utopia.php",
+  "description": "Documentation for Utopia.php micro-libraries",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",

@@ -12,12 +12,16 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as PublicRouteImport } from './routes/_public'
 import { Route as ProtectedRouteImport } from './routes/_protected'
 import { Route as AuthRouteImport } from './routes/_auth'
+import { Route as SplatRouteImport } from './routes/$'
 import { Route as PublicIndexRouteImport } from './routes/_public/index'
+import { Route as PublicExampleCompsRouteImport } from './routes/_public/example-comps'
+import { Route as PublicChangelogRouteImport } from './routes/_public/changelog'
 import { Route as ProtectedExampleProtectedRouteRouteImport } from './routes/_protected/example-protected-route'
 import { Route as AuthSignUpRouteImport } from './routes/_auth/sign-up'
 import { Route as AuthSignOutRouteImport } from './routes/_auth/sign-out'
 import { Route as AuthSignInRouteImport } from './routes/_auth/sign-in'
 import { Route as ApiHelloRouteImport } from './routes/_api/hello'
+import { Route as PublicLibraryLibraryNameRouteImport } from './routes/_public/library.$libraryName'
 
 const PublicRoute = PublicRouteImport.update({
   id: '/_public',
@@ -31,9 +35,24 @@ const AuthRoute = AuthRouteImport.update({
   id: '/_auth',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SplatRoute = SplatRouteImport.update({
+  id: '/$',
+  path: '/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PublicIndexRoute = PublicIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicExampleCompsRoute = PublicExampleCompsRouteImport.update({
+  id: '/example-comps',
+  path: '/example-comps',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicChangelogRoute = PublicChangelogRouteImport.update({
+  id: '/changelog',
+  path: '/changelog',
   getParentRoute: () => PublicRoute,
 } as any)
 const ProtectedExampleProtectedRouteRoute =
@@ -62,25 +81,40 @@ const ApiHelloRoute = ApiHelloRouteImport.update({
   path: '/hello',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PublicLibraryLibraryNameRoute =
+  PublicLibraryLibraryNameRouteImport.update({
+    id: '/library/$libraryName',
+    path: '/library/$libraryName',
+    getParentRoute: () => PublicRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
+  '/$': typeof SplatRoute
   '/hello': typeof ApiHelloRoute
   '/sign-in': typeof AuthSignInRoute
   '/sign-out': typeof AuthSignOutRoute
   '/sign-up': typeof AuthSignUpRoute
   '/example-protected-route': typeof ProtectedExampleProtectedRouteRoute
+  '/changelog': typeof PublicChangelogRoute
+  '/example-comps': typeof PublicExampleCompsRoute
   '/': typeof PublicIndexRoute
+  '/library/$libraryName': typeof PublicLibraryLibraryNameRoute
 }
 export interface FileRoutesByTo {
+  '/$': typeof SplatRoute
   '/hello': typeof ApiHelloRoute
   '/sign-in': typeof AuthSignInRoute
   '/sign-out': typeof AuthSignOutRoute
   '/sign-up': typeof AuthSignUpRoute
   '/example-protected-route': typeof ProtectedExampleProtectedRouteRoute
+  '/changelog': typeof PublicChangelogRoute
+  '/example-comps': typeof PublicExampleCompsRoute
   '/': typeof PublicIndexRoute
+  '/library/$libraryName': typeof PublicLibraryLibraryNameRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/$': typeof SplatRoute
   '/_auth': typeof AuthRouteWithChildren
   '/_protected': typeof ProtectedRouteWithChildren
   '/_public': typeof PublicRouteWithChildren
@@ -89,27 +123,39 @@ export interface FileRoutesById {
   '/_auth/sign-out': typeof AuthSignOutRoute
   '/_auth/sign-up': typeof AuthSignUpRoute
   '/_protected/example-protected-route': typeof ProtectedExampleProtectedRouteRoute
+  '/_public/changelog': typeof PublicChangelogRoute
+  '/_public/example-comps': typeof PublicExampleCompsRoute
   '/_public/': typeof PublicIndexRoute
+  '/_public/library/$libraryName': typeof PublicLibraryLibraryNameRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
+    | '/$'
     | '/hello'
     | '/sign-in'
     | '/sign-out'
     | '/sign-up'
     | '/example-protected-route'
+    | '/changelog'
+    | '/example-comps'
     | '/'
+    | '/library/$libraryName'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/$'
     | '/hello'
     | '/sign-in'
     | '/sign-out'
     | '/sign-up'
     | '/example-protected-route'
+    | '/changelog'
+    | '/example-comps'
     | '/'
+    | '/library/$libraryName'
   id:
     | '__root__'
+    | '/$'
     | '/_auth'
     | '/_protected'
     | '/_public'
@@ -118,10 +164,14 @@ export interface FileRouteTypes {
     | '/_auth/sign-out'
     | '/_auth/sign-up'
     | '/_protected/example-protected-route'
+    | '/_public/changelog'
+    | '/_public/example-comps'
     | '/_public/'
+    | '/_public/library/$libraryName'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  SplatRoute: typeof SplatRoute
   AuthRoute: typeof AuthRouteWithChildren
   ProtectedRoute: typeof ProtectedRouteWithChildren
   PublicRoute: typeof PublicRouteWithChildren
@@ -151,11 +201,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$': {
+      id: '/$'
+      path: '/$'
+      fullPath: '/$'
+      preLoaderRoute: typeof SplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_public/': {
       id: '/_public/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof PublicIndexRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/example-comps': {
+      id: '/_public/example-comps'
+      path: '/example-comps'
+      fullPath: '/example-comps'
+      preLoaderRoute: typeof PublicExampleCompsRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/changelog': {
+      id: '/_public/changelog'
+      path: '/changelog'
+      fullPath: '/changelog'
+      preLoaderRoute: typeof PublicChangelogRouteImport
       parentRoute: typeof PublicRoute
     }
     '/_protected/example-protected-route': {
@@ -193,6 +264,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiHelloRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_public/library/$libraryName': {
+      id: '/_public/library/$libraryName'
+      path: '/library/$libraryName'
+      fullPath: '/library/$libraryName'
+      preLoaderRoute: typeof PublicLibraryLibraryNameRouteImport
+      parentRoute: typeof PublicRoute
+    }
   }
 }
 
@@ -223,17 +301,24 @@ const ProtectedRouteWithChildren = ProtectedRoute._addFileChildren(
 )
 
 interface PublicRouteChildren {
+  PublicChangelogRoute: typeof PublicChangelogRoute
+  PublicExampleCompsRoute: typeof PublicExampleCompsRoute
   PublicIndexRoute: typeof PublicIndexRoute
+  PublicLibraryLibraryNameRoute: typeof PublicLibraryLibraryNameRoute
 }
 
 const PublicRouteChildren: PublicRouteChildren = {
+  PublicChangelogRoute: PublicChangelogRoute,
+  PublicExampleCompsRoute: PublicExampleCompsRoute,
   PublicIndexRoute: PublicIndexRoute,
+  PublicLibraryLibraryNameRoute: PublicLibraryLibraryNameRoute,
 }
 
 const PublicRouteWithChildren =
   PublicRoute._addFileChildren(PublicRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
+  SplatRoute: SplatRoute,
   AuthRoute: AuthRouteWithChildren,
   ProtectedRoute: ProtectedRouteWithChildren,
   PublicRoute: PublicRouteWithChildren,

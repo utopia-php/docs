@@ -2,6 +2,7 @@ import * as React from 'react'
 import { cn } from '@/lib/utils'
 import { ChevronRight } from 'lucide-react'
 import { Link, useRouterState } from '@tanstack/react-router'
+import { getAllLibraries, getCategories, getLibrarySlug } from '@/lib/libraries'
 
 export interface NavItem {
   title: string
@@ -12,6 +13,24 @@ export interface NavItem {
 
 interface DocsNavigationProps {
   items?: NavItem[]
+}
+
+// Generate library navigation dynamically
+function generateLibraryNavItems(): NavItem[] {
+  const categories = getCategories()
+  const allLibraries = getAllLibraries()
+  
+  return categories.map(category => {
+    const categoryLibraries = allLibraries.filter(lib => lib.category === category)
+    
+    return {
+      title: category.charAt(0).toUpperCase() + category.slice(1),
+      items: categoryLibraries.map(library => ({
+        title: library.name,
+        href: `/library/${getLibrarySlug(library.name)}`,
+      })),
+    }
+  })
 }
 
 // Default navigation structure
@@ -34,57 +53,32 @@ const defaultNavItems: NavItem[] = [
     ],
   },
   {
-    title: 'Components',
+    title: 'Libraries',
+    items: generateLibraryNavItems(),
+  },
+  {
+    title: 'Community',
     items: [
       {
-        title: 'Overview',
-        href: '/components',
+        title: 'Contributing',
+        href: '/community/contributing',
       },
       {
-        title: 'Buttons',
-        href: '/components/buttons',
+        title: 'Changelog',
+        href: '/changelog',
       },
       {
-        title: 'Forms',
-        href: '/components/forms',
-      },
-      {
-        title: 'Cards',
-        href: '/components/cards',
+        title: 'Support',
+        href: '/community/support',
       },
     ],
   },
   {
-    title: 'API Reference',
+    title: 'Examples',
     items: [
       {
-        title: 'Configuration',
-        href: '/api/configuration',
-      },
-      {
-        title: 'Methods',
-        href: '/api/methods',
-      },
-      {
-        title: 'Events',
-        href: '/api/events',
-      },
-    ],
-  },
-  {
-    title: 'Advanced',
-    items: [
-      {
-        title: 'Customization',
-        href: '/advanced/customization',
-      },
-      {
-        title: 'Theming',
-        href: '/advanced/theming',
-      },
-      {
-        title: 'Performance',
-        href: '/advanced/performance',
+        title: 'Example comps',
+        href: '/example-comps',
       },
     ],
   },

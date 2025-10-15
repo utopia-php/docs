@@ -44,13 +44,51 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'Imagine App',
+        title: 'Utopia.php',
       },
     ],
     links: [
       {
         rel: 'stylesheet',
         href: appCss,
+      },
+      {
+        rel: 'icon',
+        type: 'image/svg+xml',
+        href: '/favicon.svg',
+      },
+      {
+        rel: 'icon',
+        type: 'image/svg+xml',
+        sizes: '32x32',
+        href: '/favicon-32x32.svg',
+      },
+      {
+        rel: 'icon',
+        type: 'image/svg+xml',
+        sizes: '16x16',
+        href: '/favicon-16x16.svg',
+      },
+      {
+        rel: 'apple-touch-icon',
+        sizes: '180x180',
+        href: '/apple-touch-icon.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        href: '/favicon-32x32.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: '/favicon-16x16.png',
+      },
+      {
+        rel: 'manifest',
+        href: '/site.webmanifest',
       },
     ],
     scripts: [...scripts],
@@ -61,11 +99,11 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="w-full">
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body className="w-full">
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
