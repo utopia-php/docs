@@ -1,0 +1,11 @@
+services:
+  imagine-sandbox-template-tanstack-start:
+    image: appwrite/imagine-sandbox-template-tanstack-start:v3
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+      - 3005:3005
+    env_file: .env
