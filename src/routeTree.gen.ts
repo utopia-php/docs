@@ -15,6 +15,7 @@ import { Route as AuthRouteImport } from './routes/_auth'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as PublicIndexRouteImport } from './routes/_public/index'
 import { Route as PublicExampleCompsRouteImport } from './routes/_public/example-comps'
+import { Route as PublicContributingRouteImport } from './routes/_public/contributing'
 import { Route as PublicChangelogRouteImport } from './routes/_public/changelog'
 import { Route as PublicBlogRouteImport } from './routes/_public/blog'
 import { Route as ProtectedExampleProtectedRouteRouteImport } from './routes/_protected/example-protected-route'
@@ -49,6 +50,11 @@ const PublicIndexRoute = PublicIndexRouteImport.update({
 const PublicExampleCompsRoute = PublicExampleCompsRouteImport.update({
   id: '/example-comps',
   path: '/example-comps',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicContributingRoute = PublicContributingRouteImport.update({
+  id: '/contributing',
+  path: '/contributing',
   getParentRoute: () => PublicRoute,
 } as any)
 const PublicChangelogRoute = PublicChangelogRouteImport.update({
@@ -103,6 +109,7 @@ export interface FileRoutesByFullPath {
   '/example-protected-route': typeof ProtectedExampleProtectedRouteRoute
   '/blog': typeof PublicBlogRoute
   '/changelog': typeof PublicChangelogRoute
+  '/contributing': typeof PublicContributingRoute
   '/example-comps': typeof PublicExampleCompsRoute
   '/': typeof PublicIndexRoute
   '/library/$libraryName': typeof PublicLibraryLibraryNameRoute
@@ -116,6 +123,7 @@ export interface FileRoutesByTo {
   '/example-protected-route': typeof ProtectedExampleProtectedRouteRoute
   '/blog': typeof PublicBlogRoute
   '/changelog': typeof PublicChangelogRoute
+  '/contributing': typeof PublicContributingRoute
   '/example-comps': typeof PublicExampleCompsRoute
   '/': typeof PublicIndexRoute
   '/library/$libraryName': typeof PublicLibraryLibraryNameRoute
@@ -133,6 +141,7 @@ export interface FileRoutesById {
   '/_protected/example-protected-route': typeof ProtectedExampleProtectedRouteRoute
   '/_public/blog': typeof PublicBlogRoute
   '/_public/changelog': typeof PublicChangelogRoute
+  '/_public/contributing': typeof PublicContributingRoute
   '/_public/example-comps': typeof PublicExampleCompsRoute
   '/_public/': typeof PublicIndexRoute
   '/_public/library/$libraryName': typeof PublicLibraryLibraryNameRoute
@@ -148,6 +157,7 @@ export interface FileRouteTypes {
     | '/example-protected-route'
     | '/blog'
     | '/changelog'
+    | '/contributing'
     | '/example-comps'
     | '/'
     | '/library/$libraryName'
@@ -161,6 +171,7 @@ export interface FileRouteTypes {
     | '/example-protected-route'
     | '/blog'
     | '/changelog'
+    | '/contributing'
     | '/example-comps'
     | '/'
     | '/library/$libraryName'
@@ -177,6 +188,7 @@ export interface FileRouteTypes {
     | '/_protected/example-protected-route'
     | '/_public/blog'
     | '/_public/changelog'
+    | '/_public/contributing'
     | '/_public/example-comps'
     | '/_public/'
     | '/_public/library/$libraryName'
@@ -232,6 +244,13 @@ declare module '@tanstack/react-router' {
       path: '/example-comps'
       fullPath: '/example-comps'
       preLoaderRoute: typeof PublicExampleCompsRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/contributing': {
+      id: '/_public/contributing'
+      path: '/contributing'
+      fullPath: '/contributing'
+      preLoaderRoute: typeof PublicContributingRouteImport
       parentRoute: typeof PublicRoute
     }
     '/_public/changelog': {
@@ -322,6 +341,7 @@ const ProtectedRouteWithChildren = ProtectedRoute._addFileChildren(
 interface PublicRouteChildren {
   PublicBlogRoute: typeof PublicBlogRoute
   PublicChangelogRoute: typeof PublicChangelogRoute
+  PublicContributingRoute: typeof PublicContributingRoute
   PublicExampleCompsRoute: typeof PublicExampleCompsRoute
   PublicIndexRoute: typeof PublicIndexRoute
   PublicLibraryLibraryNameRoute: typeof PublicLibraryLibraryNameRoute
@@ -330,6 +350,7 @@ interface PublicRouteChildren {
 const PublicRouteChildren: PublicRouteChildren = {
   PublicBlogRoute: PublicBlogRoute,
   PublicChangelogRoute: PublicChangelogRoute,
+  PublicContributingRoute: PublicContributingRoute,
   PublicExampleCompsRoute: PublicExampleCompsRoute,
   PublicIndexRoute: PublicIndexRoute,
   PublicLibraryLibraryNameRoute: PublicLibraryLibraryNameRoute,

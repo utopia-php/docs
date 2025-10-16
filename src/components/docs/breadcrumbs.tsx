@@ -1,5 +1,6 @@
 import { Link } from '@tanstack/react-router'
 import { CopyPageDropdown } from './copy-page-dropdown'
+import { EditPageButton } from './edit-page-button'
 
 interface BreadcrumbItem {
   label: string
@@ -45,7 +46,10 @@ export function Breadcrumbs({ items, showCopyPage = true }: BreadcrumbsProps) {
           </div>
         ))}
       </div>
-      {showCopyPage && <CopyPageDropdown />}
+      <div className="flex items-center gap-2">
+        <EditPageButton />
+        {showCopyPage && <CopyPageDropdown />}
+      </div>
     </nav>
   )
 }

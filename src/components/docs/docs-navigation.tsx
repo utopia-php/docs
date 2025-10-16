@@ -62,7 +62,7 @@ const defaultNavItems: NavItem[] = [
     items: [
       {
         title: 'Contributing',
-        href: '/community/contributing',
+        href: '/contributing',
       },
       {
         title: 'Changelog',

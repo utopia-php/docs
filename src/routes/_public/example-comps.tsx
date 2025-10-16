@@ -222,7 +222,7 @@ greet('World')`}
           "Good documentation is like a good joke. If you have to explain it,
           it's not that good."
           <br />
-          <em>— Anonymous Developer</em>
+          <em>- Anonymous Developer</em>
         </blockquote>
 
         <h2 id="best-practices">Best Practices</h2>
