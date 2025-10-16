@@ -16,6 +16,7 @@ import { Route as SplatRouteImport } from './routes/$'
 import { Route as PublicIndexRouteImport } from './routes/_public/index'
 import { Route as PublicExampleCompsRouteImport } from './routes/_public/example-comps'
 import { Route as PublicChangelogRouteImport } from './routes/_public/changelog'
+import { Route as PublicBlogRouteImport } from './routes/_public/blog'
 import { Route as ProtectedExampleProtectedRouteRouteImport } from './routes/_protected/example-protected-route'
 import { Route as AuthSignUpRouteImport } from './routes/_auth/sign-up'
 import { Route as AuthSignOutRouteImport } from './routes/_auth/sign-out'
@@ -53,6 +54,11 @@ const PublicExampleCompsRoute = PublicExampleCompsRouteImport.update({
 const PublicChangelogRoute = PublicChangelogRouteImport.update({
   id: '/changelog',
   path: '/changelog',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicBlogRoute = PublicBlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
   getParentRoute: () => PublicRoute,
 } as any)
 const ProtectedExampleProtectedRouteRoute =
@@ -95,6 +101,7 @@ export interface FileRoutesByFullPath {
   '/sign-out': typeof AuthSignOutRoute
   '/sign-up': typeof AuthSignUpRoute
   '/example-protected-route': typeof ProtectedExampleProtectedRouteRoute
+  '/blog': typeof PublicBlogRoute
   '/changelog': typeof PublicChangelogRoute
   '/example-comps': typeof PublicExampleCompsRoute
   '/': typeof PublicIndexRoute
@@ -107,6 +114,7 @@ export interface FileRoutesByTo {
   '/sign-out': typeof AuthSignOutRoute
   '/sign-up': typeof AuthSignUpRoute
   '/example-protected-route': typeof ProtectedExampleProtectedRouteRoute
+  '/blog': typeof PublicBlogRoute
   '/changelog': typeof PublicChangelogRoute
   '/example-comps': typeof PublicExampleCompsRoute
   '/': typeof PublicIndexRoute
@@ -123,6 +131,7 @@ export interface FileRoutesById {
   '/_auth/sign-out': typeof AuthSignOutRoute
   '/_auth/sign-up': typeof AuthSignUpRoute
   '/_protected/example-protected-route': typeof ProtectedExampleProtectedRouteRoute
+  '/_public/blog': typeof PublicBlogRoute
   '/_public/changelog': typeof PublicChangelogRoute
   '/_public/example-comps': typeof PublicExampleCompsRoute
   '/_public/': typeof PublicIndexRoute
@@ -137,6 +146,7 @@ export interface FileRouteTypes {
     | '/sign-out'
     | '/sign-up'
     | '/example-protected-route'
+    | '/blog'
     | '/changelog'
     | '/example-comps'
     | '/'
@@ -149,6 +159,7 @@ export interface FileRouteTypes {
     | '/sign-out'
     | '/sign-up'
     | '/example-protected-route'
+    | '/blog'
     | '/changelog'
     | '/example-comps'
     | '/'
@@ -164,6 +175,7 @@ export interface FileRouteTypes {
     | '/_auth/sign-out'
     | '/_auth/sign-up'
     | '/_protected/example-protected-route'
+    | '/_public/blog'
     | '/_public/changelog'
     | '/_public/example-comps'
     | '/_public/'
@@ -227,6 +239,13 @@ declare module '@tanstack/react-router' {
       path: '/changelog'
       fullPath: '/changelog'
       preLoaderRoute: typeof PublicChangelogRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/blog': {
+      id: '/_public/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof PublicBlogRouteImport
       parentRoute: typeof PublicRoute
     }
     '/_protected/example-protected-route': {
@@ -301,6 +320,7 @@ const ProtectedRouteWithChildren = ProtectedRoute._addFileChildren(
 )
 
 interface PublicRouteChildren {
+  PublicBlogRoute: typeof PublicBlogRoute
   PublicChangelogRoute: typeof PublicChangelogRoute
   PublicExampleCompsRoute: typeof PublicExampleCompsRoute
   PublicIndexRoute: typeof PublicIndexRoute
@@ -308,6 +328,7 @@ interface PublicRouteChildren {
 }
 
 const PublicRouteChildren: PublicRouteChildren = {
+  PublicBlogRoute: PublicBlogRoute,
   PublicChangelogRoute: PublicChangelogRoute,
   PublicExampleCompsRoute: PublicExampleCompsRoute,
   PublicIndexRoute: PublicIndexRoute,

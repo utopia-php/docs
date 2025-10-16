@@ -13,7 +13,7 @@ interface CopyPageDropdownProps {
 }
 
 export function CopyPageDropdown({ className }: CopyPageDropdownProps) {
-  const handleViewAsMarkdown = () => {
+  const handleCopyAsMarkdown = async () => {
     // Get current page content and convert to markdown
     const pageContent = document.querySelector('.docs-content')
     if (!pageContent) return
@@ -53,16 +53,20 @@ export function CopyPageDropdown({ className }: CopyPageDropdownProps) {
       }
     })
     
-    // Create a blob and download it
-    const blob = new Blob([markdown], { type: 'text/markdown' })
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.href = url
-    a.download = `${title.replace(/\s+/g, '-').toLowerCase()}.md`
-    document.body.appendChild(a)
-    a.click()
-    document.body.removeChild(a)
-    URL.revokeObjectURL(url)
+    // Copy to clipboard
+    try {
+      await navigator.clipboard.writeText(markdown)
+      // You could add a toast notification here to confirm the copy
+    } catch (err) {
+      console.error('Failed to copy to clipboard:', err)
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea')
+      textArea.value = markdown
+      document.body.appendChild(textArea)
+      textArea.select()
+      document.execCommand('copy')
+      document.body.removeChild(textArea)
+    }
   }
 
   const handleOpenInClaude = () => {
@@ -90,11 +94,11 @@ export function CopyPageDropdown({ className }: CopyPageDropdownProps) {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-72">
-        <DropdownMenuItem onClick={handleViewAsMarkdown} className="cursor-pointer">
+        <DropdownMenuItem onClick={handleCopyAsMarkdown} className="cursor-pointer">
           <FileText className="h-4 w-4 mr-2" />
           <div className="flex flex-col">
-            <span className="font-medium">View as Markdown</span>
-            <span className="text-xs text-muted-foreground">Open this page in Markdown</span>
+            <span className="font-medium">Copy as Markdown</span>
+            <span className="text-xs text-muted-foreground">Copy as Markdown</span>
           </div>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={handleOpenInClaude} className="cursor-pointer">
