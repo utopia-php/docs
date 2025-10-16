@@ -5,6 +5,7 @@ import {
   DocsCallout,
   DocsCodeBlock,
   InlineCode,
+  Breadcrumbs,
 } from '@/components/docs'
 
 export const Route = createFileRoute('/_public/example-comps')({
@@ -15,6 +16,13 @@ function ExampleComps() {
   return (
     <DocsLayout>
       <DocsContent>
+        {/* Breadcrumbs */}
+        <Breadcrumbs 
+          items={[
+            { label: 'Home', href: '/' }
+          ]} 
+        />
+        
         <div className="space-y-1 mb-4">
           <h1>Example Components</h1>
           <p className="text-sm text-muted-foreground">

@@ -5,6 +5,7 @@ import {
   DocsCallout,
   DocsCalloutUtopia,
   InlineCode,
+  Breadcrumbs,
 } from '@/components/docs'
 import { Badge } from '@/components/ui/badge'
 import { LibraryCard } from '@/components/docs/library-card'
@@ -18,6 +19,13 @@ function Index() {
   return (
     <DocsLayout>
       <DocsContent>
+        {/* Breadcrumbs */}
+        <Breadcrumbs 
+          items={[
+            { label: 'Home', current: true }
+          ]} 
+        />
+        
         <div className="space-y-1 mb-4">
           <h1>Utopia.php</h1>
           <p className="text-sm text-muted-foreground">

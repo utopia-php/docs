@@ -4,6 +4,7 @@ export interface Library {
   name: string
   stars: number
   description: string
+  longDescription?: string
   githubUrl: string
   version: string
   lastUpdated: string
@@ -12,6 +13,7 @@ export interface Library {
   features: string[]
   dependencies: string[]
   category: string
+  license?: string
   deprecated?: boolean
 }
 

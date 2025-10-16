@@ -17,7 +17,7 @@ export function DocsCalloutUtopia({
     <div
       className={cn(
         'my-6 flex gap-3 rounded-lg border p-4',
-        'bg-[#6474ce]/3 dark:bg-[#6474ce]/5 text-[#2d1b69] dark:text-[#4a1a8a] border-[#6474ce]/20 dark:border-[#6474ce]/30',
+        'bg-[#6474ce]/3 dark:bg-[#6474ce]/5 text-[#2d1b69] dark:text-white/95 border-[#6474ce]/20 dark:border-[#6474ce]/30',
         className,
       )}
     >

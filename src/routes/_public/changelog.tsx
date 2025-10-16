@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import {
   DocsLayout,
   DocsContent,
+  Breadcrumbs,
 } from '@/components/docs'
 
 export const Route = createFileRoute('/_public/changelog')({
@@ -135,6 +136,13 @@ function Changelog() {
   return (
     <DocsLayout>
       <DocsContent>
+        {/* Breadcrumbs */}
+        <Breadcrumbs 
+          items={[
+            { label: 'Home', href: '/' }
+          ]} 
+        />
+        
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-2xl font-semibold mb-2">Changelog</h1>

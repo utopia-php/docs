@@ -1,0 +1,46 @@
+import { Link } from '@tanstack/react-router'
+
+interface BreadcrumbItem {
+  label: string
+  href?: string
+  current?: boolean
+}
+
+interface BreadcrumbsProps {
+  items: BreadcrumbItem[]
+}
+
+export function Breadcrumbs({ items }: BreadcrumbsProps) {
+  // If there's only one item and it's current, show it (for main page)
+  // Otherwise, filter out current items to avoid repetition
+  const breadcrumbItems = items.length === 1 && items[0].current 
+    ? items 
+    : items.filter(item => !item.current)
+  
+  // Don't render if no items
+  if (breadcrumbItems.length === 0) {
+    return null
+  }
+  
+  return (
+    <nav className="flex items-center space-x-1 text-sm text-muted-foreground mb-6">
+      {breadcrumbItems.map((item, index) => (
+        <div key={index} className="flex items-center">
+          {index > 0 && <span className="text-muted-foreground mr-1">/</span>}
+          {item.href ? (
+            <Link 
+              to={item.href} 
+              className="hover:text-foreground transition-colors"
+            >
+              {item.label}
+            </Link>
+          ) : (
+            <span className={item.current ? "text-foreground font-medium" : ""}>
+              {item.label}
+            </span>
+          )}
+        </div>
+      ))}
+    </nav>
+  )
+}

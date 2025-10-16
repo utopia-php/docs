@@ -1,32 +1,6 @@
 {
   "network": [
     {
-      "name": "HTTP",
-      "stars": 291,
-      "description": "Micro PHP HTTP framework with routing and middleware.",
-      "githubUrl": "https://github.com/utopia-php/http",
-      "version": "2.0.0",
-      "lastUpdated": "2024-01-15",
-      "documentation": "https://docs.utopia-php.com/http",
-      "installation": "composer require utopia/http",
-      "features": ["Routing", "Middleware", "Request/Response", "CORS", "Rate Limiting"],
-      "dependencies": ["PHP 8.1+", "ext-json"],
-      "category": "network"
-    },
-    {
-      "name": "WebSocket",
-      "stars": 13,
-      "description": "Real-time communication server with WebSocket support.",
-      "githubUrl": "https://github.com/utopia-php/websocket",
-      "version": "1.2.0",
-      "lastUpdated": "2024-01-10",
-      "documentation": "https://docs.utopia-php.com/websocket",
-      "installation": "composer require utopia/websocket",
-      "features": ["Real-time Communication", "Event Handling", "Connection Management", "Message Broadcasting"],
-      "dependencies": ["PHP 8.1+", "ext-sockets"],
-      "category": "network"
-    },
-    {
       "name": "DNS",
       "stars": 4,
       "description": "DNS server implementation with query resolution and custom record management.",
@@ -37,6 +11,19 @@
       "installation": "composer require utopia/dns",
       "features": ["DNS Query Resolution", "Custom Records", "Zone Management", "Caching"],
       "dependencies": ["PHP 8.1+", "ext-sockets"],
+      "category": "network"
+    },
+    {
+      "name": "Domains",
+      "stars": 51,
+      "description": "Domain parsing and validation with TLD extraction and subdomain handling.",
+      "githubUrl": "https://github.com/utopia-php/domains",
+      "version": "2.1.0",
+      "lastUpdated": "2024-01-08",
+      "documentation": "https://docs.utopia-php.com/domains",
+      "installation": "composer require utopia/domains",
+      "features": ["Domain Parsing", "TLD Extraction", "Subdomain Handling", "Validation", "IDN Support"],
+      "dependencies": ["PHP 8.1+", "ext-intl"],
       "category": "network"
     },
     {
@@ -53,17 +40,34 @@
       "category": "network"
     },
     {
-      "name": "Domains",
-      "stars": 51,
-      "description": "Domain parsing and validation with TLD extraction and subdomain handling.",
-      "githubUrl": "https://github.com/utopia-php/domains",
-      "version": "2.1.0",
-      "lastUpdated": "2024-01-08",
-      "documentation": "https://docs.utopia-php.com/domains",
-      "installation": "composer require utopia/domains",
-      "features": ["Domain Parsing", "TLD Extraction", "Subdomain Handling", "Validation", "IDN Support"],
-      "dependencies": ["PHP 8.1+", "ext-intl"],
-      "category": "network"
+      "name": "HTTP",
+      "stars": 291,
+      "description": "Micro PHP HTTP framework with routing and middleware.",
+      "longDescription": "Utopia HTTP is a lightweight, high-performance PHP framework designed for building modern web applications and APIs. Built with simplicity and speed in mind, it provides essential HTTP functionality without the bloat of larger frameworks. The framework features an intuitive routing system that supports RESTful patterns, dynamic parameters, and route groups. Its middleware architecture allows for clean separation of concerns, enabling you to add authentication, logging, CORS handling, and rate limiting with ease. The request/response system is built on PSR-7 standards, ensuring compatibility with the broader PHP ecosystem while providing a clean, object-oriented API for handling HTTP data. Perfect for microservices, APIs, and applications that need fast, reliable HTTP handling without unnecessary complexity.",
+      "githubUrl": "https://github.com/utopia-php/http",
+      "version": "2.0.0",
+      "lastUpdated": "2024-01-15",
+      "documentation": "https://docs.utopia-php.com/http",
+      "installation": "composer require utopia/http",
+      "features": ["Routing", "Middleware", "Request/Response", "CORS", "Rate Limiting"],
+      "dependencies": ["PHP 8.1+", "ext-json"],
+      "category": "network",
+      "license": "MIT"
+    },
+    {
+      "name": "WebSocket",
+      "stars": 13,
+      "description": "Real-time communication server with WebSocket support.",
+      "longDescription": "Utopia WebSocket provides a robust foundation for building real-time applications in PHP. Whether you're creating chat applications, live notifications, collaborative tools, or gaming platforms, this library handles the complex WebSocket protocol implementation so you can focus on your application logic. The library manages WebSocket connections efficiently, supporting both text and binary message formats. It includes comprehensive event handling for connection lifecycle events, message routing, and error management. Built-in connection pooling and message broadcasting capabilities make it easy to scale your real-time features. The library also provides utilities for handling WebSocket handshakes, frame parsing, and connection state management, making it perfect for both simple real-time features and complex multi-user applications that require persistent connections.",
+      "githubUrl": "https://github.com/utopia-php/websocket",
+      "version": "1.2.0",
+      "lastUpdated": "2024-01-10",
+      "documentation": "https://docs.utopia-php.com/websocket",
+      "installation": "composer require utopia/websocket",
+      "features": ["Real-time Communication", "Event Handling", "Connection Management", "Message Broadcasting"],
+      "dependencies": ["PHP 8.1+", "ext-sockets"],
+      "category": "network",
+      "license": "MIT"
     }
   ],
   "data": [
@@ -81,16 +85,16 @@
       "category": "data"
     },
     {
-      "name": "Database",
-      "stars": 72,
-      "description": "Database abstraction layer supporting MySQL, PostgreSQL, and SQLite with query builder.",
-      "githubUrl": "https://github.com/utopia-php/database",
-      "version": "3.2.0",
-      "lastUpdated": "2024-01-16",
-      "documentation": "https://docs.utopia-php.com/database",
-      "installation": "composer require utopia/database",
-      "features": ["Multi-Database Support", "Query Builder", "Migrations", "Connection Pooling", "Transactions"],
-      "dependencies": ["PHP 8.1+", "ext-pdo"],
+      "name": "Abuse",
+      "stars": 26,
+      "description": "Abuse detection and prevention with rate limiting and IP blocking features.",
+      "githubUrl": "https://github.com/utopia-php/abuse",
+      "version": "1.2.0",
+      "lastUpdated": "2024-01-06",
+      "documentation": "https://docs.utopia-php.com/abuse",
+      "installation": "composer require utopia/abuse",
+      "features": ["Rate Limiting", "IP Blocking", "Pattern Detection", "Whitelist Management"],
+      "dependencies": ["PHP 8.1+", "ext-json"],
       "category": "data"
     },
     {
@@ -107,6 +111,34 @@
       "category": "data"
     },
     {
+      "name": "Config",
+      "stars": 14,
+      "description": "Configuration management with environment variables and file-based settings.",
+      "githubUrl": "https://github.com/utopia-php/config",
+      "version": "1.1.0",
+      "lastUpdated": "2024-01-03",
+      "documentation": "https://docs.utopia-php.com/config",
+      "installation": "composer require utopia/config",
+      "features": ["Environment Variables", "File-based Config", "Validation", "Type Casting"],
+      "dependencies": ["PHP 8.1+", "ext-json"],
+      "category": "data"
+    },
+    {
+      "name": "Database",
+      "stars": 72,
+      "description": "Database abstraction layer supporting MySQL, PostgreSQL, and SQLite with query builder.",
+      "longDescription": "Utopia Database is a comprehensive database abstraction layer that simplifies database operations across multiple database engines. Whether you're working with MySQL, PostgreSQL, SQLite, or other PDO-compatible databases, this library provides a unified interface that eliminates vendor-specific code. The query builder offers a fluent, intuitive API for constructing complex SQL queries without writing raw SQL, making your code more readable and maintainable. Built-in migration support helps you version your database schema changes, while connection pooling optimizes performance for high-traffic applications. The library handles transactions gracefully, ensuring data integrity even in complex multi-step operations. With comprehensive error handling and logging, it's perfect for both small projects and enterprise applications that need reliable, scalable database access.",
+      "githubUrl": "https://github.com/utopia-php/database",
+      "version": "3.2.0",
+      "lastUpdated": "2024-01-16",
+      "documentation": "https://docs.utopia-php.com/database",
+      "installation": "composer require utopia/database",
+      "features": ["Multi-Database Support", "Query Builder", "Migrations", "Connection Pooling", "Transactions"],
+      "dependencies": ["PHP 8.1+", "ext-pdo"],
+      "category": "data",
+      "license": "MIT"
+    },
+    {
       "name": "Image",
       "stars": 12,
       "description": "Image processing library with resize, crop, filter, and format conversion capabilities.",
@@ -117,45 +149,6 @@
       "installation": "composer require utopia/image",
       "features": ["Resize & Crop", "Format Conversion", "Filters", "Watermarking", "Optimization"],
       "dependencies": ["PHP 8.1+", "ext-gd"],
-      "category": "data"
-    },
-    {
-      "name": "Storage",
-      "stars": 30,
-      "description": "File storage abstraction with local, S3, and cloud storage provider support.",
-      "githubUrl": "https://github.com/utopia-php/storage",
-      "version": "2.0.0",
-      "lastUpdated": "2024-01-09",
-      "documentation": "https://docs.utopia-php.com/storage",
-      "installation": "composer require utopia/storage",
-      "features": ["Multi-Provider Support", "File Upload", "CDN Integration", "Metadata Management"],
-      "dependencies": ["PHP 8.1+", "ext-curl"],
-      "category": "data"
-    },
-    {
-      "name": "Queue",
-      "stars": 11,
-      "description": "Job queue system with Redis backend and worker process management.",
-      "githubUrl": "https://github.com/utopia-php/queue",
-      "version": "1.1.0",
-      "lastUpdated": "2024-01-07",
-      "documentation": "https://docs.utopia-php.com/queue",
-      "installation": "composer require utopia/queue",
-      "features": ["Job Queuing", "Worker Management", "Retry Logic", "Priority Queues"],
-      "dependencies": ["PHP 8.1+", "ext-redis"],
-      "category": "data"
-    },
-    {
-      "name": "Abuse",
-      "stars": 26,
-      "description": "Abuse detection and prevention with rate limiting and IP blocking features.",
-      "githubUrl": "https://github.com/utopia-php/abuse",
-      "version": "1.2.0",
-      "lastUpdated": "2024-01-06",
-      "documentation": "https://docs.utopia-php.com/abuse",
-      "installation": "composer require utopia/abuse",
-      "features": ["Rate Limiting", "IP Blocking", "Pattern Detection", "Whitelist Management"],
-      "dependencies": ["PHP 8.1+", "ext-json"],
       "category": "data"
     },
     {
@@ -172,33 +165,33 @@
       "category": "data"
     },
     {
-      "name": "Config",
-      "stars": 14,
-      "description": "Configuration management with environment variables and file-based settings.",
-      "githubUrl": "https://github.com/utopia-php/config",
+      "name": "Queue",
+      "stars": 11,
+      "description": "Job queue system with Redis backend and worker process management.",
+      "githubUrl": "https://github.com/utopia-php/queue",
       "version": "1.1.0",
-      "lastUpdated": "2024-01-03",
-      "documentation": "https://docs.utopia-php.com/config",
-      "installation": "composer require utopia/config",
-      "features": ["Environment Variables", "File-based Config", "Validation", "Type Casting"],
-      "dependencies": ["PHP 8.1+", "ext-json"],
+      "lastUpdated": "2024-01-07",
+      "documentation": "https://docs.utopia-php.com/queue",
+      "installation": "composer require utopia/queue",
+      "features": ["Job Queuing", "Worker Management", "Retry Logic", "Priority Queues"],
+      "dependencies": ["PHP 8.1+", "ext-redis"],
+      "category": "data"
+    },
+    {
+      "name": "Storage",
+      "stars": 30,
+      "description": "File storage abstraction with local, S3, and cloud storage provider support.",
+      "githubUrl": "https://github.com/utopia-php/storage",
+      "version": "2.0.0",
+      "lastUpdated": "2024-01-09",
+      "documentation": "https://docs.utopia-php.com/storage",
+      "installation": "composer require utopia/storage",
+      "features": ["Multi-Provider Support", "File Upload", "CDN Integration", "Metadata Management"],
+      "dependencies": ["PHP 8.1+", "ext-curl"],
       "category": "data"
     }
   ],
   "logs": [
-    {
-      "name": "Logger",
-      "stars": 10,
-      "description": "Structured logging with multiple output formats and log level filtering.",
-      "githubUrl": "https://github.com/utopia-php/logger",
-      "version": "1.0.0",
-      "lastUpdated": "2024-01-02",
-      "documentation": "https://docs.utopia-php.com/logger",
-      "installation": "composer require utopia/logger",
-      "features": ["Structured Logging", "Multiple Formats", "Log Level Filtering", "Context Support"],
-      "dependencies": ["PHP 8.1+", "ext-json"],
-      "category": "logs"
-    },
     {
       "name": "Audit",
       "stars": 23,
@@ -211,19 +204,47 @@
       "features": ["Audit Trail", "User Action Tracking", "System Events", "Compliance"],
       "dependencies": ["PHP 8.1+", "ext-json"],
       "category": "logs"
+    },
+    {
+      "name": "Logger",
+      "stars": 10,
+      "description": "Structured logging with multiple output formats and log level filtering.",
+      "githubUrl": "https://github.com/utopia-php/logger",
+      "version": "1.0.0",
+      "lastUpdated": "2024-01-02",
+      "documentation": "https://docs.utopia-php.com/logger",
+      "installation": "composer require utopia/logger",
+      "features": ["Structured Logging", "Multiple Formats", "Log Level Filtering", "Context Support"],
+      "dependencies": ["PHP 8.1+", "ext-json"],
+      "category": "logs"
     }
   ],
   "services": [
     {
-      "name": "Orchestrations",
-      "stars": 8,
-      "description": "Service orchestration with workflow management and task coordination.",
-      "githubUrl": "https://github.com/utopia-php/orchestrations",
+      "name": "Agents",
+      "stars": 7,
+      "description": "Lite & fast micro PHP AI agents library that is easy to use.",
+      "longDescription": "Utopia Agents is a simple and lite library for building and managing AI agents in PHP applications. This library provides a collection of tools and utilities for creating, managing, and orchestrating AI agents with support for multiple AI providers including OpenAI, Anthropic, Deepseek, Perplexity, and XAI APIs. The library features flexible message types supporting both text and structured content, easy-to-use conversation management between agents and users, and comprehensive model selection from various AI providers. With fine-tuneable model behavior through temperature and token controls, it's perfect for building intelligent applications that need to interact with multiple AI services seamlessly.",
+      "githubUrl": "https://github.com/utopia-php/agents",
       "version": "1.0.0",
-      "lastUpdated": "2023-12-30",
-      "documentation": "https://docs.utopia-php.com/orchestrations",
-      "installation": "composer require utopia/orchestrations",
-      "features": ["Workflow Management", "Task Coordination", "Service Discovery", "Health Checks"],
+      "lastUpdated": "2025-01-27",
+      "documentation": "https://docs.utopia-php.com/agents",
+      "installation": "composer require utopia-php/agents",
+      "features": ["Multiple AI Providers", "Flexible Message Types", "Conversation Management", "Model Selection", "Parameter Control"],
+      "dependencies": ["PHP 8.0+", "ext-json", "ext-curl"],
+      "category": "services",
+      "license": "MIT"
+    },
+    {
+      "name": "Analytics",
+      "stars": 18,
+      "description": "Analytics tracking with event collection and data aggregation features.",
+      "githubUrl": "https://github.com/utopia-php/analytics",
+      "version": "1.2.0",
+      "lastUpdated": "2023-12-25",
+      "documentation": "https://docs.utopia-php.com/analytics",
+      "installation": "composer require utopia/analytics",
+      "features": ["Event Collection", "Data Aggregation", "Real-time Analytics", "Custom Metrics"],
       "dependencies": ["PHP 8.1+", "ext-json"],
       "category": "services"
     },
@@ -241,15 +262,15 @@
       "category": "services"
     },
     {
-      "name": "Analytics",
-      "stars": 18,
-      "description": "Analytics tracking with event collection and data aggregation features.",
-      "githubUrl": "https://github.com/utopia-php/analytics",
-      "version": "1.2.0",
-      "lastUpdated": "2023-12-25",
-      "documentation": "https://docs.utopia-php.com/analytics",
-      "installation": "composer require utopia/analytics",
-      "features": ["Event Collection", "Data Aggregation", "Real-time Analytics", "Custom Metrics"],
+      "name": "Orchestrations",
+      "stars": 8,
+      "description": "Service orchestration with workflow management and task coordination.",
+      "githubUrl": "https://github.com/utopia-php/orchestrations",
+      "version": "1.0.0",
+      "lastUpdated": "2023-12-30",
+      "documentation": "https://docs.utopia-php.com/orchestrations",
+      "installation": "composer require utopia/orchestrations",
+      "features": ["Workflow Management", "Task Coordination", "Service Discovery", "Health Checks"],
       "dependencies": ["PHP 8.1+", "ext-json"],
       "category": "services"
     },
@@ -269,19 +290,6 @@
   ],
   "other": [
     {
-      "name": "Registry",
-      "stars": 17,
-      "description": "Dependency injection container with service registration and auto-wiring.",
-      "githubUrl": "https://github.com/utopia-php/registry",
-      "version": "2.1.0",
-      "lastUpdated": "2023-12-18",
-      "documentation": "https://docs.utopia-php.com/registry",
-      "installation": "composer require utopia/registry",
-      "features": ["Dependency Injection", "Service Registration", "Auto-wiring", "Singleton Support"],
-      "dependencies": ["PHP 8.1+", "ext-reflection"],
-      "category": "other"
-    },
-    {
       "name": "CLI",
       "stars": 40,
       "description": "Command-line interface framework with argument parsing and command routing.",
@@ -295,19 +303,6 @@
       "category": "other"
     },
     {
-      "name": "System",
-      "stars": 23,
-      "description": "System utilities for process management and environment detection.",
-      "githubUrl": "https://github.com/utopia-php/system",
-      "version": "1.3.0",
-      "lastUpdated": "2023-12-12",
-      "documentation": "https://docs.utopia-php.com/system",
-      "installation": "composer require utopia/system",
-      "features": ["Process Management", "Environment Detection", "System Info", "Resource Monitoring"],
-      "dependencies": ["PHP 8.1+", "ext-posix"],
-      "category": "other"
-    },
-    {
       "name": "Platform",
       "stars": 5,
       "description": "Platform abstraction layer for cross-platform compatibility and detection.",
@@ -317,6 +312,32 @@
       "documentation": "https://docs.utopia-php.com/platform",
       "installation": "composer require utopia/platform",
       "features": ["Cross-platform Support", "Platform Detection", "OS Abstraction", "Architecture Detection"],
+      "dependencies": ["PHP 8.1+", "ext-posix"],
+      "category": "other"
+    },
+    {
+      "name": "Registry",
+      "stars": 17,
+      "description": "Dependency injection container with service registration and auto-wiring.",
+      "githubUrl": "https://github.com/utopia-php/registry",
+      "version": "2.1.0",
+      "lastUpdated": "2023-12-18",
+      "documentation": "https://docs.utopia-php.com/registry",
+      "installation": "composer require utopia/registry",
+      "features": ["Dependency Injection", "Service Registration", "Auto-wiring", "Singleton Support"],
+      "dependencies": ["PHP 8.1+", "ext-reflection"],
+      "category": "other"
+    },
+    {
+      "name": "System",
+      "stars": 23,
+      "description": "System utilities for process management and environment detection.",
+      "githubUrl": "https://github.com/utopia-php/system",
+      "version": "1.3.0",
+      "lastUpdated": "2023-12-12",
+      "documentation": "https://docs.utopia-php.com/system",
+      "installation": "composer require utopia/system",
+      "features": ["Process Management", "Environment Detection", "System Info", "Resource Monitoring"],
       "dependencies": ["PHP 8.1+", "ext-posix"],
       "category": "other"
     }
