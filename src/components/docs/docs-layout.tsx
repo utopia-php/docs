@@ -29,7 +29,7 @@ export function DocsLayout({
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 mb-8">
+      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 mb-4">
         <div className="flex h-14 w-full items-center justify-center px-4 md:px-6 lg:px-8">
           <div className="flex w-full max-w-8xl items-center justify-between">
             <div className="flex items-center gap-2">
@@ -52,7 +52,7 @@ export function DocsLayout({
                 href="https://github.com/utopia-php" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center gap-1 text-sm text-muted-foreground border rounded px-2 py-1 hover:bg-muted/50 transition-colors hover:text-foreground"
+                className="flex items-center gap-1 text-sm text-muted-foreground border border-muted rounded-lg px-2 py-1 hover:bg-muted/50 transition-colors hover:text-foreground"
               >
                 <GitHubIcon size={14} />
                 <span className="font-medium">{getTotalStars().toLocaleString()}</span>
@@ -67,7 +67,7 @@ export function DocsLayout({
       <div className="flex w-full items-start px-4 md:px-6 lg:px-8">
         <div className="flex w-full max-w-8xl mx-auto">
           {/* Left Sidebar - Navigation */}
-          <aside className="fixed top-[calc(3.5rem+2rem)] z-30 -ml-1 hidden h-[calc(100vh-5.5rem)] w-56 max-w-56 shrink-0 md:block overflow-y-auto">
+          <aside className="fixed top-[calc(3.5rem+1rem)] z-30 -ml-1 hidden h-[calc(100vh-4.5rem)] w-56 max-w-56 shrink-0 md:block overflow-y-auto">
             <div className="py-3 pr-3 lg:py-4 max-w-full">
               <DocsNavigation items={navItems} />
             </div>
@@ -92,6 +92,17 @@ export function DocsLayout({
           </aside>
         </div>
       </div>
+
+      {/* Footer */}
+      <footer className="border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 mt-8">
+        <div className="flex h-12 w-full items-center justify-center px-4 md:px-6 lg:px-8">
+          <div className="flex w-full max-w-8xl items-center justify-center">
+            <p className="text-sm text-muted-foreground">
+              © {new Date().getFullYear()} Utopia.php
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }

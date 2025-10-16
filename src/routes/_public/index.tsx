@@ -24,10 +24,11 @@ function Index() {
           items={[
             { label: 'Home', current: true }
           ]} 
+          showCopyPage={false}
         />
         
         <div className="space-y-1 mb-4">
-          <h1>Utopia.php</h1>
+          <h1>Utopia PHP</h1>
           <p className="text-sm text-muted-foreground">
             Micro-libraries for PHP microservice architectures. 
             Lightweight, focused, and production-tested.

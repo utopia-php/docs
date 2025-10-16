@@ -14,12 +14,12 @@ export function DocsContent({ children, className }: DocsContentProps) {
         // Prose styling for documentation content
         'prose prose-zinc dark:prose-invert',
         // Headings
-        '[&_h1]:text-3xl [&_h1]:font-bold [&_h1]:tracking-tight [&_h1]:mb-3 [&_h1]:mt-6 [&_h1]:scroll-mt-16',
-        '[&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mb-3 [&_h2]:mt-6 [&_h2]:scroll-mt-16 [&_h2]:border-b [&_h2]:pb-1',
-        '[&_h3]:text-xl [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mb-2 [&_h3]:mt-4 [&_h3]:scroll-mt-16',
-        '[&_h4]:text-lg [&_h4]:font-semibold [&_h4]:mb-2 [&_h4]:mt-3 [&_h4]:scroll-mt-16',
-        '[&_h5]:text-base [&_h5]:font-semibold [&_h5]:mb-2 [&_h5]:mt-3 [&_h5]:scroll-mt-16',
-        '[&_h6]:text-sm [&_h6]:font-semibold [&_h6]:mb-2 [&_h6]:mt-3 [&_h6]:scroll-mt-16',
+        '[&_h1]:text-3xl [&_h1]:font-bold [&_h1]:tracking-tight [&_h1]:mb-6 [&_h1]:mt-6 [&_h1]:scroll-mt-16',
+        '[&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mb-6 [&_h2]:mt-6 [&_h2]:scroll-mt-16',
+        '[&_h3]:text-xl [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mb-4 [&_h3]:mt-4 [&_h3]:scroll-mt-16',
+        '[&_h4]:text-lg [&_h4]:font-semibold [&_h4]:mb-4 [&_h4]:mt-3 [&_h4]:scroll-mt-16',
+        '[&_h5]:text-base [&_h5]:font-semibold [&_h5]:mb-4 [&_h5]:mt-3 [&_h5]:scroll-mt-16',
+        '[&_h6]:text-sm [&_h6]:font-semibold [&_h6]:mb-4 [&_h6]:mt-3 [&_h6]:scroll-mt-16',
         // Paragraphs
         '[&_p]:leading-8 [&_p]:mb-3 [&_p]:text-base',
         // Links

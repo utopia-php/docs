@@ -3,15 +3,17 @@
     {
       "name": "DNS",
       "stars": 4,
-      "description": "DNS server implementation with query resolution and custom record management.",
+      "description": "Lite & fast micro PHP DNS server abstraction that is easy to use.",
+      "longDescription": "Utopia DNS is a simple and lite abstraction layer for quickly setting up a DNS server. This library is aiming to be as simple and easy to learn and use. The library provides both DNS server and client functionality, supporting multiple adapters including Native PHP Socket and Swoole UDP Server. It includes comprehensive DNS record support (A, NS, CNAME, SOA, MX, TXT, AAAA, SRV, etc.) and features a built-in benchmarking tool for performance testing. The library is dependency-free and can be used standalone with any PHP project or framework.",
       "githubUrl": "https://github.com/utopia-php/dns",
       "version": "1.0.0",
-      "lastUpdated": "2024-01-05",
+      "lastUpdated": "2025-01-27",
       "documentation": "https://docs.utopia-php.com/dns",
-      "installation": "composer require utopia/dns",
-      "features": ["DNS Query Resolution", "Custom Records", "Zone Management", "Caching"],
-      "dependencies": ["PHP 8.1+", "ext-sockets"],
-      "category": "network"
+      "installation": "composer require utopia-php/dns",
+      "features": ["DNS Server", "DNS Client", "Multiple Adapters", "Record Types", "Benchmarking", "Mock Resolver", "Custom Resolvers"],
+      "dependencies": ["PHP 8.0+", "ext-sockets"],
+      "category": "network",
+      "license": "MIT"
     },
     {
       "name": "Domains",

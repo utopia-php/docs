@@ -17,7 +17,50 @@ function LibraryRoute() {
   const { library } = Route.useLoaderData()
   
   // Create custom nav items for the library navigation
-  const libraryNavItems = [
+  const libraryNavItems = library.name === 'DNS' ? [
+    {
+      title: 'Overview',
+      href: `/library/${library.name.toLowerCase().replace(/\s+/g, '-')}`,
+    },
+    {
+      title: 'Features',
+      href: `/library/${library.name.toLowerCase().replace(/\s+/g, '-')}#features`,
+    },
+    {
+      title: 'Get Started',
+      href: `/library/${library.name.toLowerCase().replace(/\s+/g, '-')}#get-started`,
+    },
+    {
+      title: 'Concepts',
+      items: [
+        {
+          title: 'DNS Server',
+          href: `/library/${library.name.toLowerCase().replace(/\s+/g, '-')}#dns-server`,
+        },
+        {
+          title: 'DNS Client',
+          href: `/library/${library.name.toLowerCase().replace(/\s+/g, '-')}#dns-client`,
+        },
+        {
+          title: 'Server Adapters',
+          href: `/library/${library.name.toLowerCase().replace(/\s+/g, '-')}#adapters`,
+        },
+        {
+          title: 'Custom Resolvers',
+          href: `/library/${library.name.toLowerCase().replace(/\s+/g, '-')}#resolvers`,
+        },
+        {
+          title: 'Performance Benchmarking',
+          href: `/library/${library.name.toLowerCase().replace(/\s+/g, '-')}#benchmarking`,
+        },
+      ],
+    },
+    {
+      title: 'API Reference',
+      href: library.documentation,
+      external: true,
+    },
+  ] : [
     {
       title: 'Overview',
       href: `/library/${library.name.toLowerCase().replace(/\s+/g, '-')}`,
