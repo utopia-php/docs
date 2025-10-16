@@ -54,7 +54,7 @@ export function DocsLayout({
               href="/" 
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
-              Home1
+              Home
             </a>
             <a 
               href="/libraries" 
