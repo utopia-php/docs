@@ -1,11 +1,10 @@
 import { createFileRoute } from '@tanstack/react-router'
 import {
-  DocsLayout,
   DocsContent,
   Breadcrumbs,
 } from '@/components/docs'
 
-export const Route = createFileRoute('/_public/changelog')({
+export const Route = createFileRoute('/_docs/changelog')({
   component: Changelog,
 })
 
@@ -134,85 +133,84 @@ Breaking changes include minimum PHP version requirement increased to 8.1, some 
 
 function Changelog() {
   return (
-    <DocsLayout>
-      <DocsContent>
-        {/* Breadcrumbs */}
-        <Breadcrumbs 
-          items={[
-            { label: 'Home', href: '/' }
-          ]} 
-        />
-        
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-2xl font-semibold mb-2">Changelog</h1>
-          <p className="text-sm text-muted-foreground">
-            Follow us on{' '}
-            <a 
-              href="https://github.com/utopia-php" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-primary hover:underline"
-            >
-              GitHub
-            </a>{' '}
-            to hear about the changes first.
-          </p>
-        </div>
+    <DocsContent>
+      {/* Breadcrumbs */}
+      <Breadcrumbs 
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Docs', href: '/docs' },
+          { label: 'Changelog', current: true }
+        ]} 
+      />
+      
+      {/* Header */}
+      <div className="mb-8">
+        <h1 className="text-2xl font-semibold mb-2">Changelog</h1>
+        <p className="text-sm text-muted-foreground">
+          Follow us on{' '}
+          <a 
+            href="https://github.com/utopia-php" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-primary hover:underline"
+          >
+            GitHub
+          </a>{' '}
+          to hear about the changes first.
+        </p>
+      </div>
 
+      {/* Changelog Entries */}
+      <div className="space-y-12">
+        {changelogEntries.map((entry) => (
+          <article key={entry.id}>
+            {/* Date */}
+            <div className="text-sm text-muted-foreground mb-0.5">
+              {new Date(entry.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+              })}
+            </div>
+            
+            {/* Title */}
+            <h2 className="text-xl font-semibold mb-3">{entry.title}</h2>
 
-        {/* Changelog Entries */}
-        <div className="space-y-12">
-          {changelogEntries.map((entry) => (
-            <article key={entry.id}>
-              {/* Date */}
-              <div className="text-sm text-muted-foreground mb-0.5">
-                {new Date(entry.date).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'short',
-                  day: 'numeric',
-                })}
-              </div>
-              
-              {/* Title */}
-              <h2 className="text-xl font-semibold mb-3">{entry.title}</h2>
+            {/* Content */}
+            <div className="prose prose-sm max-w-none text-sm leading-relaxed">
+              {entry.content.split('\n').map((line, index) => {
+                if (line.startsWith('- **') && line.includes('**:')) {
+                  const [bold, rest] = line.split('**:')
+                  return (
+                    <div key={index} className="mb-2">
+                      <strong>{bold.slice(2)}</strong>:{rest}
+                    </div>
+                  )
+                }
+                if (line.startsWith('- ')) {
+                  return (
+                    <div key={index} className="ml-4 mb-1">
+                      {line.slice(2)}
+                    </div>
+                  )
+                }
+                if (line.trim() === '') {
+                  return <br key={index} />
+                }
+                return <div key={index} className="mb-3">{line}</div>
+              })}
+            </div>
 
-              {/* Content */}
-              <div className="prose prose-sm max-w-none text-sm leading-relaxed">
-                {entry.content.split('\n').map((line, index) => {
-                  if (line.startsWith('- **') && line.includes('**:')) {
-                    const [bold, rest] = line.split('**:')
-                    return (
-                      <div key={index} className="mb-2">
-                        <strong>{bold.slice(2)}</strong>:{rest}
-                      </div>
-                    )
-                  }
-                  if (line.startsWith('- ')) {
-                    return (
-                      <div key={index} className="ml-4 mb-1">
-                        {line.slice(2)}
-                      </div>
-                    )
-                  }
-                  if (line.trim() === '') {
-                    return <br key={index} />
-                  }
-                  return <div key={index} className="mb-3">{line}</div>
-                })}
-              </div>
+          </article>
+        ))}
+      </div>
 
-            </article>
-          ))}
-        </div>
-
-        {/* Show More Button */}
-        <div className="mt-12 text-center">
-          <button className="text-sm text-muted-foreground hover:text-foreground">
-            Show more
-          </button>
-        </div>
-      </DocsContent>
-    </DocsLayout>
+      {/* Show More Button */}
+      <div className="mt-12 text-center">
+        <button className="text-sm text-muted-foreground hover:text-foreground">
+          Show more
+        </button>
+      </div>
+    </DocsContent>
   )
 }

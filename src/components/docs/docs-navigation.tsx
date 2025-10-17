@@ -28,14 +28,14 @@ function generateLibraryNavItems(): NavItem[] {
       title: category.charAt(0).toUpperCase() + category.slice(1),
       items: categoryLibraries.map(library => ({
         title: library.name,
-        href: `/library/${getLibrarySlug(library.name)}`,
+        href: `/docs/library/${getLibrarySlug(library.name)}`,
       })),
     }
   })
 }
 
 // Default navigation structure
-const defaultNavItems: NavItem[] = [
+export const defaultNavItems: NavItem[] = [
   {
     title: 'Getting Started',
     items: [
@@ -45,15 +45,15 @@ const defaultNavItems: NavItem[] = [
       },
       {
         title: 'Installation',
-        href: '/installation',
+        href: '/docs/installation',
       },
       {
         title: 'Quick Start',
-        href: '/quick-start',
+        href: '/docs/quick-start',
       },
       {
         title: 'Vs. Laravel',
-        href: '/comparison',
+        href: '/docs/comparison',
       },
     ],
   },
@@ -66,15 +66,15 @@ const defaultNavItems: NavItem[] = [
     items: [
       {
         title: 'Contributing',
-        href: '/contributing',
+        href: '/docs/contributing',
       },
       {
         title: 'Changelog',
-        href: '/changelog',
+        href: '/docs/changelog',
       },
       {
         title: 'Support',
-        href: '/community/support',
+        href: '/docs/community/support',
       },
     ],
   },
@@ -83,7 +83,7 @@ const defaultNavItems: NavItem[] = [
     items: [
       {
         title: 'Example comps',
-        href: '/example-comps',
+        href: '/docs/example-comps',
       },
     ],
   },

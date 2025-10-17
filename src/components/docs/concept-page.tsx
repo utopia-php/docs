@@ -1,8 +1,6 @@
 import { Library, Concept, getLibrarySlug } from '@/lib/libraries'
 import { CodeExample } from './code-example'
 import { Breadcrumbs } from './breadcrumbs'
-import { ExternalLink } from 'lucide-react'
-import { Link } from '@tanstack/react-router'
 
 interface ConceptPageProps {
   library: Library
@@ -16,11 +14,12 @@ export function ConceptPage({ library, concept }: ConceptPageProps) {
       <Breadcrumbs 
         items={[
           { label: 'Home', href: '/' },
-          { label: 'Libraries', href: '/#libraries' },
-          { label: library.name, href: `/library/${getLibrarySlug(library.name)}` },
+          { label: 'Docs', href: '/docs' },
+          { label: 'Libraries', href: '/docs#libraries' },
+          { label: library.name, href: `/docs/library/${getLibrarySlug(library.name)}` },
           { label: concept.title, current: true }
         ]} 
-        showCopyPage={true}
+        showCopyPage={false}
       />
       
       <h1>{concept.title}</h1>

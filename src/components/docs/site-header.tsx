@@ -51,12 +51,12 @@ export function SiteHeader({ title = 'Utopia.php', navItems }: SiteHeaderProps) 
           >
             Libraries
           </a>
-          <a 
-            href="/changelog" 
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Changelog
-          </a>
+            <a 
+              href="/docs/changelog" 
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Changelog
+            </a>
           <a 
             href="/blog" 
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"

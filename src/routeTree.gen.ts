@@ -11,22 +11,23 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PublicRouteImport } from './routes/_public'
 import { Route as ProtectedRouteImport } from './routes/_protected'
+import { Route as DocsRouteImport } from './routes/_docs'
 import { Route as AuthRouteImport } from './routes/_auth'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as PublicIndexRouteImport } from './routes/_public/index'
-import { Route as PublicExampleCompsRouteImport } from './routes/_public/example-comps'
-import { Route as PublicContributingRouteImport } from './routes/_public/contributing'
-import { Route as PublicComparisonRouteImport } from './routes/_public/comparison'
-import { Route as PublicChangelogRouteImport } from './routes/_public/changelog'
 import { Route as PublicBlogRouteImport } from './routes/_public/blog'
 import { Route as ProtectedExampleProtectedRouteRouteImport } from './routes/_protected/example-protected-route'
+import { Route as DocsExampleCompsRouteImport } from './routes/_docs/example-comps'
+import { Route as DocsContributingRouteImport } from './routes/_docs/contributing'
+import { Route as DocsComparisonRouteImport } from './routes/_docs/comparison'
+import { Route as DocsChangelogRouteImport } from './routes/_docs/changelog'
 import { Route as AuthSignUpRouteImport } from './routes/_auth/sign-up'
 import { Route as AuthSignOutRouteImport } from './routes/_auth/sign-out'
 import { Route as AuthSignInRouteImport } from './routes/_auth/sign-in'
 import { Route as ApiHelloRouteImport } from './routes/_api/hello'
-import { Route as PublicLibraryLibraryNameRouteImport } from './routes/_public/library.$libraryName'
 import { Route as PublicBlogSlugRouteImport } from './routes/_public/blog.$slug'
-import { Route as PublicLibraryLibraryNameConceptConceptPathRouteImport } from './routes/_public/library.$libraryName.concept.$conceptPath'
+import { Route as DocsLibraryLibraryNameRouteImport } from './routes/_docs/library.$libraryName'
+import { Route as DocsLibraryLibraryNameConceptConceptPathRouteImport } from './routes/_docs/library.$libraryName.concept.$conceptPath'
 
 const PublicRoute = PublicRouteImport.update({
   id: '/_public',
@@ -34,6 +35,10 @@ const PublicRoute = PublicRouteImport.update({
 } as any)
 const ProtectedRoute = ProtectedRouteImport.update({
   id: '/_protected',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocsRoute = DocsRouteImport.update({
+  id: '/_docs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -50,26 +55,6 @@ const PublicIndexRoute = PublicIndexRouteImport.update({
   path: '/',
   getParentRoute: () => PublicRoute,
 } as any)
-const PublicExampleCompsRoute = PublicExampleCompsRouteImport.update({
-  id: '/example-comps',
-  path: '/example-comps',
-  getParentRoute: () => PublicRoute,
-} as any)
-const PublicContributingRoute = PublicContributingRouteImport.update({
-  id: '/contributing',
-  path: '/contributing',
-  getParentRoute: () => PublicRoute,
-} as any)
-const PublicComparisonRoute = PublicComparisonRouteImport.update({
-  id: '/comparison',
-  path: '/comparison',
-  getParentRoute: () => PublicRoute,
-} as any)
-const PublicChangelogRoute = PublicChangelogRouteImport.update({
-  id: '/changelog',
-  path: '/changelog',
-  getParentRoute: () => PublicRoute,
-} as any)
 const PublicBlogRoute = PublicBlogRouteImport.update({
   id: '/blog',
   path: '/blog',
@@ -81,6 +66,26 @@ const ProtectedExampleProtectedRouteRoute =
     path: '/example-protected-route',
     getParentRoute: () => ProtectedRoute,
   } as any)
+const DocsExampleCompsRoute = DocsExampleCompsRouteImport.update({
+  id: '/example-comps',
+  path: '/example-comps',
+  getParentRoute: () => DocsRoute,
+} as any)
+const DocsContributingRoute = DocsContributingRouteImport.update({
+  id: '/contributing',
+  path: '/contributing',
+  getParentRoute: () => DocsRoute,
+} as any)
+const DocsComparisonRoute = DocsComparisonRouteImport.update({
+  id: '/comparison',
+  path: '/comparison',
+  getParentRoute: () => DocsRoute,
+} as any)
+const DocsChangelogRoute = DocsChangelogRouteImport.update({
+  id: '/changelog',
+  path: '/changelog',
+  getParentRoute: () => DocsRoute,
+} as any)
 const AuthSignUpRoute = AuthSignUpRouteImport.update({
   id: '/sign-up',
   path: '/sign-up',
@@ -101,22 +106,21 @@ const ApiHelloRoute = ApiHelloRouteImport.update({
   path: '/hello',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PublicLibraryLibraryNameRoute =
-  PublicLibraryLibraryNameRouteImport.update({
-    id: '/library/$libraryName',
-    path: '/library/$libraryName',
-    getParentRoute: () => PublicRoute,
-  } as any)
 const PublicBlogSlugRoute = PublicBlogSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
   getParentRoute: () => PublicBlogRoute,
 } as any)
-const PublicLibraryLibraryNameConceptConceptPathRoute =
-  PublicLibraryLibraryNameConceptConceptPathRouteImport.update({
+const DocsLibraryLibraryNameRoute = DocsLibraryLibraryNameRouteImport.update({
+  id: '/library/$libraryName',
+  path: '/library/$libraryName',
+  getParentRoute: () => DocsRoute,
+} as any)
+const DocsLibraryLibraryNameConceptConceptPathRoute =
+  DocsLibraryLibraryNameConceptConceptPathRouteImport.update({
     id: '/concept/$conceptPath',
     path: '/concept/$conceptPath',
-    getParentRoute: () => PublicLibraryLibraryNameRoute,
+    getParentRoute: () => DocsLibraryLibraryNameRoute,
   } as any)
 
 export interface FileRoutesByFullPath {
@@ -125,16 +129,16 @@ export interface FileRoutesByFullPath {
   '/sign-in': typeof AuthSignInRoute
   '/sign-out': typeof AuthSignOutRoute
   '/sign-up': typeof AuthSignUpRoute
+  '/changelog': typeof DocsChangelogRoute
+  '/comparison': typeof DocsComparisonRoute
+  '/contributing': typeof DocsContributingRoute
+  '/example-comps': typeof DocsExampleCompsRoute
   '/example-protected-route': typeof ProtectedExampleProtectedRouteRoute
   '/blog': typeof PublicBlogRouteWithChildren
-  '/changelog': typeof PublicChangelogRoute
-  '/comparison': typeof PublicComparisonRoute
-  '/contributing': typeof PublicContributingRoute
-  '/example-comps': typeof PublicExampleCompsRoute
   '/': typeof PublicIndexRoute
+  '/library/$libraryName': typeof DocsLibraryLibraryNameRouteWithChildren
   '/blog/$slug': typeof PublicBlogSlugRoute
-  '/library/$libraryName': typeof PublicLibraryLibraryNameRouteWithChildren
-  '/library/$libraryName/concept/$conceptPath': typeof PublicLibraryLibraryNameConceptConceptPathRoute
+  '/library/$libraryName/concept/$conceptPath': typeof DocsLibraryLibraryNameConceptConceptPathRoute
 }
 export interface FileRoutesByTo {
   '/$': typeof SplatRoute
@@ -142,37 +146,38 @@ export interface FileRoutesByTo {
   '/sign-in': typeof AuthSignInRoute
   '/sign-out': typeof AuthSignOutRoute
   '/sign-up': typeof AuthSignUpRoute
+  '/changelog': typeof DocsChangelogRoute
+  '/comparison': typeof DocsComparisonRoute
+  '/contributing': typeof DocsContributingRoute
+  '/example-comps': typeof DocsExampleCompsRoute
   '/example-protected-route': typeof ProtectedExampleProtectedRouteRoute
   '/blog': typeof PublicBlogRouteWithChildren
-  '/changelog': typeof PublicChangelogRoute
-  '/comparison': typeof PublicComparisonRoute
-  '/contributing': typeof PublicContributingRoute
-  '/example-comps': typeof PublicExampleCompsRoute
   '/': typeof PublicIndexRoute
+  '/library/$libraryName': typeof DocsLibraryLibraryNameRouteWithChildren
   '/blog/$slug': typeof PublicBlogSlugRoute
-  '/library/$libraryName': typeof PublicLibraryLibraryNameRouteWithChildren
-  '/library/$libraryName/concept/$conceptPath': typeof PublicLibraryLibraryNameConceptConceptPathRoute
+  '/library/$libraryName/concept/$conceptPath': typeof DocsLibraryLibraryNameConceptConceptPathRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/$': typeof SplatRoute
   '/_auth': typeof AuthRouteWithChildren
+  '/_docs': typeof DocsRouteWithChildren
   '/_protected': typeof ProtectedRouteWithChildren
   '/_public': typeof PublicRouteWithChildren
   '/_api/hello': typeof ApiHelloRoute
   '/_auth/sign-in': typeof AuthSignInRoute
   '/_auth/sign-out': typeof AuthSignOutRoute
   '/_auth/sign-up': typeof AuthSignUpRoute
+  '/_docs/changelog': typeof DocsChangelogRoute
+  '/_docs/comparison': typeof DocsComparisonRoute
+  '/_docs/contributing': typeof DocsContributingRoute
+  '/_docs/example-comps': typeof DocsExampleCompsRoute
   '/_protected/example-protected-route': typeof ProtectedExampleProtectedRouteRoute
   '/_public/blog': typeof PublicBlogRouteWithChildren
-  '/_public/changelog': typeof PublicChangelogRoute
-  '/_public/comparison': typeof PublicComparisonRoute
-  '/_public/contributing': typeof PublicContributingRoute
-  '/_public/example-comps': typeof PublicExampleCompsRoute
   '/_public/': typeof PublicIndexRoute
+  '/_docs/library/$libraryName': typeof DocsLibraryLibraryNameRouteWithChildren
   '/_public/blog/$slug': typeof PublicBlogSlugRoute
-  '/_public/library/$libraryName': typeof PublicLibraryLibraryNameRouteWithChildren
-  '/_public/library/$libraryName/concept/$conceptPath': typeof PublicLibraryLibraryNameConceptConceptPathRoute
+  '/_docs/library/$libraryName/concept/$conceptPath': typeof DocsLibraryLibraryNameConceptConceptPathRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -182,15 +187,15 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/sign-out'
     | '/sign-up'
-    | '/example-protected-route'
-    | '/blog'
     | '/changelog'
     | '/comparison'
     | '/contributing'
     | '/example-comps'
+    | '/example-protected-route'
+    | '/blog'
     | '/'
-    | '/blog/$slug'
     | '/library/$libraryName'
+    | '/blog/$slug'
     | '/library/$libraryName/concept/$conceptPath'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -199,41 +204,43 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/sign-out'
     | '/sign-up'
-    | '/example-protected-route'
-    | '/blog'
     | '/changelog'
     | '/comparison'
     | '/contributing'
     | '/example-comps'
+    | '/example-protected-route'
+    | '/blog'
     | '/'
-    | '/blog/$slug'
     | '/library/$libraryName'
+    | '/blog/$slug'
     | '/library/$libraryName/concept/$conceptPath'
   id:
     | '__root__'
     | '/$'
     | '/_auth'
+    | '/_docs'
     | '/_protected'
     | '/_public'
     | '/_api/hello'
     | '/_auth/sign-in'
     | '/_auth/sign-out'
     | '/_auth/sign-up'
+    | '/_docs/changelog'
+    | '/_docs/comparison'
+    | '/_docs/contributing'
+    | '/_docs/example-comps'
     | '/_protected/example-protected-route'
     | '/_public/blog'
-    | '/_public/changelog'
-    | '/_public/comparison'
-    | '/_public/contributing'
-    | '/_public/example-comps'
     | '/_public/'
+    | '/_docs/library/$libraryName'
     | '/_public/blog/$slug'
-    | '/_public/library/$libraryName'
-    | '/_public/library/$libraryName/concept/$conceptPath'
+    | '/_docs/library/$libraryName/concept/$conceptPath'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   SplatRoute: typeof SplatRoute
   AuthRoute: typeof AuthRouteWithChildren
+  DocsRoute: typeof DocsRouteWithChildren
   ProtectedRoute: typeof ProtectedRouteWithChildren
   PublicRoute: typeof PublicRouteWithChildren
   ApiHelloRoute: typeof ApiHelloRoute
@@ -253,6 +260,13 @@ declare module '@tanstack/react-router' {
       path: ''
       fullPath: ''
       preLoaderRoute: typeof ProtectedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_docs': {
+      id: '/_docs'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof DocsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_auth': {
@@ -276,34 +290,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicIndexRouteImport
       parentRoute: typeof PublicRoute
     }
-    '/_public/example-comps': {
-      id: '/_public/example-comps'
-      path: '/example-comps'
-      fullPath: '/example-comps'
-      preLoaderRoute: typeof PublicExampleCompsRouteImport
-      parentRoute: typeof PublicRoute
-    }
-    '/_public/contributing': {
-      id: '/_public/contributing'
-      path: '/contributing'
-      fullPath: '/contributing'
-      preLoaderRoute: typeof PublicContributingRouteImport
-      parentRoute: typeof PublicRoute
-    }
-    '/_public/comparison': {
-      id: '/_public/comparison'
-      path: '/comparison'
-      fullPath: '/comparison'
-      preLoaderRoute: typeof PublicComparisonRouteImport
-      parentRoute: typeof PublicRoute
-    }
-    '/_public/changelog': {
-      id: '/_public/changelog'
-      path: '/changelog'
-      fullPath: '/changelog'
-      preLoaderRoute: typeof PublicChangelogRouteImport
-      parentRoute: typeof PublicRoute
-    }
     '/_public/blog': {
       id: '/_public/blog'
       path: '/blog'
@@ -317,6 +303,34 @@ declare module '@tanstack/react-router' {
       fullPath: '/example-protected-route'
       preLoaderRoute: typeof ProtectedExampleProtectedRouteRouteImport
       parentRoute: typeof ProtectedRoute
+    }
+    '/_docs/example-comps': {
+      id: '/_docs/example-comps'
+      path: '/example-comps'
+      fullPath: '/example-comps'
+      preLoaderRoute: typeof DocsExampleCompsRouteImport
+      parentRoute: typeof DocsRoute
+    }
+    '/_docs/contributing': {
+      id: '/_docs/contributing'
+      path: '/contributing'
+      fullPath: '/contributing'
+      preLoaderRoute: typeof DocsContributingRouteImport
+      parentRoute: typeof DocsRoute
+    }
+    '/_docs/comparison': {
+      id: '/_docs/comparison'
+      path: '/comparison'
+      fullPath: '/comparison'
+      preLoaderRoute: typeof DocsComparisonRouteImport
+      parentRoute: typeof DocsRoute
+    }
+    '/_docs/changelog': {
+      id: '/_docs/changelog'
+      path: '/changelog'
+      fullPath: '/changelog'
+      preLoaderRoute: typeof DocsChangelogRouteImport
+      parentRoute: typeof DocsRoute
     }
     '/_auth/sign-up': {
       id: '/_auth/sign-up'
@@ -346,13 +360,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiHelloRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_public/library/$libraryName': {
-      id: '/_public/library/$libraryName'
-      path: '/library/$libraryName'
-      fullPath: '/library/$libraryName'
-      preLoaderRoute: typeof PublicLibraryLibraryNameRouteImport
-      parentRoute: typeof PublicRoute
-    }
     '/_public/blog/$slug': {
       id: '/_public/blog/$slug'
       path: '/$slug'
@@ -360,12 +367,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicBlogSlugRouteImport
       parentRoute: typeof PublicBlogRoute
     }
-    '/_public/library/$libraryName/concept/$conceptPath': {
-      id: '/_public/library/$libraryName/concept/$conceptPath'
+    '/_docs/library/$libraryName': {
+      id: '/_docs/library/$libraryName'
+      path: '/library/$libraryName'
+      fullPath: '/library/$libraryName'
+      preLoaderRoute: typeof DocsLibraryLibraryNameRouteImport
+      parentRoute: typeof DocsRoute
+    }
+    '/_docs/library/$libraryName/concept/$conceptPath': {
+      id: '/_docs/library/$libraryName/concept/$conceptPath'
       path: '/concept/$conceptPath'
       fullPath: '/library/$libraryName/concept/$conceptPath'
-      preLoaderRoute: typeof PublicLibraryLibraryNameConceptConceptPathRouteImport
-      parentRoute: typeof PublicLibraryLibraryNameRoute
+      preLoaderRoute: typeof DocsLibraryLibraryNameConceptConceptPathRouteImport
+      parentRoute: typeof DocsLibraryLibraryNameRoute
     }
   }
 }
@@ -383,6 +397,39 @@ const AuthRouteChildren: AuthRouteChildren = {
 }
 
 const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
+
+interface DocsLibraryLibraryNameRouteChildren {
+  DocsLibraryLibraryNameConceptConceptPathRoute: typeof DocsLibraryLibraryNameConceptConceptPathRoute
+}
+
+const DocsLibraryLibraryNameRouteChildren: DocsLibraryLibraryNameRouteChildren =
+  {
+    DocsLibraryLibraryNameConceptConceptPathRoute:
+      DocsLibraryLibraryNameConceptConceptPathRoute,
+  }
+
+const DocsLibraryLibraryNameRouteWithChildren =
+  DocsLibraryLibraryNameRoute._addFileChildren(
+    DocsLibraryLibraryNameRouteChildren,
+  )
+
+interface DocsRouteChildren {
+  DocsChangelogRoute: typeof DocsChangelogRoute
+  DocsComparisonRoute: typeof DocsComparisonRoute
+  DocsContributingRoute: typeof DocsContributingRoute
+  DocsExampleCompsRoute: typeof DocsExampleCompsRoute
+  DocsLibraryLibraryNameRoute: typeof DocsLibraryLibraryNameRouteWithChildren
+}
+
+const DocsRouteChildren: DocsRouteChildren = {
+  DocsChangelogRoute: DocsChangelogRoute,
+  DocsComparisonRoute: DocsComparisonRoute,
+  DocsContributingRoute: DocsContributingRoute,
+  DocsExampleCompsRoute: DocsExampleCompsRoute,
+  DocsLibraryLibraryNameRoute: DocsLibraryLibraryNameRouteWithChildren,
+}
+
+const DocsRouteWithChildren = DocsRoute._addFileChildren(DocsRouteChildren)
 
 interface ProtectedRouteChildren {
   ProtectedExampleProtectedRouteRoute: typeof ProtectedExampleProtectedRouteRoute
@@ -408,39 +455,14 @@ const PublicBlogRouteWithChildren = PublicBlogRoute._addFileChildren(
   PublicBlogRouteChildren,
 )
 
-interface PublicLibraryLibraryNameRouteChildren {
-  PublicLibraryLibraryNameConceptConceptPathRoute: typeof PublicLibraryLibraryNameConceptConceptPathRoute
-}
-
-const PublicLibraryLibraryNameRouteChildren: PublicLibraryLibraryNameRouteChildren =
-  {
-    PublicLibraryLibraryNameConceptConceptPathRoute:
-      PublicLibraryLibraryNameConceptConceptPathRoute,
-  }
-
-const PublicLibraryLibraryNameRouteWithChildren =
-  PublicLibraryLibraryNameRoute._addFileChildren(
-    PublicLibraryLibraryNameRouteChildren,
-  )
-
 interface PublicRouteChildren {
   PublicBlogRoute: typeof PublicBlogRouteWithChildren
-  PublicChangelogRoute: typeof PublicChangelogRoute
-  PublicComparisonRoute: typeof PublicComparisonRoute
-  PublicContributingRoute: typeof PublicContributingRoute
-  PublicExampleCompsRoute: typeof PublicExampleCompsRoute
   PublicIndexRoute: typeof PublicIndexRoute
-  PublicLibraryLibraryNameRoute: typeof PublicLibraryLibraryNameRouteWithChildren
 }
 
 const PublicRouteChildren: PublicRouteChildren = {
   PublicBlogRoute: PublicBlogRouteWithChildren,
-  PublicChangelogRoute: PublicChangelogRoute,
-  PublicComparisonRoute: PublicComparisonRoute,
-  PublicContributingRoute: PublicContributingRoute,
-  PublicExampleCompsRoute: PublicExampleCompsRoute,
   PublicIndexRoute: PublicIndexRoute,
-  PublicLibraryLibraryNameRoute: PublicLibraryLibraryNameRouteWithChildren,
 }
 
 const PublicRouteWithChildren =
@@ -449,6 +471,7 @@ const PublicRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   SplatRoute: SplatRoute,
   AuthRoute: AuthRouteWithChildren,
+  DocsRoute: DocsRouteWithChildren,
   ProtectedRoute: ProtectedRouteWithChildren,
   PublicRoute: PublicRouteWithChildren,
   ApiHelloRoute: ApiHelloRoute,

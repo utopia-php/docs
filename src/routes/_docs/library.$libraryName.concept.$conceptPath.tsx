@@ -2,7 +2,7 @@ import { createFileRoute, notFound } from '@tanstack/react-router'
 import { ConceptPage } from '@/components/docs'
 import { findLibraryByName, findConceptByPath } from '@/lib/libraries'
 
-export const Route = createFileRoute('/_public/library/$libraryName/concept/$conceptPath')({
+export const Route = createFileRoute('/_docs/library/$libraryName/concept/$conceptPath')({
   component: ConceptRoute,
   loader: ({ params }) => {
     const library = findLibraryByName(params.libraryName)

@@ -16,22 +16,22 @@ export function LibraryNavigation({ library }: LibraryNavigationProps) {
   const libraryNavItems = [
     {
       title: 'Overview',
-      href: `/library/${getLibrarySlug(library.name)}`,
+      href: `/docs/library/${getLibrarySlug(library.name)}`,
       icon: BookOpen,
     },
     {
       title: 'Features',
-      href: `/library/${getLibrarySlug(library.name)}#features`,
+      href: `/docs/library/${getLibrarySlug(library.name)}#features`,
       icon: Zap,
     },
     {
       title: 'Get Started',
-      href: `/library/${getLibrarySlug(library.name)}#get-started`,
+      href: `/docs/library/${getLibrarySlug(library.name)}#get-started`,
       icon: Code2,
     },
     {
       title: 'Key Concepts',
-      href: `/library/${getLibrarySlug(library.name)}#concepts`,
+      href: `/docs/library/${getLibrarySlug(library.name)}#concepts`,
       icon: Settings,
     },
     {

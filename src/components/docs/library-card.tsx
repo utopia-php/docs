@@ -21,7 +21,7 @@ export function LibraryCard({ library, hideTitle = false }: LibraryCardProps) {
   }
 
   const librarySlug = getLibrarySlug(library.name)
-  const libraryUrl = `/library/${librarySlug}`
+  const libraryUrl = `/docs/library/${librarySlug}`
 
   return (
     <div className="border border-muted rounded-lg px-4 py-3">

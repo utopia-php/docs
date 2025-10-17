@@ -2,25 +2,28 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Calendar, Code, Tag, Star, Shield } from 'lucide-react'
 import { GitHubIcon } from '@/components/ui/github-icon'
-import { Library, getRelatedLibraries, formatVersion, formatLastUpdated } from '@/lib/libraries'
+import { Library, formatVersion, formatLastUpdated } from '@/lib/libraries'
 import { Breadcrumbs } from './breadcrumbs'
 import { CodeExample } from './code-example'
 
 interface LibraryPageProps {
   library: Library
+  showBreadcrumbs?: boolean
+  breadcrumbItems?: Array<{ label: string; href?: string; current?: boolean }>
 }
 
-export function LibraryPage({ library }: LibraryPageProps) {
-  const relatedLibraries = getRelatedLibraries(library, 3)
+export function LibraryPage({ library, showBreadcrumbs = true, breadcrumbItems }: LibraryPageProps) {
+  // const relatedLibraries = getRelatedLibraries(library, 3)
 
   return (
     <div className="space-y-1 mb-4">
       {/* Breadcrumbs */}
-      <Breadcrumbs 
-        items={[
-          { label: 'Home', href: '/' }
-        ]} 
-      />
+      {showBreadcrumbs && breadcrumbItems && (
+        <Breadcrumbs 
+          items={breadcrumbItems}
+          showCopyPage={false}
+        />
+      )}
       
       <h1>Utopia {library.name}</h1>
       <p className="text-sm text-muted-foreground">
