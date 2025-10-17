@@ -25,6 +25,7 @@ import { Route as AuthSignOutRouteImport } from './routes/_auth/sign-out'
 import { Route as AuthSignInRouteImport } from './routes/_auth/sign-in'
 import { Route as ApiHelloRouteImport } from './routes/_api/hello'
 import { Route as PublicLibraryLibraryNameRouteImport } from './routes/_public/library.$libraryName'
+import { Route as PublicBlogSlugRouteImport } from './routes/_public/blog.$slug'
 import { Route as PublicLibraryLibraryNameConceptConceptPathRouteImport } from './routes/_public/library.$libraryName.concept.$conceptPath'
 
 const PublicRoute = PublicRouteImport.update({
@@ -106,6 +107,11 @@ const PublicLibraryLibraryNameRoute =
     path: '/library/$libraryName',
     getParentRoute: () => PublicRoute,
   } as any)
+const PublicBlogSlugRoute = PublicBlogSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => PublicBlogRoute,
+} as any)
 const PublicLibraryLibraryNameConceptConceptPathRoute =
   PublicLibraryLibraryNameConceptConceptPathRouteImport.update({
     id: '/concept/$conceptPath',
@@ -120,12 +126,13 @@ export interface FileRoutesByFullPath {
   '/sign-out': typeof AuthSignOutRoute
   '/sign-up': typeof AuthSignUpRoute
   '/example-protected-route': typeof ProtectedExampleProtectedRouteRoute
-  '/blog': typeof PublicBlogRoute
+  '/blog': typeof PublicBlogRouteWithChildren
   '/changelog': typeof PublicChangelogRoute
   '/comparison': typeof PublicComparisonRoute
   '/contributing': typeof PublicContributingRoute
   '/example-comps': typeof PublicExampleCompsRoute
   '/': typeof PublicIndexRoute
+  '/blog/$slug': typeof PublicBlogSlugRoute
   '/library/$libraryName': typeof PublicLibraryLibraryNameRouteWithChildren
   '/library/$libraryName/concept/$conceptPath': typeof PublicLibraryLibraryNameConceptConceptPathRoute
 }
@@ -136,12 +143,13 @@ export interface FileRoutesByTo {
   '/sign-out': typeof AuthSignOutRoute
   '/sign-up': typeof AuthSignUpRoute
   '/example-protected-route': typeof ProtectedExampleProtectedRouteRoute
-  '/blog': typeof PublicBlogRoute
+  '/blog': typeof PublicBlogRouteWithChildren
   '/changelog': typeof PublicChangelogRoute
   '/comparison': typeof PublicComparisonRoute
   '/contributing': typeof PublicContributingRoute
   '/example-comps': typeof PublicExampleCompsRoute
   '/': typeof PublicIndexRoute
+  '/blog/$slug': typeof PublicBlogSlugRoute
   '/library/$libraryName': typeof PublicLibraryLibraryNameRouteWithChildren
   '/library/$libraryName/concept/$conceptPath': typeof PublicLibraryLibraryNameConceptConceptPathRoute
 }
@@ -156,12 +164,13 @@ export interface FileRoutesById {
   '/_auth/sign-out': typeof AuthSignOutRoute
   '/_auth/sign-up': typeof AuthSignUpRoute
   '/_protected/example-protected-route': typeof ProtectedExampleProtectedRouteRoute
-  '/_public/blog': typeof PublicBlogRoute
+  '/_public/blog': typeof PublicBlogRouteWithChildren
   '/_public/changelog': typeof PublicChangelogRoute
   '/_public/comparison': typeof PublicComparisonRoute
   '/_public/contributing': typeof PublicContributingRoute
   '/_public/example-comps': typeof PublicExampleCompsRoute
   '/_public/': typeof PublicIndexRoute
+  '/_public/blog/$slug': typeof PublicBlogSlugRoute
   '/_public/library/$libraryName': typeof PublicLibraryLibraryNameRouteWithChildren
   '/_public/library/$libraryName/concept/$conceptPath': typeof PublicLibraryLibraryNameConceptConceptPathRoute
 }
@@ -180,6 +189,7 @@ export interface FileRouteTypes {
     | '/contributing'
     | '/example-comps'
     | '/'
+    | '/blog/$slug'
     | '/library/$libraryName'
     | '/library/$libraryName/concept/$conceptPath'
   fileRoutesByTo: FileRoutesByTo
@@ -196,6 +206,7 @@ export interface FileRouteTypes {
     | '/contributing'
     | '/example-comps'
     | '/'
+    | '/blog/$slug'
     | '/library/$libraryName'
     | '/library/$libraryName/concept/$conceptPath'
   id:
@@ -215,6 +226,7 @@ export interface FileRouteTypes {
     | '/_public/contributing'
     | '/_public/example-comps'
     | '/_public/'
+    | '/_public/blog/$slug'
     | '/_public/library/$libraryName'
     | '/_public/library/$libraryName/concept/$conceptPath'
   fileRoutesById: FileRoutesById
@@ -341,6 +353,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicLibraryLibraryNameRouteImport
       parentRoute: typeof PublicRoute
     }
+    '/_public/blog/$slug': {
+      id: '/_public/blog/$slug'
+      path: '/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof PublicBlogSlugRouteImport
+      parentRoute: typeof PublicBlogRoute
+    }
     '/_public/library/$libraryName/concept/$conceptPath': {
       id: '/_public/library/$libraryName/concept/$conceptPath'
       path: '/concept/$conceptPath'
@@ -377,6 +396,18 @@ const ProtectedRouteWithChildren = ProtectedRoute._addFileChildren(
   ProtectedRouteChildren,
 )
 
+interface PublicBlogRouteChildren {
+  PublicBlogSlugRoute: typeof PublicBlogSlugRoute
+}
+
+const PublicBlogRouteChildren: PublicBlogRouteChildren = {
+  PublicBlogSlugRoute: PublicBlogSlugRoute,
+}
+
+const PublicBlogRouteWithChildren = PublicBlogRoute._addFileChildren(
+  PublicBlogRouteChildren,
+)
+
 interface PublicLibraryLibraryNameRouteChildren {
   PublicLibraryLibraryNameConceptConceptPathRoute: typeof PublicLibraryLibraryNameConceptConceptPathRoute
 }
@@ -393,7 +424,7 @@ const PublicLibraryLibraryNameRouteWithChildren =
   )
 
 interface PublicRouteChildren {
-  PublicBlogRoute: typeof PublicBlogRoute
+  PublicBlogRoute: typeof PublicBlogRouteWithChildren
   PublicChangelogRoute: typeof PublicChangelogRoute
   PublicComparisonRoute: typeof PublicComparisonRoute
   PublicContributingRoute: typeof PublicContributingRoute
@@ -403,7 +434,7 @@ interface PublicRouteChildren {
 }
 
 const PublicRouteChildren: PublicRouteChildren = {
-  PublicBlogRoute: PublicBlogRoute,
+  PublicBlogRoute: PublicBlogRouteWithChildren,
   PublicChangelogRoute: PublicChangelogRoute,
   PublicComparisonRoute: PublicComparisonRoute,
   PublicContributingRoute: PublicContributingRoute,
