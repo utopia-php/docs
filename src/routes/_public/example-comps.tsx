@@ -4,7 +4,6 @@ import {
   DocsContent,
   DocsCallout,
   DocsCodeBlock,
-  InlineCode,
   Breadcrumbs,
 } from '@/components/docs'
 
@@ -66,7 +65,7 @@ function MyDocPage() {
         </DocsCodeBlock>
 
         <DocsCallout type="success" title="Pro Tip">
-          You can use the <InlineCode>DocsContent</InlineCode> component to
+          You can use the <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">DocsContent</code> component to
           automatically apply proper styling to your documentation content.
         </DocsCallout>
 
@@ -118,7 +117,7 @@ greet('World')`}
 
         <p>
           You can also use inline code like{' '}
-          <InlineCode>const value = 42</InlineCode> within your paragraphs.
+          <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">const value = 42</code> within your paragraphs.
         </p>
 
         <h2 id="tables">Tables</h2>
@@ -136,37 +135,37 @@ greet('World')`}
           <tbody>
             <tr>
               <td>
-                <InlineCode>title</InlineCode>
+                <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">title</code>
               </td>
               <td>
-                <InlineCode>string</InlineCode>
+                <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">string</code>
               </td>
               <td>
-                <InlineCode>"Documentation"</InlineCode>
+                <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">"Documentation"</code>
               </td>
               <td>The title displayed in the header</td>
             </tr>
             <tr>
               <td>
-                <InlineCode>theme</InlineCode>
+                <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">theme</code>
               </td>
               <td>
-                <InlineCode>"light" | "dark"</InlineCode>
+                <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">"light" | "dark"</code>
               </td>
               <td>
-                <InlineCode>"light"</InlineCode>
+                <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">"light"</code>
               </td>
               <td>The color theme for the documentation</td>
             </tr>
             <tr>
               <td>
-                <InlineCode>showToc</InlineCode>
+                <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">showToc</code>
               </td>
               <td>
-                <InlineCode>boolean</InlineCode>
+                <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">boolean</code>
               </td>
               <td>
-                <InlineCode>true</InlineCode>
+                <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">true</code>
               </td>
               <td>Whether to show the table of contents</td>
             </tr>
@@ -182,7 +181,7 @@ greet('World')`}
         <h3 id="custom-navigation">Custom Navigation</h3>
         <p>
           You can customize the navigation structure by passing a custom
-          navigation tree to the <InlineCode>DocsNavigation</InlineCode>{' '}
+          navigation tree to the <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">DocsNavigation</code>{' '}
           component:
         </p>
 
@@ -272,7 +271,7 @@ greet('World')`}
         <hr />
 
         <DocsCallout type="info" title="Quick Start">
-          Install any library with Composer: <InlineCode>composer require utopia-php/http</InlineCode>. 
+          Install any library with Composer: <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">composer require utopia-php/http</code>. 
           Each library is self-contained and can be used independently or combined as needed.
         </DocsCallout>
 

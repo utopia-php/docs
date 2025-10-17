@@ -90,11 +90,11 @@ export function LibraryPage({ library }: LibraryPageProps) {
       <p>
         Install the library using Composer:
       </p>
-      <div className="bg-muted rounded-lg p-4 mb-4">
-        <code className="text-sm font-mono">
-          composer require utopia-php/{library.name.toLowerCase().replace(/\s+/g, '-')}
-        </code>
-      </div>
+      <CodeExample
+        language="bash"
+        title="Install with Composer"
+        code={`composer require utopia-php/${library.name.toLowerCase().replace(/\s+/g, '-')}`}
+      />
       
       {library.name === 'DNS' ? (
         <>
@@ -102,9 +102,10 @@ export function LibraryPage({ library }: LibraryPageProps) {
           <p>
             Here's how to set up a basic DNS server:
           </p>
-          <div className="bg-muted rounded-lg p-4 mb-4">
-            <pre className="text-sm font-mono overflow-x-auto">
-{`<?php
+          <CodeExample
+            language="php"
+            title="dns-server.php"
+            code={`<?php
 
 require_once __DIR__.'/init.php';
 
@@ -118,16 +119,16 @@ $resolver = new Mock(); // Mock resolver. Always returns 127.0.0.1 as the result
 $dns = new Server($server, $resolver);
 
 $dns->start();`}
-            </pre>
-          </div>
+          />
           
           <h3>DNS Client Usage</h3>
           <p>
             Query DNS records using the built-in client:
           </p>
-          <div className="bg-muted rounded-lg p-4 mb-4">
-            <pre className="text-sm font-mono overflow-x-auto">
-{`<?php
+          <CodeExample
+            language="php"
+            title="dns-client.php"
+            code={`<?php
 
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -148,8 +149,7 @@ try {
 } catch (Exception $e) {
     echo "DNS query failed: " . $e->getMessage();
 }`}
-            </pre>
-          </div>
+          />
           
           <h3>Run the DNS Server</h3>
           <CodeExample

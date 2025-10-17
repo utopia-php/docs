@@ -4,7 +4,6 @@ import {
   DocsContent,
   Breadcrumbs,
   DocsCallout,
-  InlineCode,
 } from '@/components/docs'
 import { Code, Bug, FileText, MessageCircle, Github, MessageSquare } from 'lucide-react'
 
@@ -38,7 +37,7 @@ function Contributing() {
         {/* Quick Start */}
         <DocsCallout type="info" title="Quick Start">
           <p className="text-sm">
-            Fork your target repository, create a feature branch with <InlineCode>git checkout -b feature/amazing-feature</InlineCode>, 
+            Fork your target repository, create a feature branch with <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">git checkout -b feature/amazing-feature</code>, 
             implement your changes with thorough testing, commit with clear messages, push to your fork, and open a Pull Request. 
             That's it-you're contributing to Utopia.php.
           </p>
@@ -109,10 +108,10 @@ function Contributing() {
 
         <h3 id="getting-started">Getting Started</h3>
         <p>
-          Fork your target repository on GitHub, then clone it locally with <InlineCode>git clone https://github.com/YOUR_USERNAME/REPOSITORY_NAME.git</InlineCode>. 
-          Add the upstream remote with <InlineCode>git remote add upstream https://github.com/utopia-php/REPOSITORY_NAME.git</InlineCode>, 
-          install dependencies via <InlineCode>composer install</InlineCode>, and create your feature branch with 
-          <InlineCode>git checkout -b feature/your-feature-name</InlineCode>.
+          Fork your target repository on GitHub, then clone it locally with <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">git clone https://github.com/YOUR_USERNAME/REPOSITORY_NAME.git</code>. 
+          Add the upstream remote with <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">git remote add upstream https://github.com/utopia-php/REPOSITORY_NAME.git</code>, 
+          install dependencies via <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">composer install</code>, and create your feature branch with 
+          <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">git checkout -b feature/your-feature-name</code>.
         </p>
 
         {/* Coding Standards */}
@@ -124,8 +123,8 @@ function Contributing() {
         </p>
 
         <p>
-          Each Utopia.php library includes automated formatting and linting tools. Run <InlineCode>composer format</InlineCode> 
-          to automatically fix code style issues, and <InlineCode>composer test</InlineCode> to validate that everything 
+          Each Utopia.php library includes automated formatting and linting tools. Run <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">composer format</code> 
+          to automatically fix code style issues, and <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">composer test</code> to validate that everything 
           complies with our standards. This ensures consistent code quality across all contributions.
         </p>
 
@@ -138,7 +137,7 @@ function Contributing() {
         </p>
 
         <p>
-          Run <InlineCode>composer test</InlineCode> to execute all tests, or <InlineCode>composer test-coverage</InlineCode> 
+          Run <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">composer test</code> to execute all tests, or <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">composer test-coverage</code> 
           for detailed coverage reports. Ensure your changes don't break existing functionality and maintain 
           or improve overall test coverage.
         </p>
@@ -146,8 +145,8 @@ function Contributing() {
         {/* Pull Request Process */}
         <h2 id="pull-request-process">Pull Request Process</h2>
         <p>
-          Before submitting, ensure all tests pass with <InlineCode>composer test</InlineCode>, fix code style with 
-          <InlineCode>composer format</InlineCode>, update documentation, add tests for new functionality, and update 
+          Before submitting, ensure all tests pass with <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">composer test</code>, fix code style with 
+          <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">composer format</code>, update documentation, add tests for new functionality, and update 
           CHANGELOG.md if applicable.
         </p>
 

@@ -4,7 +4,6 @@ import {
   DocsContent,
   DocsCallout,
   DocsCalloutUtopia,
-  InlineCode,
   Breadcrumbs,
   CodeExample,
 } from '@/components/docs'
@@ -213,7 +212,7 @@ $http->start($router);`}
         <hr />
 
         <DocsCallout type="info" title="Quick Start">
-          Install any library with Composer: <InlineCode>composer require utopia-php/http</InlineCode>. 
+          Install any library with Composer: <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">composer require utopia-php/http</code>. 
           Each library is self-contained and can be used independently or combined as needed.
         </DocsCallout>
 
