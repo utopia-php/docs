@@ -2,7 +2,7 @@
   "network": [
     {
       "name": "DNS",
-      "stars": 0,
+      "stars": 4,
       "description": "Lite & fast micro PHP DNS server abstraction that is easy to use.",
       "longDescription": "Utopia DNS is a simple and lite abstraction layer for quickly setting up a DNS server. This library is aiming to be as simple and easy to learn and use. The library provides both DNS server and client functionality, supporting multiple adapters including Native PHP Socket and Swoole UDP Server. It includes comprehensive DNS record support (A, NS, CNAME, SOA, MX, TXT, AAAA, SRV, etc.) and features a built-in benchmarking tool for performance testing. The library is dependency-free and can be used standalone with any PHP project or framework.",
       "githubUrl": "https://github.com/utopia-php/dns",
@@ -84,7 +84,7 @@
     },
     {
       "name": "Domains",
-      "stars": 21,
+      "stars": 51,
       "description": "Domain parsing and validation with TLD extraction and subdomain handling.",
       "githubUrl": "https://github.com/utopia-php/domains",
       "version": "2.1.0",
@@ -97,7 +97,7 @@
     },
     {
       "name": "Fetch",
-      "stars": 3,
+      "stars": 9,
       "description": "HTTP client library with async requests, response handling, and error management.",
       "githubUrl": "https://github.com/utopia-php/fetch",
       "version": "1.1.0",
@@ -218,7 +218,7 @@
     },
     {
       "name": "WebSocket",
-      "stars": 12,
+      "stars": 13,
       "description": "Real-time communication server with WebSocket support.",
       "longDescription": "Utopia WebSocket provides a robust foundation for building real-time applications in PHP. Whether you're creating chat applications, live notifications, collaborative tools, or gaming platforms, this library handles the complex WebSocket protocol implementation so you can focus on your application logic. The library manages WebSocket connections efficiently, supporting both text and binary message formats. It includes comprehensive event handling for connection lifecycle events, message routing, and error management. Built-in connection pooling and message broadcasting capabilities make it easy to scale your real-time features. The library also provides utilities for handling WebSocket handshakes, frame parsing, and connection state management, making it perfect for both simple real-time features and complex multi-user applications that require persistent connections.",
       "githubUrl": "https://github.com/utopia-php/websocket",
@@ -235,7 +235,7 @@
   "data": [
     {
       "name": "AB",
-      "stars": 6,
+      "stars": 12,
       "description": "A/B testing framework with experiment management and statistical analysis.",
       "githubUrl": "https://github.com/utopia-php/ab",
       "version": "1.0.0",
@@ -248,7 +248,7 @@
     },
     {
       "name": "Abuse",
-      "stars": 22,
+      "stars": 26,
       "description": "Abuse detection and prevention with rate limiting and IP blocking features.",
       "githubUrl": "https://github.com/utopia-php/abuse",
       "version": "1.2.0",
@@ -261,7 +261,7 @@
     },
     {
       "name": "Cache",
-      "stars": 22,
+      "stars": 30,
       "description": "Caching system with Redis, Memcached, and file-based storage backends.",
       "githubUrl": "https://github.com/utopia-php/cache",
       "version": "2.1.0",
@@ -274,7 +274,7 @@
     },
     {
       "name": "Config",
-      "stars": 9,
+      "stars": 14,
       "description": "Configuration management with environment variables and file-based settings.",
       "githubUrl": "https://github.com/utopia-php/config",
       "version": "1.1.0",
@@ -287,7 +287,7 @@
     },
     {
       "name": "Database",
-      "stars": 52,
+      "stars": 72,
       "description": "Database abstraction layer supporting MySQL, PostgreSQL, and SQLite with query builder.",
       "longDescription": "Utopia Database is a comprehensive database abstraction layer that simplifies database operations across multiple database engines. Whether you're working with MySQL, PostgreSQL, SQLite, or other PDO-compatible databases, this library provides a unified interface that eliminates vendor-specific code. The query builder offers a fluent, intuitive API for constructing complex SQL queries without writing raw SQL, making your code more readable and maintainable. Built-in migration support helps you version your database schema changes, while connection pooling optimizes performance for high-traffic applications. The library handles transactions gracefully, ensuring data integrity even in complex multi-step operations. With comprehensive error handling and logging, it's perfect for both small projects and enterprise applications that need reliable, scalable database access.",
       "githubUrl": "https://github.com/utopia-php/database",
@@ -302,7 +302,7 @@
     },
     {
       "name": "Image",
-      "stars": 11,
+      "stars": 12,
       "description": "Image processing library with resize, crop, filter, and format conversion capabilities.",
       "githubUrl": "https://github.com/utopia-php/image",
       "version": "1.3.0",
@@ -315,7 +315,7 @@
     },
     {
       "name": "Locale",
-      "stars": 7,
+      "stars": 25,
       "description": "Internationalization support with language detection and translation management.",
       "githubUrl": "https://github.com/utopia-php/locale",
       "version": "2.0.0",
@@ -328,7 +328,7 @@
     },
     {
       "name": "Queue",
-      "stars": 3,
+      "stars": 11,
       "description": "Job queue system with Redis backend and worker process management.",
       "githubUrl": "https://github.com/utopia-php/queue",
       "version": "1.1.0",
@@ -341,7 +341,7 @@
     },
     {
       "name": "Storage",
-      "stars": 61,
+      "stars": 30,
       "description": "File storage abstraction with local, S3, and cloud storage provider support.",
       "githubUrl": "https://github.com/utopia-php/storage",
       "version": "2.0.0",
@@ -356,7 +356,7 @@
   "logs": [
     {
       "name": "Audit",
-      "stars": 9,
+      "stars": 23,
       "description": "Audit trail system for tracking user actions and system events.",
       "githubUrl": "https://github.com/utopia-php/audit",
       "version": "1.1.0",
@@ -369,7 +369,7 @@
     },
     {
       "name": "Logger",
-      "stars": 18,
+      "stars": 10,
       "description": "Structured logging with multiple output formats and log level filtering.",
       "githubUrl": "https://github.com/utopia-php/logger",
       "version": "1.0.0",
@@ -384,7 +384,7 @@
   "services": [
     {
       "name": "Agents",
-      "stars": 0,
+      "stars": 7,
       "description": "Lite & fast micro PHP AI agents library that is easy to use.",
       "longDescription": "Utopia Agents is a simple and lite library for building and managing AI agents in PHP applications. This library provides a collection of tools and utilities for creating, managing, and orchestrating AI agents with support for multiple AI providers including OpenAI, Anthropic, Deepseek, Perplexity, and XAI APIs. The library features flexible message types supporting both text and structured content, easy-to-use conversation management between agents and users, and comprehensive model selection from various AI providers. With fine-tuneable model behavior through temperature and token controls, it's perfect for building intelligent applications that need to interact with multiple AI services seamlessly.",
       "githubUrl": "https://github.com/utopia-php/agents",
@@ -399,7 +399,7 @@
     },
     {
       "name": "Analytics",
-      "stars": 20,
+      "stars": 18,
       "description": "Analytics tracking with event collection and data aggregation features.",
       "githubUrl": "https://github.com/utopia-php/analytics",
       "version": "1.2.0",
@@ -412,7 +412,7 @@
     },
     {
       "name": "Messaging",
-      "stars": 66,
+      "stars": 22,
       "description": "Message queue and pub/sub system with Redis and RabbitMQ support.",
       "githubUrl": "https://github.com/utopia-php/messaging",
       "version": "2.0.0",
@@ -425,7 +425,7 @@
     },
     {
       "name": "Orchestrations",
-      "stars": 8,
+      "stars": 15,
       "description": "Service orchestration with workflow management and task coordination.",
       "githubUrl": "https://github.com/utopia-php/orchestrations",
       "version": "1.0.0",
@@ -438,7 +438,7 @@
     },
     {
       "name": "Pay",
-      "stars": 6,
+      "stars": 9,
       "description": "Payment processing integration with Stripe, PayPal, and other providers.",
       "githubUrl": "https://github.com/utopia-php/pay",
       "version": "1.0.0",
@@ -453,7 +453,7 @@
   "other": [
     {
       "name": "CLI",
-      "stars": 16,
+      "stars": 40,
       "description": "Command-line interface framework with argument parsing and command routing.",
       "githubUrl": "https://github.com/utopia-php/cli",
       "version": "3.0.0",
@@ -466,7 +466,7 @@
     },
     {
       "name": "Platform",
-      "stars": 5,
+      "stars": 11,
       "description": "Platform abstraction layer for cross-platform compatibility and detection.",
       "githubUrl": "https://github.com/utopia-php/platform",
       "version": "1.0.0",
@@ -479,7 +479,7 @@
     },
     {
       "name": "Registry",
-      "stars": 6,
+      "stars": 17,
       "description": "Dependency injection container with service registration and auto-wiring.",
       "githubUrl": "https://github.com/utopia-php/registry",
       "version": "2.1.0",
@@ -492,7 +492,7 @@
     },
     {
       "name": "System",
-      "stars": 14,
+      "stars": 23,
       "description": "System utilities for process management and environment detection.",
       "githubUrl": "https://github.com/utopia-php/system",
       "version": "1.3.0",

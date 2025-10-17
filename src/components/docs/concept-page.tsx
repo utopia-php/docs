@@ -39,6 +39,7 @@ export function ConceptPage({ library, concept }: ConceptPageProps) {
           <CodeExample
             language={concept.codeExample.language}
             title={concept.codeExample.title}
+            filename={concept.codeExample.title}
             code={concept.codeExample.code}
           />
         </div>

@@ -42,10 +42,7 @@ function Comparison() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
         <div className="border rounded-lg p-6">
           <div className="flex items-center gap-2 mb-4">
-            <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">U</span>
-            </div>
-            <h3 className="text-lg font-semibold">Utopia.php</h3>
+            <Badge className="text-white hover:opacity-90" style={{ backgroundColor: '#6474ce' }}>Utopia.php</Badge>
           </div>
           <p className="text-sm text-muted-foreground mb-4">
             A collection of micro-libraries designed for microservice architectures. 
@@ -60,10 +57,7 @@ function Comparison() {
 
         <div className="border rounded-lg p-6">
           <div className="flex items-center gap-2 mb-4">
-            <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-sm">L</span>
-            </div>
-            <h3 className="text-lg font-semibold">Laravel</h3>
+            <Badge className="bg-red-500 text-white hover:bg-red-600">Laravel</Badge>
           </div>
           <p className="text-sm text-muted-foreground mb-4">
             A full-stack web application framework with conventions, ORM, templating, 
@@ -84,9 +78,8 @@ function Comparison() {
         <div className="border-l-4 border-primary pl-4">
           <h4 className="font-semibold text-primary">Utopia.php: Micro-libraries Approach</h4>
           <p className="text-sm text-muted-foreground mt-1">
-            Utopia.php follows the Unix philosophy of "do one thing and do it well." 
-            Each library is focused on solving a specific problem with minimal dependencies 
-            (only PHP extensions), allowing you to compose your own architecture.
+            Utopia.php follows the Unix philosophy of "do one thing and do it well." Each library 
+            is focused on solving a specific problem with minimal dependencies, allowing you to compose your own architecture.
           </p>
         </div>
         
@@ -201,27 +194,11 @@ function Comparison() {
         <div className="border-l-4 border-green-500 pl-4">
           <h4 className="font-semibold text-green-500">Utopia.php within Laravel</h4>
           <p className="text-sm text-muted-foreground mt-1">
-            Use specific Utopia.php libraries within your Laravel application for 
-            performance-critical components like caching, logging, or HTTP handling, 
-            while keeping Laravel's rapid development features for everything else.
+            Use specific Utopia.php libraries within your Laravel application for performance-critical 
+            components like caching, logging, or HTTP handling, while keeping Laravel's rapid development features.
           </p>
         </div>
       </div>
-
-      <h3 id="dependencies">Dependency Details</h3>
-      <DocsCallout type="info" title="Understanding Utopia.php Dependencies">
-        <p className="mb-3">
-          While Utopia.php libraries have "minimal dependencies," this means they only require 
-          PHP extensions (like <code>ext-json</code>, <code>ext-curl</code>, <code>ext-sockets</code>) 
-          rather than external Composer packages. This approach:
-        </p>
-        <ul className="space-y-1 text-sm">
-          <li>• Reduces security vulnerabilities from third-party packages</li>
-          <li>• Eliminates dependency conflicts and version management issues</li>
-          <li>• Ensures better performance with native PHP extensions</li>
-          <li>• Maintains compatibility across different PHP environments</li>
-        </ul>
-      </DocsCallout>
 
       <DocsCalloutUtopia title="Ready to Get Started?">
         <p className="mb-3">

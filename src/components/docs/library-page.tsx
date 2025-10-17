@@ -95,6 +95,7 @@ export function LibraryPage({ library, showBreadcrumbs = true, breadcrumbItems }
       <CodeExample
         language="bash"
         title="Install with Composer"
+        filename="Terminal"
         code={`composer require utopia-php/${library.name.toLowerCase().replace(/\s+/g, '-')}`}
       />
       
@@ -104,7 +105,8 @@ export function LibraryPage({ library, showBreadcrumbs = true, breadcrumbItems }
       </p>
       <CodeExample
         language="php"
-        title="server.php"
+        title="Basic HTTP Server"
+        filename="server.php"
         code={`<?php
 
 use Utopia\\Http\\Http;

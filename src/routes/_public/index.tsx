@@ -2,7 +2,6 @@ import { createFileRoute } from '@tanstack/react-router'
 import {
   DocsLayout,
   DocsContent,
-  DocsCallout,
   DocsCalloutUtopia,
   Breadcrumbs,
   CodeExample,
@@ -123,6 +122,7 @@ function Index() {
           title="Simple HTTP Server with Utopia.php"
           description="A minimal example using Utopia.php HTTP and Router libraries"
           language="php"
+          filename="server.php"
           code={`<?php
 
 use Utopia\\Http\\Http;

@@ -6,13 +6,15 @@ interface CodeExampleProps {
   language: string
   title?: string
   description?: string
+  filename?: string
 }
 
 export function CodeExample({ 
   code, 
   language, 
   title = "Code Example", 
-  description 
+  description,
+  filename
 }: CodeExampleProps) {
   return (
     <div className="space-y-3">
@@ -23,6 +25,14 @@ export function CodeExample({
         )}
       </div>
       <div className="rounded-xl overflow-hidden overflow-x-auto border border-muted">
+        {filename && (
+          <div 
+            className="px-4 py-2 text-sm font-medium text-gray-300 bg-gray-800 border-b border-gray-600/30"
+            style={{ backgroundColor: 'oklch(0.141 0.005 285.823)' }}
+          >
+            {filename}
+          </div>
+        )}
         <SyntaxHighlighter
           language={language}
           style={monokai}
