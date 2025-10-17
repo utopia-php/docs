@@ -45,8 +45,8 @@ function Index() {
           Utopia.php is a collection of micro-libraries for building microservice architectures. 
           Each library handles a specific concern - HTTP routing, database abstraction, caching, 
           logging, and more. Libraries are independent, well-documented, and designed for 
-          distributed systems. Simple APIs with minimal to zero dependencies. No framework 
-          dependencies or vendor lock-in.
+          distributed systems. Simple APIs with minimal dependencies (only PHP extensions). 
+          No framework dependencies or vendor lock-in.
         </p>
         <p>
           Built and maintained by the Appwrite team, Utopia.php serves as the foundation for 
@@ -54,19 +54,23 @@ function Index() {
           PHP product on GitHub (53k+ stars, 2nd only to Laravel), ensuring reliability and performance at scale.
         </p>
 
-        <DocsCalloutUtopia title="Utopia.php vs Laravel">
+        <DocsCalloutUtopia title="Utopia.php & Laravel">
           <p className="mb-3">
-            Utopia.php is <strong>not</strong> a framework like Laravel. While Laravel provides a 
-            full-stack framework with conventions, ORM, templating, and built-in features, 
-            Utopia.php offers focused micro-libraries that solve specific problems in 
+            Utopia.php and Laravel serve different purposes in the PHP ecosystem. While Laravel is 
+            an excellent full-stack framework for building web applications, Utopia.php provides 
+            focused micro-libraries for specific needs in microservice architectures.
+          </p>
+          <p className="mb-3">
+            <strong>Laravel</strong> excels at rapid web application development with its conventions, 
+            ORM, and built-in features. <strong>Utopia.php</strong> shines when you need lightweight, 
+            performant libraries for APIs, microservices, or specific backend tasks. The best part? 
+            You can use Utopia.php libraries within Laravel applications or alongside them in 
             microservice architectures.
           </p>
           <p>
-            <strong>Laravel</strong> is perfect for building traditional web applications with 
-            rapid development, while <strong>Utopia.php</strong> is designed for developers who 
-            need lightweight, performant libraries for distributed systems. You can use Utopia.php 
-            libraries alongside Laravel, Symfony, or any other framework, or build completely 
-            custom solutions without framework overhead.
+            <a href="/comparison" className="text-primary hover:underline font-medium">
+              Learn more about when to use each approach →
+            </a>
           </p>
         </DocsCalloutUtopia>
 
@@ -78,8 +82,8 @@ function Index() {
 
         <ul>
           <li>
-            <strong>Zero Dependencies</strong> - No external dependencies, reducing 
-            security risks and complexity
+            <strong>Minimal Dependencies</strong> - Only PHP extensions required, no external 
+            Composer packages, reducing security risks and complexity
           </li>
           <li>
             <strong>Single Purpose Libraries</strong> - Each library focuses on one 
@@ -209,21 +213,6 @@ $http->start($router);`}
           ))}
         </div>
 
-        <hr />
-
-        <DocsCallout type="info" title="Quick Start">
-          Install any library with Composer: <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">composer require utopia-php/http</code>. 
-          Each library is self-contained and can be used independently or combined as needed.
-        </DocsCallout>
-
-        <p className="text-sm text-muted-foreground">
-          Last updated:{' '}
-          {new Date().toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          })}
-        </p>
       </DocsContent>
     </DocsLayout>
   )

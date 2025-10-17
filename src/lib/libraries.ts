@@ -1,5 +1,19 @@
 import librariesData from '@/data/libraries.json'
 
+export interface Concept {
+  title: string
+  path: string
+  description: string
+  content: string
+  codeExample?: {
+    language: string
+    title: string
+    code: string
+    showLineNumbers?: boolean
+  }
+  additionalInfo?: string
+}
+
 export interface Library {
   name: string
   stars: number
@@ -15,6 +29,7 @@ export interface Library {
   category: string
   license?: string
   deprecated?: boolean
+  concepts?: Concept[]
 }
 
 export interface LibrariesData {
@@ -37,11 +52,12 @@ export function getAllLibraries(): Library[] {
   ]
 }
 
-// Find a library by name (case-insensitive)
+// Find a library by name (case-insensitive) or by URL slug
 export function findLibraryByName(name: string): Library | null {
   const libraries = getAllLibraries()
   return libraries.find(lib => 
-    lib.name.toLowerCase() === name.toLowerCase()
+    lib.name.toLowerCase() === name.toLowerCase() ||
+    getLibrarySlug(lib.name) === name.toLowerCase()
   ) || null
 }
 
@@ -130,4 +146,25 @@ export function getLibrarySlug(name: string): string {
 // Get library URL from slug
 export function getLibraryNameFromSlug(slug: string): string {
   return slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
+}
+
+// Find a concept by path within a library
+export function findConceptByPath(library: Library, conceptPath: string): Concept | null {
+  if (!library.concepts) {
+    return null
+  }
+  
+  return library.concepts.find(concept => 
+    concept.path === conceptPath
+  ) || null
+}
+
+// Get all concepts for a library
+export function getLibraryConcepts(library: Library): Concept[] {
+  return library.concepts || []
+}
+
+// Get concept URL slug
+export function getConceptSlug(title: string): string {
+  return title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')
 }

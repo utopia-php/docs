@@ -27,6 +27,10 @@ export function getGitHubFilePath(routePath: string): string | null {
   
   // Handle library routes
   if (cleanPath.startsWith('library/')) {
+    // Check if it's a concept route
+    if (cleanPath.includes('/concept/')) {
+      return `src/routes/_public/library.$libraryName.concept.$conceptPath.tsx`
+    }
     return `src/routes/_public/library.$libraryName.tsx`
   }
   

@@ -51,6 +51,10 @@ const defaultNavItems: NavItem[] = [
         title: 'Quick Start',
         href: '/quick-start',
       },
+      {
+        title: 'Vs. Laravel',
+        href: '/comparison',
+      },
     ],
   },
   {
@@ -95,7 +99,11 @@ export function DocsNavigation({
   const getLibraryName = () => {
     if (!isLibraryPage) return null
     const pathParts = router.location.pathname.split('/')
-    const librarySlug = pathParts[pathParts.length - 1]
+    // For concept pages, library name is the second-to-last part
+    // For regular library pages, it's the last part
+    const librarySlug = pathParts.includes('concept') 
+      ? pathParts[pathParts.length - 3] // /library/http/concept/dependency-injection -> http
+      : pathParts[pathParts.length - 1] // /library/http -> http
     // Convert slug back to proper case (e.g., "dns" -> "DNS")
     return librarySlug.split('-').map(word => 
       word.charAt(0).toUpperCase() + word.slice(1)

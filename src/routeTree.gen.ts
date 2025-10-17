@@ -16,6 +16,7 @@ import { Route as SplatRouteImport } from './routes/$'
 import { Route as PublicIndexRouteImport } from './routes/_public/index'
 import { Route as PublicExampleCompsRouteImport } from './routes/_public/example-comps'
 import { Route as PublicContributingRouteImport } from './routes/_public/contributing'
+import { Route as PublicComparisonRouteImport } from './routes/_public/comparison'
 import { Route as PublicChangelogRouteImport } from './routes/_public/changelog'
 import { Route as PublicBlogRouteImport } from './routes/_public/blog'
 import { Route as ProtectedExampleProtectedRouteRouteImport } from './routes/_protected/example-protected-route'
@@ -24,6 +25,7 @@ import { Route as AuthSignOutRouteImport } from './routes/_auth/sign-out'
 import { Route as AuthSignInRouteImport } from './routes/_auth/sign-in'
 import { Route as ApiHelloRouteImport } from './routes/_api/hello'
 import { Route as PublicLibraryLibraryNameRouteImport } from './routes/_public/library.$libraryName'
+import { Route as PublicLibraryLibraryNameConceptConceptPathRouteImport } from './routes/_public/library.$libraryName.concept.$conceptPath'
 
 const PublicRoute = PublicRouteImport.update({
   id: '/_public',
@@ -55,6 +57,11 @@ const PublicExampleCompsRoute = PublicExampleCompsRouteImport.update({
 const PublicContributingRoute = PublicContributingRouteImport.update({
   id: '/contributing',
   path: '/contributing',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicComparisonRoute = PublicComparisonRouteImport.update({
+  id: '/comparison',
+  path: '/comparison',
   getParentRoute: () => PublicRoute,
 } as any)
 const PublicChangelogRoute = PublicChangelogRouteImport.update({
@@ -99,6 +106,12 @@ const PublicLibraryLibraryNameRoute =
     path: '/library/$libraryName',
     getParentRoute: () => PublicRoute,
   } as any)
+const PublicLibraryLibraryNameConceptConceptPathRoute =
+  PublicLibraryLibraryNameConceptConceptPathRouteImport.update({
+    id: '/concept/$conceptPath',
+    path: '/concept/$conceptPath',
+    getParentRoute: () => PublicLibraryLibraryNameRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/$': typeof SplatRoute
@@ -109,10 +122,12 @@ export interface FileRoutesByFullPath {
   '/example-protected-route': typeof ProtectedExampleProtectedRouteRoute
   '/blog': typeof PublicBlogRoute
   '/changelog': typeof PublicChangelogRoute
+  '/comparison': typeof PublicComparisonRoute
   '/contributing': typeof PublicContributingRoute
   '/example-comps': typeof PublicExampleCompsRoute
   '/': typeof PublicIndexRoute
-  '/library/$libraryName': typeof PublicLibraryLibraryNameRoute
+  '/library/$libraryName': typeof PublicLibraryLibraryNameRouteWithChildren
+  '/library/$libraryName/concept/$conceptPath': typeof PublicLibraryLibraryNameConceptConceptPathRoute
 }
 export interface FileRoutesByTo {
   '/$': typeof SplatRoute
@@ -123,10 +138,12 @@ export interface FileRoutesByTo {
   '/example-protected-route': typeof ProtectedExampleProtectedRouteRoute
   '/blog': typeof PublicBlogRoute
   '/changelog': typeof PublicChangelogRoute
+  '/comparison': typeof PublicComparisonRoute
   '/contributing': typeof PublicContributingRoute
   '/example-comps': typeof PublicExampleCompsRoute
   '/': typeof PublicIndexRoute
-  '/library/$libraryName': typeof PublicLibraryLibraryNameRoute
+  '/library/$libraryName': typeof PublicLibraryLibraryNameRouteWithChildren
+  '/library/$libraryName/concept/$conceptPath': typeof PublicLibraryLibraryNameConceptConceptPathRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -141,10 +158,12 @@ export interface FileRoutesById {
   '/_protected/example-protected-route': typeof ProtectedExampleProtectedRouteRoute
   '/_public/blog': typeof PublicBlogRoute
   '/_public/changelog': typeof PublicChangelogRoute
+  '/_public/comparison': typeof PublicComparisonRoute
   '/_public/contributing': typeof PublicContributingRoute
   '/_public/example-comps': typeof PublicExampleCompsRoute
   '/_public/': typeof PublicIndexRoute
-  '/_public/library/$libraryName': typeof PublicLibraryLibraryNameRoute
+  '/_public/library/$libraryName': typeof PublicLibraryLibraryNameRouteWithChildren
+  '/_public/library/$libraryName/concept/$conceptPath': typeof PublicLibraryLibraryNameConceptConceptPathRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -157,10 +176,12 @@ export interface FileRouteTypes {
     | '/example-protected-route'
     | '/blog'
     | '/changelog'
+    | '/comparison'
     | '/contributing'
     | '/example-comps'
     | '/'
     | '/library/$libraryName'
+    | '/library/$libraryName/concept/$conceptPath'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/$'
@@ -171,10 +192,12 @@ export interface FileRouteTypes {
     | '/example-protected-route'
     | '/blog'
     | '/changelog'
+    | '/comparison'
     | '/contributing'
     | '/example-comps'
     | '/'
     | '/library/$libraryName'
+    | '/library/$libraryName/concept/$conceptPath'
   id:
     | '__root__'
     | '/$'
@@ -188,10 +211,12 @@ export interface FileRouteTypes {
     | '/_protected/example-protected-route'
     | '/_public/blog'
     | '/_public/changelog'
+    | '/_public/comparison'
     | '/_public/contributing'
     | '/_public/example-comps'
     | '/_public/'
     | '/_public/library/$libraryName'
+    | '/_public/library/$libraryName/concept/$conceptPath'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -253,6 +278,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicContributingRouteImport
       parentRoute: typeof PublicRoute
     }
+    '/_public/comparison': {
+      id: '/_public/comparison'
+      path: '/comparison'
+      fullPath: '/comparison'
+      preLoaderRoute: typeof PublicComparisonRouteImport
+      parentRoute: typeof PublicRoute
+    }
     '/_public/changelog': {
       id: '/_public/changelog'
       path: '/changelog'
@@ -309,6 +341,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicLibraryLibraryNameRouteImport
       parentRoute: typeof PublicRoute
     }
+    '/_public/library/$libraryName/concept/$conceptPath': {
+      id: '/_public/library/$libraryName/concept/$conceptPath'
+      path: '/concept/$conceptPath'
+      fullPath: '/library/$libraryName/concept/$conceptPath'
+      preLoaderRoute: typeof PublicLibraryLibraryNameConceptConceptPathRouteImport
+      parentRoute: typeof PublicLibraryLibraryNameRoute
+    }
   }
 }
 
@@ -338,22 +377,39 @@ const ProtectedRouteWithChildren = ProtectedRoute._addFileChildren(
   ProtectedRouteChildren,
 )
 
+interface PublicLibraryLibraryNameRouteChildren {
+  PublicLibraryLibraryNameConceptConceptPathRoute: typeof PublicLibraryLibraryNameConceptConceptPathRoute
+}
+
+const PublicLibraryLibraryNameRouteChildren: PublicLibraryLibraryNameRouteChildren =
+  {
+    PublicLibraryLibraryNameConceptConceptPathRoute:
+      PublicLibraryLibraryNameConceptConceptPathRoute,
+  }
+
+const PublicLibraryLibraryNameRouteWithChildren =
+  PublicLibraryLibraryNameRoute._addFileChildren(
+    PublicLibraryLibraryNameRouteChildren,
+  )
+
 interface PublicRouteChildren {
   PublicBlogRoute: typeof PublicBlogRoute
   PublicChangelogRoute: typeof PublicChangelogRoute
+  PublicComparisonRoute: typeof PublicComparisonRoute
   PublicContributingRoute: typeof PublicContributingRoute
   PublicExampleCompsRoute: typeof PublicExampleCompsRoute
   PublicIndexRoute: typeof PublicIndexRoute
-  PublicLibraryLibraryNameRoute: typeof PublicLibraryLibraryNameRoute
+  PublicLibraryLibraryNameRoute: typeof PublicLibraryLibraryNameRouteWithChildren
 }
 
 const PublicRouteChildren: PublicRouteChildren = {
   PublicBlogRoute: PublicBlogRoute,
   PublicChangelogRoute: PublicChangelogRoute,
+  PublicComparisonRoute: PublicComparisonRoute,
   PublicContributingRoute: PublicContributingRoute,
   PublicExampleCompsRoute: PublicExampleCompsRoute,
   PublicIndexRoute: PublicIndexRoute,
-  PublicLibraryLibraryNameRoute: PublicLibraryLibraryNameRoute,
+  PublicLibraryLibraryNameRoute: PublicLibraryLibraryNameRouteWithChildren,
 }
 
 const PublicRouteWithChildren =

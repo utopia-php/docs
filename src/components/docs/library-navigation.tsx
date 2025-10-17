@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { ChevronRight, ArrowLeft, BookOpen, Code2, Zap, Settings, HelpCircle } from 'lucide-react'
 import { Link, useRouterState } from '@tanstack/react-router'
-import { Library } from '@/lib/libraries'
+import { Library, getLibrarySlug } from '@/lib/libraries'
 
 interface LibraryNavigationProps {
   library: Library
@@ -16,22 +16,22 @@ export function LibraryNavigation({ library }: LibraryNavigationProps) {
   const libraryNavItems = [
     {
       title: 'Overview',
-      href: `/library/${library.name.toLowerCase().replace(/\s+/g, '-')}`,
+      href: `/library/${getLibrarySlug(library.name)}`,
       icon: BookOpen,
     },
     {
       title: 'Features',
-      href: `/library/${library.name.toLowerCase().replace(/\s+/g, '-')}#features`,
+      href: `/library/${getLibrarySlug(library.name)}#features`,
       icon: Zap,
     },
     {
       title: 'Get Started',
-      href: `/library/${library.name.toLowerCase().replace(/\s+/g, '-')}#get-started`,
+      href: `/library/${getLibrarySlug(library.name)}#get-started`,
       icon: Code2,
     },
     {
       title: 'Key Concepts',
-      href: `/library/${library.name.toLowerCase().replace(/\s+/g, '-')}#concepts`,
+      href: `/library/${getLibrarySlug(library.name)}#concepts`,
       icon: Settings,
     },
     {
