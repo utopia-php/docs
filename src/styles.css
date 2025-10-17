@@ -2,6 +2,8 @@
 
 @import 'tw-animate-css';
 
+/* Code highlighting styles */
+
 @custom-variant dark (&:is(.dark *));
 
 body {
@@ -154,4 +156,163 @@ code {
   p, h1, h2, h3, h4, h5, h6, span, div, a, button, input, textarea, label, li, td, th {
     @apply leading-relaxed;
   }
+}
+
+/* Code block styling - Monokai theme with black background */
+pre[class*="language-"] {
+  background: red !important;
+  color: #f8f8f2 !important;
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  padding: 1rem;
+  overflow: auto;
+}
+
+code[class*="language-"] {
+  @apply text-sm font-mono;
+  background: yellow !important;
+  color: #f8f8f2 !important;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* Ensure black background for both light and dark modes */
+.dark pre[class*="language-"],
+.light pre[class*="language-"] {
+  background: green !important;
+}
+
+.dark code[class*="language-"],
+.light code[class*="language-"] {
+  background: blue !important;
+}
+
+/* Line numbers styling */
+pre.line-numbers {
+  position: relative;
+  padding-left: 3.8em;
+  counter-reset: linenumber;
+}
+
+/* Line numbers styling */
+pre .linenumber {
+  padding-right: 2.5em!important;
+}
+
+pre.line-numbers > code {
+  position: relative;
+  white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  font-size: 100%;
+  left: -3.8em;
+  width: 3em;
+  letter-spacing: -1px;
+  border-right: 1px solid #999;
+  user-select: none;
+}
+
+.line-numbers-rows > span {
+  display: block;
+  counter-increment: linenumber;
+}
+
+.line-numbers-rows > span:before {
+  content: counter(linenumber);
+  color: #999;
+  display: block;
+  padding-right: 0.8em;
+  text-align: right;
+}
+
+/* Fallback syntax highlighting styles - Monokai theme colors */
+.token.keyword {
+  color: #66d9ef;
+  font-weight: bold;
+}
+
+.token.literal {
+  color: #ae81ff;
+}
+
+.token.string {
+  color: #e6db74;
+}
+
+.token.comment {
+  color: #75715e;
+  font-style: italic;
+}
+
+.token.number {
+  color: #ae81ff;
+}
+
+.token.property {
+  color: #f92672;
+}
+
+.token.class-name {
+  color: #a6e22e;
+}
+
+.token.variable {
+  color: #f8f8f2;
+}
+
+/* Monokai theme colors for both light and dark modes */
+.dark .token.keyword,
+.light .token.keyword {
+  color: #66d9ef;
+}
+
+.dark .token.literal,
+.light .token.literal {
+  color: #ae81ff;
+}
+
+.dark .token.string,
+.light .token.string {
+  color: #e6db74;
+}
+
+.dark .token.comment,
+.light .token.comment {
+  color: #75715e;
+}
+
+.dark .token.number,
+.light .token.number {
+  color: #ae81ff;
+}
+
+.dark .token.property,
+.light .token.property {
+  color: #f92672;
+}
+
+.dark .token.class-name,
+.light .token.class-name {
+  color: #a6e22e;
+}
+
+.dark .token.variable,
+.light .token.variable {
+  color: #f8f8f2;
+}
+
+/* Fallback highlighter styles - only for tokens not covered by PrismJS */
+.token.php-tag {
+  color: #f92672;
+  font-weight: bold;
+}
+
+.token.shebang {
+  color: #75715e;
+  font-style: italic;
 }

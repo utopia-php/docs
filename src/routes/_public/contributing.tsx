@@ -28,7 +28,7 @@ function Contributing() {
         
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-2xl font-semibold mb-2">Contributing to Utopia PHP</h1>
+          <h1 className="text-2xl font-semibold mb-2">Contributing to Utopia.php</h1>
           <p className="text-sm text-muted-foreground">
             Help us build better micro-libraries for PHP microservice architectures. 
             Your contributions make a real difference in the open source community.
@@ -40,7 +40,7 @@ function Contributing() {
           <p className="text-sm">
             Fork your target repository, create a feature branch with <InlineCode>git checkout -b feature/amazing-feature</InlineCode>, 
             implement your changes with thorough testing, commit with clear messages, push to your fork, and open a Pull Request. 
-            That's it-you're contributing to Utopia PHP.
+            That's it-you're contributing to Utopia.php.
           </p>
         </DocsCallout>
 
@@ -70,7 +70,7 @@ function Contributing() {
               <h3 className="font-semibold">Documentation</h3>
             </div>
             <p className="text-sm text-muted-foreground">
-              Help others understand and adopt Utopia PHP through clear documentation, 
+              Help others understand and adopt Utopia.php through clear documentation, 
               practical examples, and comprehensive guides. This includes API references, 
               tutorials, README improvements, and translations.
             </p>
@@ -96,7 +96,7 @@ function Contributing() {
             <p className="text-sm text-muted-foreground">
               Help grow the community by answering questions, reviewing pull requests, 
               sharing knowledge through tutorials and blog posts, and mentoring newcomers. 
-              Your expertise helps others succeed with Utopia PHP.
+              Your expertise helps others succeed with Utopia.php.
             </p>
           </div>
         </div>
@@ -124,7 +124,7 @@ function Contributing() {
         </p>
 
         <p>
-          Each Utopia PHP library includes automated formatting and linting tools. Run <InlineCode>composer format</InlineCode> 
+          Each Utopia.php library includes automated formatting and linting tools. Run <InlineCode>composer format</InlineCode> 
           to automatically fix code style issues, and <InlineCode>composer test</InlineCode> to validate that everything 
           complies with our standards. This ensures consistent code quality across all contributions.
         </p>

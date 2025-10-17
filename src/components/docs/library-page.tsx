@@ -5,6 +5,7 @@ import { GitHubIcon } from '@/components/ui/github-icon'
 import { Library, getRelatedLibraries, formatVersion, formatLastUpdated } from '@/lib/libraries'
 import { LibraryCard } from './library-card'
 import { Breadcrumbs } from './breadcrumbs'
+import { CodeExample } from './code-example'
 
 interface LibraryPageProps {
   library: Library
@@ -151,18 +152,18 @@ try {
           </div>
           
           <h3>Run the DNS Server</h3>
-          <div className="bg-muted rounded-lg p-4 mb-4">
-            <code className="text-sm font-mono">
-              php dns-server.php
-            </code>
-          </div>
+          <CodeExample
+            language="bash"
+            title="Run the DNS Server"
+            code={`php dns-server.php`}
+          />
           
           <h3>Test DNS Queries</h3>
-          <div className="bg-muted rounded-lg p-4 mb-4">
-            <code className="text-sm font-mono">
-              dig @127.0.0.1 -p 8000 example.com A
-            </code>
-          </div>
+          <CodeExample
+            language="bash"
+            title="Test DNS Queries"
+            code={`dig @127.0.0.1 -p 8000 example.com A`}
+          />
         </>
       ) : (
         <>
@@ -170,9 +171,10 @@ try {
           <p>
             Here's a simple example to get you started:
           </p>
-          <div className="bg-muted rounded-lg p-4 mb-4">
-            <pre className="text-sm font-mono overflow-x-auto">
-{`<?php
+          <CodeExample
+            language="php"
+            title="server.php"
+            code={`<?php
 
 use Utopia\\Http\\Http;
 use Utopia\\Http\\Request;
@@ -189,24 +191,24 @@ Http::get('/hello')
     );
 
 // Start the server
-$http = new Http(new Server(), new Container(), 'America/New_York');
+$http = new Http(
+  new Server(),
+  new Container(),
+  'America/New_York'
+);
+
 $http->start();`}
-            </pre>
-          </div>
+          />
           
           <h3>Run the Server</h3>
-          <div className="bg-muted rounded-lg p-4 mb-4">
-            <code className="text-sm font-mono">
-              php -S localhost:8000 src/server.php
-            </code>
-          </div>
+          <CodeExample language="bash" title="Terminal">
+            {`php -S localhost:8000 src/server.php`}
+          </CodeExample>
           
           <h3>Test Your Endpoint</h3>
-          <div className="bg-muted rounded-lg p-4 mb-4">
-            <code className="text-sm font-mono">
-              curl http://localhost:8000/hello
-            </code>
-          </div>
+          <CodeExample language="bash" title="Terminal">
+            {`curl http://localhost:8000/hello`}
+          </CodeExample>
         </>
       )}
       
@@ -226,17 +228,15 @@ $http->start();`}
           <p>
             The DNS server handles incoming DNS queries and responds with appropriate DNS records. It uses adapters for network communication and resolvers for query processing.
           </p>
-          <div className="bg-muted rounded-lg p-4 mb-4">
-            <pre className="text-sm font-mono overflow-x-auto">
-{`// Create a DNS server with Swoole adapter
+          <CodeExample language="php" title="dns-server.php" showLineNumbers>
+            {`// Create a DNS server with Swoole adapter
 $server = new Swoole('0.0.0.0', 8000);
 $resolver = new Mock(); // Custom resolver
 $dns = new Server($server, $resolver);
 
 // Start listening for DNS queries
 $dns->start();`}
-            </pre>
-          </div>
+          </CodeExample>
           <p className="text-sm text-muted-foreground">
             The server supports multiple adapters including Native PHP Socket and Swoole UDP Server for high-performance DNS resolution.
           </p>
@@ -245,17 +245,15 @@ $dns->start();`}
           <p>
             The DNS client allows you to query DNS records from any DNS server. It supports all standard DNS record types and provides a simple API for lookups.
           </p>
-          <div className="bg-muted rounded-lg p-4 mb-4">
-            <pre className="text-sm font-mono overflow-x-auto">
-{`// Query different record types
+          <CodeExample language="php" title="dns-client.php" showLineNumbers>
+            {`// Query different record types
 $client = new Client('8.8.8.8');
 
 $aRecords = $client->query('example.com', 'A');      // IPv4 addresses
 $mxRecords = $client->query('example.com', 'MX');    // Mail servers
 $txtRecords = $client->query('example.com', 'TXT');  // Text records
 $aaaaRecords = $client->query('example.com', 'AAAA'); // IPv6 addresses`}
-            </pre>
-          </div>
+          </CodeExample>
           <p className="text-sm text-muted-foreground">
             The client supports all standard DNS record types including A, NS, CNAME, SOA, MX, TXT, AAAA, SRV, and more.
           </p>
@@ -264,9 +262,8 @@ $aaaaRecords = $client->query('example.com', 'AAAA'); // IPv6 addresses`}
           <p>
             Adapters handle the low-level network communication for the DNS server. Choose the adapter that best fits your deployment environment.
           </p>
-          <div className="bg-muted rounded-lg p-4 mb-4">
-            <pre className="text-sm font-mono overflow-x-auto">
-{`// Native PHP Socket (PHP 8.0+)
+          <CodeExample language="php" title="adapters.php" showLineNumbers>
+            {`// Native PHP Socket (PHP 8.0+)
 use Appwrite\\DNS\\Adapter\\Native;
 $server = new Native('0.0.0.0', 8000);
 
@@ -276,8 +273,7 @@ $server = new Swoole('0.0.0.0', 8000);
 
 // Workerman (Coming Soon)
 // ReactPHP (Coming Soon)`}
-            </pre>
-          </div>
+          </CodeExample>
           <p className="text-sm text-muted-foreground">
             Swoole provides the best performance for production environments, while Native PHP Socket is perfect for development and simple deployments.
           </p>
@@ -286,9 +282,8 @@ $server = new Swoole('0.0.0.0', 8000);
           <p>
             Resolvers process DNS queries and return appropriate responses. You can create custom resolvers by extending the base Resolver class.
           </p>
-          <div className="bg-muted rounded-lg p-4 mb-4">
-            <pre className="text-sm font-mono overflow-x-auto">
-{`// Custom resolver example
+          <CodeExample language="php" title="CustomResolver.php" showLineNumbers>
+            {`// Custom resolver example
 class CustomResolver extends Resolver
 {
     public function resolve(Query $query): ?Response
@@ -306,8 +301,7 @@ class CustomResolver extends Resolver
         return null; // Delegate to parent or other resolver
     }
 }`}
-            </pre>
-          </div>
+          </CodeExample>
           <p className="text-sm text-muted-foreground">
             Custom resolvers allow you to implement custom DNS logic, caching, load balancing, or integration with external systems.
           </p>
@@ -316,15 +310,13 @@ class CustomResolver extends Resolver
           <p>
             The library includes a built-in benchmarking tool to measure DNS server performance under load with detailed metrics and analysis.
           </p>
-          <div className="bg-muted rounded-lg p-4 mb-4">
-            <pre className="text-sm font-mono overflow-x-auto">
-{`// Run benchmark with default settings
+          <CodeExample language="bash" title="Terminal">
+            {`// Run benchmark with default settings
 php tests/benchmark.php
 
 // Custom benchmark configuration
 php tests/benchmark.php --server=127.0.0.1 --port=5300 --iterations=1000 --concurrency=20`}
-            </pre>
-          </div>
+          </CodeExample>
           <p className="text-sm text-muted-foreground">
             Benchmarking provides detailed performance metrics including requests per second, response times, latency distribution, and error rates.
           </p>
@@ -335,9 +327,8 @@ php tests/benchmark.php --server=127.0.0.1 --port=5300 --iterations=1000 --concu
           <p>
             Routes define HTTP endpoints with specific methods and paths. Each route has an action function that handles the request and returns a response.
           </p>
-          <div className="bg-muted rounded-lg p-4 mb-4">
-            <pre className="text-sm font-mono overflow-x-auto">
-{`// Define a GET route
+          <CodeExample language="php" title="routes.php" showLineNumbers>
+            {`// Define a GET route
 Http::get('/users')
     ->inject('response')
     ->action(function(Response $response) {
@@ -351,8 +342,7 @@ Http::post('/users')
     ->action(function(string $name, Response $response) {
         $response->json(['message' => 'User created: ' . $name]);
     });`}
-            </pre>
-          </div>
+          </CodeExample>
           <p className="text-sm text-muted-foreground">
             Routes support all HTTP methods (GET, POST, PUT, DELETE, PATCH, OPTIONS) and can be organized into groups for common behavior.
           </p>
@@ -363,9 +353,8 @@ Http::post('/users')
       <p>
         Automatically inject dependencies like database connections, user sessions, or custom services into your route actions and hooks.
       </p>
-      <div className="bg-muted rounded-lg p-4 mb-4">
-        <pre className="text-sm font-mono overflow-x-auto">
-{`// Define a dependency
+      <CodeExample language="php" title="dependency-injection.php" showLineNumbers>
+        {`// Define a dependency
 $container = new Container();
 
 $db = new Dependency();
@@ -382,8 +371,7 @@ Http::get('/users')
         $users = $db->query('SELECT * FROM users')->fetchAll();
         $response->json(['users' => $users]);
     });`}
-        </pre>
-      </div>
+      </CodeExample>
       <p className="text-sm text-muted-foreground">
         Dependencies are created fresh for each request, ensuring clean state and proper resource management.
       </p>
@@ -392,9 +380,8 @@ Http::get('/users')
       <p>
         Define and validate input parameters from URL paths, query strings, or request bodies with built-in validators for security and type safety.
       </p>
-      <div className="bg-muted rounded-lg p-4 mb-4">
-        <pre className="text-sm font-mono overflow-x-auto">
-{`// URL parameter validation
+      <CodeExample language="php" title="validation.php" showLineNumbers>
+        {`// URL parameter validation
 Http::get('/users/{id}')
     ->param('id', '', new UID(), 'User ID', false)
     ->inject('response')
@@ -410,8 +397,7 @@ Http::get('/search')
     ->action(function(string $q, int $limit, Response $response) {
         $response->json(['query' => $q, 'limit' => $limit]);
     });`}
-        </pre>
-      </div>
+      </CodeExample>
       <p className="text-sm text-muted-foreground">
         Built-in validators include Text, UID, Email, URL, Numeric, Range, and more. Custom validators can be created by extending the Validator class.
       </p>
@@ -420,9 +406,8 @@ Http::get('/search')
       <p>
         Execute code before (init), after (shutdown), or on error for all routes or specific groups. Perfect for authentication, logging, and error handling.
       </p>
-      <div className="bg-muted rounded-lg p-4 mb-4">
-        <pre className="text-sm font-mono overflow-x-auto">
-{`// Init hook - runs before every request
+      <CodeExample language="php" title="hooks.php" showLineNumbers>
+        {`// Init hook - runs before every request
 Http::init()
     ->inject('request')
     ->action(function(Request $request) {
@@ -445,8 +430,7 @@ Http::error()
     ->action(function(\\Throwable $error, Response $response) {
         $response->setStatusCode(500)->json(['error' => 'Internal Server Error']);
     });`}
-        </pre>
-      </div>
+      </CodeExample>
       <p className="text-sm text-muted-foreground">
         Hooks can be assigned to specific groups and will only run for routes that belong to those groups.
       </p>
@@ -455,9 +439,8 @@ Http::error()
       <p>
         Run on different server environments including PHP's built-in server, FPM, or high-performance Swoole for production deployments.
       </p>
-      <div className="bg-muted rounded-lg p-4 mb-4">
-        <pre className="text-sm font-mono overflow-x-auto">
-{`// PHP Built-in Server
+      <CodeExample language="php" title="server-adapters.php" showLineNumbers>
+        {`// PHP Built-in Server
 use Utopia\\Http\\Adapter\\FPM\\Server;
 $http = new Http(new Server(), $container, 'America/New_York');
 
@@ -467,8 +450,7 @@ $http = new Http(new Server('0.0.0.0', '80'), $container, 'America/New_York');
 
 // Start the server
 $http->start();`}
-        </pre>
-      </div>
+      </CodeExample>
       <p className="text-sm text-muted-foreground">
         Swoole provides significant performance improvements for production applications with features like HTTP/2 support and coroutines.
       </p>

@@ -6,6 +6,7 @@ import {
   DocsCalloutUtopia,
   InlineCode,
   Breadcrumbs,
+  CodeExample,
 } from '@/components/docs'
 import { Badge } from '@/components/ui/badge'
 import { LibraryCard } from '@/components/docs/library-card'
@@ -28,7 +29,7 @@ function Index() {
         />
         
         <div className="space-y-1 mb-4">
-          <h1>Utopia PHP</h1>
+          <h1>Utopia.php</h1>
           <p className="text-sm text-muted-foreground">
             Micro-libraries for PHP microservice architectures. 
             Lightweight, focused, and production-tested.
@@ -108,6 +109,65 @@ function Index() {
             <strong>MIT License</strong> - Open source with permissive licensing
           </li>
         </ul>
+
+        <h2 id="quick-example">Quick Example</h2>
+        <p>
+          Here's a simple example showing how to use Utopia.php libraries to build a 
+          lightweight HTTP server with routing and validation:
+        </p>
+
+        <CodeExample
+          title="Simple HTTP Server with Utopia.php"
+          description="A minimal example using Utopia.php HTTP and Router libraries"
+          language="php"
+          code={`<?php
+
+use Utopia\\Http\\Http;
+use Utopia\\Http\\Request;
+use Utopia\\Http\\Response;
+use Utopia\\Router\\Router;
+
+// Create a new router instance
+$router = new Router();
+
+// Define routes
+$router->get('/', function (Request $request, Response $response) {
+    return $response->json([
+        'message' => 'Hello from Utopia.php!',
+        'version' => '1.0.0'
+    ]);
+});
+
+$router->get('/users/{id}', function (Request $request, Response $response) {
+    $userId = $request->getParam('id');
+    
+    return $response->json([
+        'user' => [
+            'id' => $userId,
+            'name' => 'John Doe',
+            'email' => 'john@example.com'
+        ]
+    ]);
+});
+
+$router->post('/users', function (Request $request, Response $response) {
+    $data = $request->getPayload();
+    
+    // Validate input
+    if (!isset($data['name']) || !isset($data['email'])) {
+        return $response->json(['error' => 'Missing required fields'], 400);
+    }
+    
+    return $response->json([
+        'message' => 'User created successfully',
+        'user' => $data
+    ], 201);
+});
+
+// Start the HTTP server
+$http = new Http();
+$http->start($router);`}
+        />
 
         <h2 id="libraries">Libraries</h2>
         <p>

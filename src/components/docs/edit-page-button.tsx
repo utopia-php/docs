@@ -8,10 +8,17 @@ interface EditPageButtonProps {
 }
 
 export function EditPageButton({ className }: EditPageButtonProps) {
-  const handleEditPage = () => {
+  const [isClient, setIsClient] = React.useState(false)
+  const [editUrl, setEditUrl] = React.useState<string | null>(null)
+
+  React.useEffect(() => {
+    setIsClient(true)
     const currentPath = getCurrentRoutePath()
-    const editUrl = getGitHubEditUrl(currentPath)
-    
+    const url = getGitHubEditUrl(currentPath)
+    setEditUrl(url)
+  }, [])
+
+  const handleEditPage = () => {
     if (editUrl) {
       window.open(editUrl, '_blank', 'noopener,noreferrer')
     } else {
@@ -20,11 +27,8 @@ export function EditPageButton({ className }: EditPageButtonProps) {
     }
   }
 
-  // Don't render if we can't determine the edit URL
-  const currentPath = getCurrentRoutePath()
-  const editUrl = getGitHubEditUrl(currentPath)
-  
-  if (!editUrl) {
+  // Don't render on server side or if we can't determine the edit URL
+  if (!isClient || !editUrl) {
     return null
   }
 

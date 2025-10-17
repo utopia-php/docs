@@ -1,0 +1,257 @@
+/* Monokai theme with black background for PrismJS */
+/* Based on the original Monokai theme but with black background */
+
+/* Code blocks - remove background and borders, let container handle styling */
+pre[class*="language-"] {
+  background: transparent !important;
+  color: #f8f8f2 !important;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-size: 1em;
+  line-height: 1.5;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-break: auto;
+  tab-size: 4;
+  hyphens: none;
+  padding: 0;
+  margin: 0;
+  overflow: auto;
+  border: none;
+  border-radius: 0;
+}
+
+/* Inline code - remove background, let container handle styling */
+code[class*="language-"] {
+  background: transparent !important;
+  color: #f8f8f2 !important;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-size: 1em;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-break: auto;
+  tab-size: 4;
+  hyphens: none;
+}
+
+/* Selection */
+pre[class*="language-"]::-moz-selection,
+pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection,
+code[class*="language-"] ::-moz-selection {
+  text-shadow: none;
+  background: #49483e;
+}
+
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
+  text-shadow: none;
+  background: #49483e;
+}
+
+/* Print */
+@media print {
+  code[class*="language-"],
+  pre[class*="language-"] {
+    text-shadow: none;
+  }
+}
+
+/* Tokens */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #75715e;
+}
+
+.token.punctuation {
+  color: #f8f8f2;
+}
+
+.token.namespace {
+  opacity: 0.7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+  color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #e6db74;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+  color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+  color: #a6e22e;
+}
+
+.token.keyword {
+  color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+  color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+/* Line numbers */
+.line-numbers .line-numbers-rows {
+  border-right: 1px solid #49483e;
+}
+
+.line-numbers-rows > span:before {
+  color: #75715e;
+}
+
+/* Command line */
+.command-line-prompt > span:before {
+  color: #75715e;
+}
+
+/* Diff */
+.token.deleted {
+  background-color: #f92672;
+  color: #000;
+}
+
+.token.inserted {
+  background-color: #a6e22e;
+  color: #000;
+}
+
+/* JSON */
+.language-json .token.property {
+  color: #f8f8f2;
+}
+
+.language-json .token.string {
+  color: #e6db74;
+}
+
+.language-json .token.number {
+  color: #ae81ff;
+}
+
+.language-json .token.boolean {
+  color: #ae81ff;
+}
+
+.language-json .token.null {
+  color: #f92672;
+}
+
+/* JavaScript/TypeScript */
+.language-javascript .token.function,
+.language-typescript .token.function {
+  color: #a6e22e;
+}
+
+.language-javascript .token.class-name,
+.language-typescript .token.class-name {
+  color: #a6e22e;
+}
+
+.language-javascript .token.operator,
+.language-typescript .token.operator {
+  color: #f92672;
+}
+
+/* PHP */
+.language-php .token.php-tag {
+  color: #f92672;
+}
+
+.language-php .token.variable {
+  color: #f8f8f2;
+}
+
+.language-php .token.function {
+  color: #a6e22e;
+}
+
+/* HTML/XML */
+.language-markup .token.tag {
+  color: #f92672;
+}
+
+.language-markup .token.attr-name {
+  color: #a6e22e;
+}
+
+.language-markup .token.attr-value {
+  color: #e6db74;
+}
+
+/* Bash/Shell */
+.language-bash .token.function {
+  color: #a6e22e;
+}
+
+.language-bash .token.variable {
+  color: #f8f8f2;
+}
+
+/* Ensure consistent black background for both light and dark modes */
+:root {
+  --prism-background: #000000;
+}
+
+.dark pre[class*="language-"],
+.light pre[class*="language-"] {
+  background: #000000 !important;
+}
+
+.dark code[class*="language-"],
+.light code[class*="language-"] {
+  background: #000000 !important;
+}
