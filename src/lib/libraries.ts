@@ -33,23 +33,29 @@ export interface Library {
 }
 
 export interface LibrariesData {
-  network: Library[]
+  servers: Library[]
+  transport: Library[]
   data: Library[]
-  logs: Library[]
-  services: Library[]
-  other: Library[]
+  security: Library[]
+  observability: Library[]
+  platform: Library[]
+  utilities: Library[]
+  integrations: Library[]
 }
 
-// Get all libraries as a flat array
+// Get all libraries as a flat array (excluding deprecated)
 export function getAllLibraries(): Library[] {
   const data = librariesData as LibrariesData
   return [
-    ...data.network,
+    ...data.servers,
+    ...data.transport,
     ...data.data,
-    ...data.logs,
-    ...data.services,
-    ...data.other,
-  ]
+    ...data.security,
+    ...data.observability,
+    ...data.platform,
+    ...data.utilities,
+    ...data.integrations,
+  ].filter(lib => !lib.deprecated)
 }
 
 // Find a library by name (case-insensitive) or by URL slug
@@ -61,28 +67,46 @@ export function findLibraryByName(name: string): Library | null {
   ) || null
 }
 
-// Get libraries by category
+// Get libraries by category (excluding deprecated)
 export function getLibrariesByCategory(category: string): Library[] {
   const data = librariesData as LibrariesData
+  let libraries: Library[] = []
+  
   switch (category.toLowerCase()) {
-    case 'network':
-      return data.network
+    case 'servers':
+      libraries = data.servers
+      break
+    case 'transport':
+      libraries = data.transport
+      break
     case 'data':
-      return data.data
-    case 'logs':
-      return data.logs
-    case 'services':
-      return data.services
-    case 'other':
-      return data.other
+      libraries = data.data
+      break
+    case 'security':
+      libraries = data.security
+      break
+    case 'observability':
+      libraries = data.observability
+      break
+    case 'platform':
+      libraries = data.platform
+      break
+    case 'utilities':
+      libraries = data.utilities
+      break
+    case 'integrations':
+      libraries = data.integrations
+      break
     default:
       return []
   }
+  
+  return libraries.filter(lib => !lib.deprecated)
 }
 
 // Get all categories
 export function getCategories(): string[] {
-  return ['network', 'data', 'logs', 'services', 'other']
+  return ['servers', 'transport', 'data', 'security', 'observability', 'platform', 'utilities', 'integrations']
 }
 
 // Get library statistics
@@ -103,7 +127,7 @@ export function getLibraryStats() {
   }
 }
 
-// Search libraries by name or description
+// Search libraries by name or description (excluding deprecated)
 export function searchLibraries(query: string): Library[] {
   const libraries = getAllLibraries()
   const lowercaseQuery = query.toLowerCase()

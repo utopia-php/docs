@@ -7,7 +7,7 @@ export const Route = createFileRoute('/_docs/library/$libraryName')({
   validateSearch: (search) => search,
   loader: ({ params }) => {
     const library = findLibraryByName(params.libraryName)
-    if (!library) {
+    if (!library || library.deprecated) {
       throw notFound()
     }
 

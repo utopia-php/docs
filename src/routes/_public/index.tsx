@@ -8,7 +8,7 @@ import {
 } from '@/components/docs'
 import { Badge } from '@/components/ui/badge'
 import { LibraryCard } from '@/components/docs/library-card'
-import librariesData from '@/data/libraries.json'
+import { getLibrariesByCategory, getCategories } from '@/lib/libraries'
 
 export const Route = createFileRoute('/_public/')({
   component: Index,
@@ -178,40 +178,21 @@ $http->start($router);`}
           designed for microservice architectures. Use them independently or combine as needed.
         </p>
 
-        <h3 id="network">Network</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-          {librariesData.network.map((library) => (
-            <LibraryCard key={library.name} library={library} />
-          ))}
-        </div>
-
-        <h3 id="data">Data</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-          {librariesData.data.map((library) => (
-            <LibraryCard key={library.name} library={library} />
-          ))}
-        </div>
-
-        <h3 id="logs">Logs</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-          {librariesData.logs.map((library) => (
-            <LibraryCard key={library.name} library={library} />
-          ))}
-        </div>
-
-        <h3 id="services">Services</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-          {librariesData.services.map((library) => (
-            <LibraryCard key={library.name} library={library} />
-          ))}
-        </div>
-
-        <h3 id="other">Other</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-          {librariesData.other.map((library) => (
-            <LibraryCard key={library.name} library={library} />
-          ))}
-        </div>
+        {getCategories().map((category) => {
+          const libraries = getLibrariesByCategory(category)
+          if (libraries.length === 0) return null
+          
+          return (
+            <div key={category}>
+              <h3 id={category}>{category.charAt(0).toUpperCase() + category.slice(1)}</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                {libraries.map((library) => (
+                  <LibraryCard key={library.name} library={library} />
+                ))}
+              </div>
+            </div>
+          )
+        })}
 
       </DocsContent>
     </DocsLayout>
