@@ -158,34 +158,42 @@ code {
   }
 }
 
+pre {
+  background: #000000 !important;
+}
+
 /* Code block styling - Monokai theme with black background */
 pre[class*="language-"] {
-  background: oklch(0.141 0.005 285.823) !important;
+  background: #000000 !important;
   color: #f8f8f2 !important;
   border: none;
   border-radius: 0;
   margin: 0;
   padding: 1rem;
   overflow: auto;
+  opacity: 1 !important;
 }
 
 code[class*="language-"] {
   @apply text-sm font-mono;
-  background: oklch(0.141 0.005 285.823) !important;
+  background: #000000 !important;
   color: #f8f8f2 !important;
   padding: 0;
   border-radius: 0;
+  opacity: 1 !important;
 }
 
 /* Ensure consistent background for both light and dark modes */
 .dark pre[class*="language-"],
 .light pre[class*="language-"] {
-  background: oklch(0.141 0.005 285.823) !important;
+  background: #000000 !important;
+  opacity: 1 !important;
 }
 
 .dark code[class*="language-"],
 .light code[class*="language-"] {
-  background: oklch(0.141 0.005 285.823) !important;
+  background: #000000 !important;
+  opacity: 1 !important;
 }
 
 /* Line numbers styling */
@@ -319,13 +327,16 @@ pre.line-numbers > code {
 
 /* SyntaxHighlighter specific overrides */
 .react-syntax-highlighter {
-  background: oklch(0.141 0.005 285.823) !important;
+  background: #000000 !important;
+  opacity: 1 !important;
 }
 
 .react-syntax-highlighter pre {
-  background: oklch(0.141 0.005 285.823) !important;
+  background: #000000 !important;
+  opacity: 1 !important;
 }
 
 .react-syntax-highlighter code {
-  background: oklch(0.141 0.005 285.823) !important;
+  background: #000000 !important;
+  opacity: 1 !important;
 }
