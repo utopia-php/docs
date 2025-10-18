@@ -2,7 +2,7 @@ import * as React from 'react'
 import { cn } from '@/lib/utils'
 import { ChevronRight, ArrowLeft } from 'lucide-react'
 import { Link, useRouterState } from '@tanstack/react-router'
-import { getAllLibraries, getCategories, getLibrarySlug } from '@/lib/libraries'
+import { getAllLibraries, getCategories, getLibrarySlug, findLibraryByName, getLibraryConcepts } from '@/lib/libraries'
 
 export interface NavItem {
   title: string
@@ -34,6 +34,41 @@ function generateLibraryNavItems(): NavItem[] {
   })
 }
 
+// Generate library-specific navigation items
+function generateLibrarySpecificNavItems(libraryName: string): NavItem[] {
+  const library = findLibraryByName(libraryName)
+  if (!library) return defaultNavItems
+
+  const concepts = getLibraryConcepts(library)
+  
+  const navItems: NavItem[] = [
+    {
+      title: 'Overview',
+      href: `/docs/library/${getLibrarySlug(library.name)}`,
+    }
+  ]
+
+  // Add concepts if they exist
+  if (concepts.length > 0) {
+    navItems.push({
+      title: 'Concepts',
+      items: concepts.map(concept => ({
+        title: concept.title,
+        href: `/docs/library/${getLibrarySlug(library.name)}/concept/${concept.path}`,
+      })),
+    })
+  }
+
+  // Add external documentation link
+  navItems.push({
+    title: 'Full Documentation',
+    href: library.documentation,
+    external: true,
+  })
+
+  return navItems
+}
+
 // Default navigation structure
 export const defaultNavItems: NavItem[] = [
   {
@@ -44,12 +79,16 @@ export const defaultNavItems: NavItem[] = [
         href: '/',
       },
       {
-        title: 'Installation',
-        href: '/docs/installation',
+        title: 'Architecture',
+        href: '/docs/architecture',
       },
       {
-        title: 'Quick Start',
-        href: '/docs/quick-start',
+        title: 'Changelog',
+        href: '/docs/changelog',
+      },
+      {
+        title: 'Contributing',
+        href: '/docs/contributing',
       },
       {
         title: 'Vs. Laravel',
@@ -60,23 +99,6 @@ export const defaultNavItems: NavItem[] = [
   {
     title: 'Libraries',
     items: generateLibraryNavItems(),
-  },
-  {
-    title: 'Community',
-    items: [
-      {
-        title: 'Contributing',
-        href: '/docs/contributing',
-      },
-      {
-        title: 'Changelog',
-        href: '/docs/changelog',
-      },
-      {
-        title: 'Support',
-        href: '/docs/community/support',
-      },
-    ],
   },
   {
     title: 'Examples',
@@ -93,17 +115,17 @@ export function DocsNavigation({
   items = defaultNavItems,
 }: DocsNavigationProps) {
   const router = useRouterState()
-  const isLibraryPage = router.location.pathname.includes('/library/')
+  const isLibraryPage = router.location.pathname.includes('/docs/library/')
   
   // Extract library name from URL for library pages
   const getLibraryName = () => {
     if (!isLibraryPage) return null
     const pathParts = router.location.pathname.split('/')
-    // For concept pages, library name is the second-to-last part
+    // For concept pages, library name is the third-to-last part
     // For regular library pages, it's the last part
     const librarySlug = pathParts.includes('concept') 
-      ? pathParts[pathParts.length - 3] // /library/http/concept/dependency-injection -> http
-      : pathParts[pathParts.length - 1] // /library/http -> http
+      ? pathParts[pathParts.length - 3] // /docs/library/http/concept/dependency-injection -> http
+      : pathParts[pathParts.length - 1] // /docs/library/http -> http
     // Convert slug back to proper case (e.g., "dns" -> "DNS")
     return librarySlug.split('-').map(word => 
       word.charAt(0).toUpperCase() + word.slice(1)
@@ -111,6 +133,11 @@ export function DocsNavigation({
   }
   
   const libraryName = getLibraryName()
+  
+  // Use library-specific navigation if we're on a library page
+  const navigationItems = isLibraryPage && libraryName 
+    ? generateLibrarySpecificNavItems(libraryName)
+    : items
   
   return (
     <nav className="space-y-2">
@@ -136,7 +163,7 @@ export function DocsNavigation({
         </div>
       )}
       
-      {items.map((item, index) => (
+      {navigationItems.map((item, index) => (
         <NavSection key={index} item={item} />
       ))}
     </nav>

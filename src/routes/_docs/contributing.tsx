@@ -5,8 +5,7 @@ import {
   DocsCallout,
 } from '@/components/docs'
 import { Code, Bug, FileText, MessageCircle, Github, MessageSquare } from 'lucide-react'
-
-const DISCORD_LINK = 'https://discord.gg/kzU59Qr6QJ'
+import { DISCORD_LINK, GITHUB_LINK } from '@/lib/constants'
 
 export const Route = createFileRoute('/_docs/contributing')({
   component: Contributing,
@@ -204,7 +203,7 @@ function Contributing() {
       <p>
         Access our <a href="/" className="text-primary hover:underline">Library Documentation</a> for complete API references 
         and examples, check the <a href="/docs/changelog" className="text-primary hover:underline">Changelog</a> for latest updates, 
-        browse the <a href="https://github.com/utopia-php" className="text-primary hover:underline inline-flex items-center gap-1" target="_blank" rel="noopener noreferrer">
+        browse the <a href={GITHUB_LINK} className="text-primary hover:underline inline-flex items-center gap-1" target="_blank" rel="noopener noreferrer">
           <Github className="h-3 w-3" />
           GitHub Organization
         </a> 

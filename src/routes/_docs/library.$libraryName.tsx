@@ -1,6 +1,6 @@
 import { createFileRoute, notFound, Outlet, useLocation } from '@tanstack/react-router'
 import { DocsContent, LibraryPage } from '@/components/docs'
-import { findLibraryByName, getLibrarySlug } from '@/lib/libraries'
+import { findLibraryByName } from '@/lib/libraries'
 
 export const Route = createFileRoute('/_docs/library/$libraryName')({
   component: LibraryRoute,
@@ -24,16 +24,18 @@ function LibraryRoute() {
   
   return (
     <DocsContent>
-      <LibraryPage 
-        library={library} 
-        showBreadcrumbs={true}
-        breadcrumbItems={[
-          { label: 'Home', href: '/' },
-          { label: 'Docs', href: '/docs' },
-          { label: 'Libraries', href: '/docs#libraries' },
-          { label: library.name, current: !isConceptPage }
-        ]}
-      />
+      {!isConceptPage && (
+        <LibraryPage 
+          library={library} 
+          showBreadcrumbs={true}
+          breadcrumbItems={[
+            { label: 'Home', href: '/' },
+            { label: 'Docs', href: '/docs' },
+            { label: 'Libraries', href: '/docs#libraries' },
+            { label: library.name, current: true }
+          ]}
+        />
+      )}
       <Outlet />
     </DocsContent>
   )
