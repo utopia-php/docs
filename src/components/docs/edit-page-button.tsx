@@ -15,7 +15,6 @@ export function EditPageButton({ className }: EditPageButtonProps) {
     setIsClient(true)
     const currentPath = getCurrentRoutePath()
     const url = getGitHubEditUrl(currentPath)
-    console.log('EditPageButton - currentPath:', currentPath, 'editUrl:', url)
     setEditUrl(url)
   }, [])
 

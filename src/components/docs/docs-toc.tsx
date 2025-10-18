@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useLocation } from '@tanstack/react-router'
 import { cn } from '@/lib/utils'
 
 export interface TocItem {
@@ -15,33 +16,42 @@ interface DocsTocProps {
 export function DocsToc({ items, maxLevel = 4 }: DocsTocProps) {
   const [activeId, setActiveId] = React.useState<string>('')
   const [tocItems, setTocItems] = React.useState<TocItem[]>(items || [])
+  const location = useLocation()
 
   React.useEffect(() => {
+    // Reset active ID when page changes
+    setActiveId('')
+    
     // Auto-generate TOC from page headings if not provided
     if (!items) {
-      const selector = Array.from(
-        { length: maxLevel - 1 },
-        (_, i) => `.docs-content h${i + 2}`,
-      ).join(', ')
+      // Add a small delay to ensure DOM is updated after navigation
+      const timeoutId = setTimeout(() => {
+        const selector = Array.from(
+          { length: maxLevel - 1 },
+          (_, i) => `.docs-content h${i + 2}`,
+        ).join(', ')
 
-      const headings = document.querySelectorAll(selector)
-      const generatedItems: TocItem[] = Array.from(headings).map((heading) => {
-        const id =
-          heading.id ||
-          heading.textContent?.toLowerCase().replace(/\s+/g, '-') ||
-          ''
-        if (!heading.id) {
-          heading.id = id
-        }
-        return {
-          id,
-          text: heading.textContent || '',
-          level: parseInt(heading.tagName.charAt(1)),
-        }
-      })
-      setTocItems(generatedItems)
+        const headings = document.querySelectorAll(selector)
+        const generatedItems: TocItem[] = Array.from(headings).map((heading) => {
+          const id =
+            heading.id ||
+            heading.textContent?.toLowerCase().replace(/\s+/g, '-') ||
+            ''
+          if (!heading.id) {
+            heading.id = id
+          }
+          return {
+            id,
+            text: heading.textContent || '',
+            level: parseInt(heading.tagName.charAt(1)),
+          }
+        })
+        setTocItems(generatedItems)
+      }, 100)
+
+      return () => clearTimeout(timeoutId)
     }
-  }, [items, maxLevel])
+  }, [items, maxLevel, location.pathname])
 
   React.useEffect(() => {
     // Scroll spy functionality
