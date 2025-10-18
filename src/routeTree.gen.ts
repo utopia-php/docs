@@ -21,6 +21,7 @@ import { Route as DocsExampleCompsRouteImport } from './routes/_docs/example-com
 import { Route as DocsContributingRouteImport } from './routes/_docs/contributing'
 import { Route as DocsComparisonRouteImport } from './routes/_docs/comparison'
 import { Route as DocsChangelogRouteImport } from './routes/_docs/changelog'
+import { Route as DocsArchitectureRouteImport } from './routes/_docs/architecture'
 import { Route as AuthSignUpRouteImport } from './routes/_auth/sign-up'
 import { Route as AuthSignOutRouteImport } from './routes/_auth/sign-out'
 import { Route as AuthSignInRouteImport } from './routes/_auth/sign-in'
@@ -86,6 +87,11 @@ const DocsChangelogRoute = DocsChangelogRouteImport.update({
   path: '/changelog',
   getParentRoute: () => DocsRoute,
 } as any)
+const DocsArchitectureRoute = DocsArchitectureRouteImport.update({
+  id: '/architecture',
+  path: '/architecture',
+  getParentRoute: () => DocsRoute,
+} as any)
 const AuthSignUpRoute = AuthSignUpRouteImport.update({
   id: '/sign-up',
   path: '/sign-up',
@@ -129,6 +135,7 @@ export interface FileRoutesByFullPath {
   '/sign-in': typeof AuthSignInRoute
   '/sign-out': typeof AuthSignOutRoute
   '/sign-up': typeof AuthSignUpRoute
+  '/architecture': typeof DocsArchitectureRoute
   '/changelog': typeof DocsChangelogRoute
   '/comparison': typeof DocsComparisonRoute
   '/contributing': typeof DocsContributingRoute
@@ -146,6 +153,7 @@ export interface FileRoutesByTo {
   '/sign-in': typeof AuthSignInRoute
   '/sign-out': typeof AuthSignOutRoute
   '/sign-up': typeof AuthSignUpRoute
+  '/architecture': typeof DocsArchitectureRoute
   '/changelog': typeof DocsChangelogRoute
   '/comparison': typeof DocsComparisonRoute
   '/contributing': typeof DocsContributingRoute
@@ -168,6 +176,7 @@ export interface FileRoutesById {
   '/_auth/sign-in': typeof AuthSignInRoute
   '/_auth/sign-out': typeof AuthSignOutRoute
   '/_auth/sign-up': typeof AuthSignUpRoute
+  '/_docs/architecture': typeof DocsArchitectureRoute
   '/_docs/changelog': typeof DocsChangelogRoute
   '/_docs/comparison': typeof DocsComparisonRoute
   '/_docs/contributing': typeof DocsContributingRoute
@@ -187,6 +196,7 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/sign-out'
     | '/sign-up'
+    | '/architecture'
     | '/changelog'
     | '/comparison'
     | '/contributing'
@@ -204,6 +214,7 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/sign-out'
     | '/sign-up'
+    | '/architecture'
     | '/changelog'
     | '/comparison'
     | '/contributing'
@@ -225,6 +236,7 @@ export interface FileRouteTypes {
     | '/_auth/sign-in'
     | '/_auth/sign-out'
     | '/_auth/sign-up'
+    | '/_docs/architecture'
     | '/_docs/changelog'
     | '/_docs/comparison'
     | '/_docs/contributing'
@@ -332,6 +344,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DocsChangelogRouteImport
       parentRoute: typeof DocsRoute
     }
+    '/_docs/architecture': {
+      id: '/_docs/architecture'
+      path: '/architecture'
+      fullPath: '/architecture'
+      preLoaderRoute: typeof DocsArchitectureRouteImport
+      parentRoute: typeof DocsRoute
+    }
     '/_auth/sign-up': {
       id: '/_auth/sign-up'
       path: '/sign-up'
@@ -414,6 +433,7 @@ const DocsLibraryLibraryNameRouteWithChildren =
   )
 
 interface DocsRouteChildren {
+  DocsArchitectureRoute: typeof DocsArchitectureRoute
   DocsChangelogRoute: typeof DocsChangelogRoute
   DocsComparisonRoute: typeof DocsComparisonRoute
   DocsContributingRoute: typeof DocsContributingRoute
@@ -422,6 +442,7 @@ interface DocsRouteChildren {
 }
 
 const DocsRouteChildren: DocsRouteChildren = {
+  DocsArchitectureRoute: DocsArchitectureRoute,
   DocsChangelogRoute: DocsChangelogRoute,
   DocsComparisonRoute: DocsComparisonRoute,
   DocsContributingRoute: DocsContributingRoute,
