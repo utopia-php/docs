@@ -17,6 +17,7 @@ function Architecture() {
         <Breadcrumbs 
           items={[
             { label: 'Home', href: '/' },
+            { label: 'Docs', href: '/docs' },
             { label: 'Architecture', current: true }
           ]} 
         />

@@ -3,6 +3,7 @@ import { DocsThemeToggle } from './docs-theme-toggle'
 import { GitHubIcon } from '@/components/ui/github-icon'
 import { DiscordIcon } from '@/components/ui/discord-icon'
 import { Button } from '@/components/ui/button'
+import { EmailSubscriptionPopover } from '@/components/email-subscription-popover'
 import type { NavItem } from './docs-navigation'
 import librariesData from '@/data/libraries.json'
 import { DISCORD_LINK, GITHUB_LINK } from '@/lib/constants'
@@ -86,15 +87,11 @@ export function SiteHeader({ title = 'Utopia.php', navItems }: SiteHeaderProps) 
             <span className="font-medium">{getTotalStars().toLocaleString()}</span>
           </a>
           <DocsThemeToggle />
-          <Button asChild size="sm" className="hidden sm:inline-flex">
-            <a 
-              href="https://github.com/utopia-php/utopia-php" 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
+          <EmailSubscriptionPopover>
+            <Button size="sm" className="hidden sm:inline-flex">
               Get updates
-            </a>
-          </Button>
+            </Button>
+          </EmailSubscriptionPopover>
         </div>
       </div>
     </header>
