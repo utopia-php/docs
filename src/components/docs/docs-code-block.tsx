@@ -44,8 +44,9 @@ export function DocsCodeBlock({
         </div>
       )}
       <div className="relative group">
-        <pre className="overflow-x-auto p-4 font-mono text-sm m-0 border-none">
-          <code className="relative block border-none">
+        <div className="overflow-x-auto">
+          <pre className="p-4 font-mono text-sm m-0 border-none whitespace-pre min-w-fit">
+            <code className="relative block border-none">
             {showLineNumbers ? (
               <div className="flex">
                 <div className="mr-4 select-none text-muted-foreground">
@@ -60,8 +61,9 @@ export function DocsCodeBlock({
             ) : (
               <div className="leading-6">{children}</div>
             )}
-          </code>
-        </pre>
+            </code>
+          </pre>
+        </div>
         <Button
           size="icon"
           variant="ghost"

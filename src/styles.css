@@ -160,7 +160,7 @@ code {
 
 /* Code block styling - Monokai theme with black background */
 pre[class*="language-"] {
-  background: red !important;
+  background: oklch(0.141 0.005 285.823) !important;
   color: #f8f8f2 !important;
   border: none;
   border-radius: 0;
@@ -171,21 +171,21 @@ pre[class*="language-"] {
 
 code[class*="language-"] {
   @apply text-sm font-mono;
-  background: yellow !important;
+  background: oklch(0.141 0.005 285.823) !important;
   color: #f8f8f2 !important;
   padding: 0;
   border-radius: 0;
 }
 
-/* Ensure black background for both light and dark modes */
+/* Ensure consistent background for both light and dark modes */
 .dark pre[class*="language-"],
 .light pre[class*="language-"] {
-  background: green !important;
+  background: oklch(0.141 0.005 285.823) !important;
 }
 
 .dark code[class*="language-"],
 .light code[class*="language-"] {
-  background: blue !important;
+  background: oklch(0.141 0.005 285.823) !important;
 }
 
 /* Line numbers styling */
@@ -315,4 +315,17 @@ pre.line-numbers > code {
 .token.shebang {
   color: #75715e;
   font-style: italic;
+}
+
+/* SyntaxHighlighter specific overrides */
+.react-syntax-highlighter {
+  background: oklch(0.141 0.005 285.823) !important;
+}
+
+.react-syntax-highlighter pre {
+  background: oklch(0.141 0.005 285.823) !important;
+}
+
+.react-syntax-highlighter code {
+  background: oklch(0.141 0.005 285.823) !important;
 }
