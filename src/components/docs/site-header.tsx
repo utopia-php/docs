@@ -45,8 +45,8 @@ export function SiteHeader({
           </a>
         </div>
 
-        {/* Center Navigation Links - Absolutely positioned */}
-        <nav className="hidden md:flex items-center gap-6 absolute left-1/2 transform -translate-x-1/2">
+        {/* Center Navigation Links - Hidden on mobile, shown on desktop */}
+        <nav className="hidden lg:flex items-center gap-6 absolute left-1/2 transform -translate-x-1/2">
           <a
             href="/"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
@@ -73,7 +73,8 @@ export function SiteHeader({
           </a>
         </nav>
 
-        <div className="flex items-center gap-4">
+        {/* Right side buttons - Hidden on mobile, shown on desktop */}
+        <div className="hidden lg:flex items-center gap-4">
           <a
             href={DISCORD_LINK}
             target="_blank"
@@ -96,10 +97,15 @@ export function SiteHeader({
           </a>
           <DocsThemeToggle />
           <EmailSubscriptionPopover>
-            <Button size="sm" className="hidden sm:inline-flex">
+            <Button size="sm">
               Get updates
             </Button>
           </EmailSubscriptionPopover>
+        </div>
+
+        {/* Mobile-only theme toggle */}
+        <div className="lg:hidden">
+          <DocsThemeToggle />
         </div>
       </div>
     </header>

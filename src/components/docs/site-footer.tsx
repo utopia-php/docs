@@ -1,7 +1,7 @@
 export function SiteFooter() {
   return (
-    <footer className="border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 mt-8">
-      <div className="flex h-12 w-full items-center justify-center px-4 md:px-6 lg:px-8">
+    <footer className="border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 mt-8 py-6">
+      <div className="flex min-h-12 w-full items-center justify-center px-4 md:px-6 lg:px-8">
         <div
           className="flex w-full items-center justify-center"
           style={{ maxWidth: '1400px' }}
