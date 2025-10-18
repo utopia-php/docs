@@ -1,4 +1,4 @@
-The Utopia HTTP request lifecycle is a well-defined process that handles every incoming request through multiple stages. Understanding this flow is crucial for implementing features like logging, authentication, error handling, and performance monitoring.
+1xThe Utopia HTTP request lifecycle is a well-defined process that handles every incoming request through multiple stages. Understanding this flow is crucial for implementing features like logging, authentication, error handling, and performance monitoring.
 
 The lifecycle consists of: server initialization, request parsing, route matching, parameter validation, hook execution, action execution, and response generation. Each stage provides opportunities for customization and monitoring.
 
@@ -177,4 +177,4 @@ $http->start();
 
 ## Additional Information
 
-The lifecycle provides clear separation of concerns, allowing you to implement cross-cutting functionality at the appropriate stage. Init hooks run before route processing, shutdown hooks run after response generation, and error hooks handle exceptions throughout the process.
+The lifecycle provides clear separation of concerns, allowing you to implement cross-cutting functionality at the appropriate stage. Init hooks run before route processing, shutdown hooks run after response generation, and error hooks handle exceptions throughout the process.1x

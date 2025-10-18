@@ -1,10 +1,12 @@
 import librariesData from '@/data/libraries.json'
+import { ContentBlock } from './concept-loader'
 
 export interface Concept {
   title: string
   path: string
   description: string
   content: string
+  contentBlocks?: ContentBlock[]
   codeExample?: {
     language: string
     title: string
@@ -202,9 +204,14 @@ export function findConceptByPath(
     return null
   }
 
-  return (
-    library.concepts.find((concept) => concept.path === conceptPath) || null
-  )
+  const concept = library.concepts.find((concept) => concept.path === conceptPath)
+  
+  if (!concept) {
+    return null
+  }
+  
+  // Return concept without loading content - content will be loaded in the route
+  return concept
 }
 
 // Get all concepts for a library

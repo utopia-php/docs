@@ -30,7 +30,24 @@ export function ConceptPage({ library, concept }: ConceptPageProps) {
 
       {/* Concept Content */}
       <div className="prose prose-neutral dark:prose-invert max-w-none">
-        <div dangerouslySetInnerHTML={{ __html: concept.content || '' }} />
+        {concept.contentBlocks ? (
+          concept.contentBlocks.map((block, index) => (
+            <div key={index}>
+              {block.type === 'text' ? (
+                <div dangerouslySetInnerHTML={{ __html: block.content }} />
+              ) : (
+                <CodeExample
+                  language={block.language || 'text'}
+                  title={block.title || 'Code Example'}
+                  filename={block.title || 'example'}
+                  code={block.content}
+                />
+              )}
+            </div>
+          ))
+        ) : (
+          <div dangerouslySetInnerHTML={{ __html: concept.content || '' }} />
+        )}
       </div>
 
       {/* Code Example */}
