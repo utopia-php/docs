@@ -1,0 +1,389 @@
+# Utopia PHP Documentation Content Guidelines
+
+## Overview
+This is a documentation website for Utopia PHP, a collection of micro-libraries designed for building maintainable, scalable microservice architectures. The content is targeted at senior PHP developers who value performance, maintainability, and architectural flexibility.
+
+## Content Style Guidelines
+
+### Writing Tone and Voice
+- **Professional and technical**: Write for experienced PHP developers
+- **Direct and concise**: Avoid unnecessary fluff or marketing language
+- **Educational**: Focus on practical knowledge and real-world applications
+- **Confident**: Present information with authority based on technical merit
+- **Respectful**: Acknowledge the reader's expertise level
+
+### Title and Heading Conventions
+- **Use sentence case for all titles and headings** (not title case)
+- Examples:
+  - ✅ "Getting started with HTTP routing"
+  - ✅ "Understanding dependency injection"
+  - ❌ "Getting Started With HTTP Routing"
+  - ❌ "Understanding Dependency Injection"
+
+### Content Structure
+- **No conclusion sections**: End content naturally without formal conclusions
+- **Use normal dashes** (-) not em dashes (—) or en dashes (–)
+- **Start with overview**: Begin each section with a brief introduction
+- **Progress from simple to complex**: Build knowledge gradually
+- **Use practical examples**: Show real-world usage patterns
+
+### Technical Writing Standards
+- **Be specific**: Use exact code examples, not pseudocode
+- **Include context**: Explain why something is useful, not just how
+- **Reference real implementations**: Mention actual Utopia libraries and their purposes
+- **Use consistent terminology**: Stick to established PHP and Utopia terminology
+- **Include performance considerations**: Mention when performance matters
+
+### Code Examples
+- **Use complete, runnable examples**: Include all necessary imports and setup
+- **Show realistic scenarios**: Use examples that developers would actually encounter
+- **Include error handling**: Show proper error handling patterns
+- **Use descriptive variable names**: Make code self-documenting
+- **Add comments for complex logic**: Explain non-obvious code sections
+
+#### Code Example Format
+Use the `CodeExample` component for all code blocks:
+
+```tsx
+<CodeExample
+  title="Descriptive title"
+  description="Brief explanation of what this example demonstrates"
+  language="php"
+  filename="example.php"
+  code={`<?php
+// Your complete, runnable code here
+use Utopia\Http\Http;
+use Utopia\Http\Request;
+use Utopia\Http\Response;
+
+Http::get('/users')
+    ->inject('request')
+    ->inject('response')
+    ->action(
+        function(Request $request, Response $response) {
+            $response->json(['users' => []]);
+        }
+    );`}
+/>
+```
+
+#### Inline Code Format
+For inline code within text, use the `code` className:
+
+```tsx
+<code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+  composer install
+</code>
+```
+
+#### Code Example Guidelines
+- **Always include complete examples**: Show full, working code that can be copied and run
+- **Use realistic file names**: Choose descriptive filenames that match the example content
+- **Include proper imports**: Show all necessary use statements and dependencies
+- **Add meaningful comments**: Explain complex logic or important concepts
+- **Show error handling**: Include try-catch blocks or validation where appropriate
+- **Use consistent formatting**: Follow PSR-12 standards for PHP code
+- **Test all examples**: Ensure code actually works before including it
+
+### Content Organization
+- **Use clear section headings**: Structure content with h2, h3, h4 hierarchy
+- **Include table of contents**: Use proper heading IDs for navigation
+- **Group related concepts**: Organize content logically
+- **Cross-reference appropriately**: Link to related sections when helpful
+- **Keep paragraphs focused**: One main idea per paragraph
+
+### Content Naming Conventions
+Consistent naming is crucial for content clarity and maintainability. Follow these principles for all content elements:
+
+#### General Principles
+- **Prefer descriptive names**: Use clear, self-explanatory titles and headings
+- **Single responsibility**: Each section should focus on one main concept
+- **Context-aware**: Names should make sense within the documentation structure
+- **Avoid duplication**: Don't repeat context that's already clear from the page or section
+- **Use domain language**: Reflect the technical domain and developer terminology
+
+#### Page and Section Titles
+- **Use sentence case**: All titles and headings use sentence case, not title case
+- **Be specific**: Avoid vague terms like "Overview" or "Introduction" unless necessary
+- **Include action words**: Use verbs when describing processes or procedures
+- **Keep them concise**: Aim for 3-6 words maximum
+
+<div className="bg-muted rounded-lg p-4 my-4">
+  <h4 className="font-semibold mb-2">Good examples:</h4>
+  <ul className="list-disc pl-6 space-y-1 text-sm">
+    <li><code className="relative rounded bg-background px-[0.3rem] py-[0.2rem] font-mono text-sm">Getting started with HTTP routing</code> - Clear, action-oriented</li>
+    <li><code className="relative rounded bg-background px-[0.3rem] py-[0.2rem] font-mono text-sm">Understanding dependency injection</code> - Descriptive, educational</li>
+    <li><code className="relative rounded bg-background px-[0.3rem] py-[0.2rem] font-mono text-sm">Building microservices with Utopia</code> - Specific, practical</li>
+    <li><code className="relative rounded bg-background px-[0.3rem] py-[0.2rem] font-mono text-sm">Performance optimization techniques</code> - Clear purpose</li>
+  </ul>
+</div>
+
+<div className="bg-destructive/10 border border-destructive/20 rounded-lg p-4 my-4">
+  <h4 className="font-semibold mb-2 text-destructive">Avoid:</h4>
+  <ul className="list-disc pl-6 space-y-1 text-sm">
+    <li><code className="relative rounded bg-background px-[0.3rem] py-[0.2rem] font-mono text-sm">Getting Started With HTTP Routing</code> - Title case</li>
+    <li><code className="relative rounded bg-background px-[0.3rem] py-[0.2rem] font-mono text-sm">Overview</code> - Too vague</li>
+    <li><code className="relative rounded bg-background px-[0.3rem] py-[0.2rem] font-mono text-sm">Utopia HTTP Library Documentation</code> - Redundant context</li>
+    <li><code className="relative rounded bg-background px-[0.3rem] py-[0.2rem] font-mono text-sm">How to Use the Utopia HTTP Library for Building APIs</code> - Too verbose</li>
+  </ul>
+</div>
+
+#### Heading Structure
+- **Use logical hierarchy**: h1 for page titles, h2 for main sections, h3 for subsections
+- **Include descriptive IDs**: Use kebab-case for heading IDs (e.g., `id="getting-started"`)
+- **Avoid deep nesting**: Limit to h4 maximum for readability
+- **Be consistent**: Use similar patterns across related pages
+
+#### Code Example Titles
+- **Be descriptive**: Explain what the example demonstrates
+- **Include context**: Mention the library or feature being shown
+- **Use action words**: Start with verbs when appropriate
+
+<div className="bg-muted rounded-lg p-4 my-4">
+  <h4 className="font-semibold mb-2">Good examples:</h4>
+  <ul className="list-disc pl-6 space-y-1 text-sm">
+    <li><code className="relative rounded bg-background px-[0.3rem] py-[0.2rem] font-mono text-sm">Creating a simple GET route</code> - Clear action</li>
+    <li><code className="relative rounded bg-background px-[0.3rem] py-[0.2rem] font-mono text-sm">Complete microservice with Utopia.php</code> - Descriptive context</li>
+    <li><code className="relative rounded bg-background px-[0.3rem] py-[0.2rem] font-mono text-sm">Database connection with error handling</code> - Specific purpose</li>
+  </ul>
+</div>
+
+#### File and Path Naming
+- **Use kebab-case**: For all file names and URL paths
+- **Be descriptive**: Choose names that clearly indicate content
+- **Avoid abbreviations**: Use full words for better clarity
+- **Keep them short**: Aim for 2-4 words maximum
+
+<div className="bg-muted rounded-lg p-4 my-4">
+  <h4 className="font-semibold mb-2">Good examples:</h4>
+  <ul className="list-disc pl-6 space-y-1 text-sm">
+    <li><code className="relative rounded bg-background px-[0.3rem] py-[0.2rem] font-mono text-sm">getting-started.tsx</code> - Clear, descriptive</li>
+    <li><code className="relative rounded bg-background px-[0.3rem] py-[0.2rem] font-mono text-sm">http-routing.tsx</code> - Specific topic</li>
+    <li><code className="relative rounded bg-background px-[0.3rem] py-[0.2rem] font-mono text-sm">dependency-injection.tsx</code> - Technical concept</li>
+  </ul>
+</div>
+
+#### Callout and Alert Titles
+- **Be concise**: Use short, punchy titles that grab attention
+- **Use action words**: Start with verbs when appropriate
+- **Match the tone**: Align with the callout type (info, warning, danger)
+
+<div className="bg-muted rounded-lg p-4 my-4">
+  <h4 className="font-semibold mb-2">Good examples:</h4>
+  <ul className="list-disc pl-6 space-y-1 text-sm">
+    <li><code className="relative rounded bg-background px-[0.3rem] py-[0.2rem] font-mono text-sm">Quick start</code> - Concise, action-oriented</li>
+    <li><code className="relative rounded bg-background px-[0.3rem] py-[0.2rem] font-mono text-sm">Important note</code> - Clear importance</li>
+    <li><code className="relative rounded bg-background px-[0.3rem] py-[0.2rem] font-mono text-sm">Real-world example</code> - Descriptive context</li>
+  </ul>
+</div>
+
+#### Content Naming Checklist
+- [ ] Uses sentence case for all titles and headings
+- [ ] Avoids vague or generic terms
+- [ ] Includes descriptive context when needed
+- [ ] Keeps names concise and clear
+- [ ] Uses consistent patterns across similar content
+- [ ] Avoids duplication of context
+- [ ] Uses domain-appropriate terminology
+- [ ] Includes action words when describing processes
+
+### Component Usage Patterns
+Follow these patterns for consistent component usage across all documentation:
+
+#### DocsContent Structure
+Always wrap page content with `DocsContent` and include breadcrumbs:
+
+```tsx
+<DocsContent>
+  <Breadcrumbs 
+    items={[
+      { label: 'Home', href: '/' },
+      { label: 'Docs', href: '/docs' },
+      { label: 'Page Title', current: true }
+    ]} 
+  />
+  
+  <div className="space-y-1 mb-4">
+    <h1>Page Title</h1>
+    <p className="text-sm text-muted-foreground">
+      Brief description of the page content
+    </p>
+  </div>
+  
+  {/* Your content here */}
+</DocsContent>
+```
+
+#### Callout Usage
+Use appropriate callout types for different purposes:
+
+```tsx
+// Information callouts
+<DocsCallout type="info" title="Quick start">
+  <p>Helpful information for getting started</p>
+</DocsCallout>
+
+// Utopia-specific callouts
+<DocsCalloutUtopia title="Real-world example">
+  <p>Production examples and case studies</p>
+</DocsCalloutUtopia>
+
+// Warning callouts
+<DocsCallout type="warning" title="Important">
+  <p>Critical information or warnings</p>
+</DocsCallout>
+```
+
+#### Code Example Patterns
+Use the `CodeExample` component for all code blocks:
+
+```tsx
+<CodeExample
+  title="Descriptive title"
+  description="What this example demonstrates"
+  language="php"
+  filename="realistic-filename.php"
+  code={`<?php
+// Complete, runnable code here
+use Utopia\Http\Http;
+
+Http::get('/example')
+    ->action(function() {
+        return 'Hello World';
+    });`}
+/>
+```
+
+#### Grid Layouts
+Use grid layouts for feature comparisons or multiple related items:
+
+```tsx
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+  <div className="border rounded-lg p-6">
+    <h3 className="font-semibold mb-3">Feature One</h3>
+    <p className="text-sm text-muted-foreground">Description</p>
+  </div>
+  <div className="border rounded-lg p-6">
+    <h3 className="font-semibold mb-3">Feature Two</h3>
+    <p className="text-sm text-muted-foreground">Description</p>
+  </div>
+</div>
+```
+
+#### Badge Usage
+Use badges for categories, status, or tags:
+
+```tsx
+<Badge className="text-white hover:opacity-90" style={{ backgroundColor: '#6474ce' }}>
+  Utopia.php
+</Badge>
+<Badge variant="outline" className="text-xs">Micro-libraries</Badge>
+```
+
+#### Icon Integration
+Include relevant icons for visual clarity:
+
+```tsx
+<div className="flex items-center gap-2 mb-3">
+  <Code className="h-4 w-4 text-primary" />
+  <h3 className="font-semibold">Code contributions</h3>
+</div>
+```
+
+### Language and Grammar
+- **Use active voice**: "The library handles routing" not "Routing is handled by the library"
+- **Avoid jargon without explanation**: Define technical terms on first use
+- **Use present tense**: "The library provides" not "The library will provide"
+- **Be consistent with terminology**: Use the same terms throughout
+- **Use contractions sparingly**: Maintain professional tone
+
+### Audience Considerations
+- **Target senior developers**: Assume familiarity with PHP, OOP, and web development
+- **Focus on architecture**: Emphasize design patterns and architectural decisions
+- **Explain trade-offs**: Discuss when to use vs. when not to use specific approaches
+- **Include best practices**: Share proven patterns and recommendations
+- **Address common concerns**: Anticipate and answer likely questions
+
+### Utopia-Specific Guidelines
+- **Emphasize micro-libraries philosophy**: Explain the benefits of focused, independent libraries
+- **Highlight minimal dependencies**: Mention that libraries only require PHP extensions
+- **Show composability**: Demonstrate how libraries work together
+- **Reference real-world usage**: Mention Appwrite as a production example
+- **Explain performance benefits**: When relevant, discuss performance advantages
+
+### Content Types and Formats
+- **Concept pages**: Explain how things work with practical examples
+- **API documentation**: Reference methods, parameters, and return values
+- **Architecture guides**: Explain design decisions and patterns
+- **Comparison content**: Show how Utopia compares to other solutions objectively
+- **Tutorial content**: Step-by-step guides for common tasks
+
+### Quality Standards
+- **Accuracy first**: All technical information must be correct and up-to-date
+- **Test all examples**: Ensure code examples work as written
+- **Review for clarity**: Content should be clear on first reading
+- **Maintain consistency**: Follow established patterns and conventions
+- **Update regularly**: Keep content current with library changes
+
+### Forbidden Practices
+- **No marketing fluff**: Avoid promotional language or excessive enthusiasm
+- **No conclusion sections**: End content naturally without formal wrap-ups
+- **No title case**: Use sentence case for all headings
+- **No em dashes**: Use normal dashes (-) only
+- **No assumptions about prior knowledge**: Don't assume familiarity with Utopia specifically
+- **No incomplete examples**: All code should be complete and runnable
+
+### Content Review Checklist
+- [ ] All headings use sentence case
+- [ ] No conclusion sections present
+- [ ] Normal dashes used throughout
+- [ ] Professional tone maintained
+- [ ] Code examples are complete and tested
+- [ ] Content targets senior PHP developers
+- [ ] Technical accuracy verified
+- [ ] Clear structure and organization
+- [ ] Practical examples included
+- [ ] Performance considerations mentioned where relevant
+
+## Example Content Structure
+
+```markdown
+# Getting started with HTTP routing
+
+Utopia HTTP provides a lightweight, high-performance routing system designed for microservices and APIs. The library focuses on essential HTTP functionality without the complexity of larger frameworks.
+
+## Basic routing concepts
+
+Routes in Utopia HTTP are defined using a fluent API that makes it easy to create RESTful endpoints. Each route can handle multiple HTTP methods and includes built-in parameter validation.
+
+### Creating your first route
+
+Here's how to define a simple GET route:
+
+```php
+<?php
+
+use Utopia\Http\Http;
+use Utopia\Http\Request;
+use Utopia\Http\Response;
+
+Http::get('/users')
+    ->inject('request')
+    ->inject('response')
+    ->action(
+        function(Request $request, Response $response) {
+            $response->json(['users' => []]);
+        }
+    );
+```
+
+This example shows the basic pattern: define the route, inject dependencies, and provide an action function.
+
+## Advanced routing features
+
+The library supports more complex routing patterns including parameter validation, middleware, and route groups. These features help you build robust APIs while maintaining clean, maintainable code.
+
+[Continue with more sections...]
+```
+
+Remember: Write for senior PHP developers who value clean architecture, performance, and maintainability. Focus on practical knowledge that helps them build better software.
