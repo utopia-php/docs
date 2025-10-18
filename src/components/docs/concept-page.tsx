@@ -22,7 +22,7 @@ export function ConceptPage({ library, concept }: ConceptPageProps) {
           },
           { label: concept.title, current: true },
         ]}
-        showCopyPage={false}
+        showCopyPage={true}
       />
 
       <h1>{concept.title}</h1>

@@ -23,7 +23,7 @@ export function LibraryPage({
     <div className="space-y-1 mb-4">
       {/* Breadcrumbs */}
       {showBreadcrumbs && breadcrumbItems && (
-        <Breadcrumbs items={breadcrumbItems} showCopyPage={false} />
+        <Breadcrumbs items={breadcrumbItems} showCopyPage={true} />
       )}
 
       <h1>Utopia {library.name}</h1>

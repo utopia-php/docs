@@ -15,6 +15,7 @@ export function EditPageButton({ className }: EditPageButtonProps) {
     setIsClient(true)
     const currentPath = getCurrentRoutePath()
     const url = getGitHubEditUrl(currentPath)
+    console.log('EditPageButton - currentPath:', currentPath, 'editUrl:', url)
     setEditUrl(url)
   }, [])
 
@@ -31,8 +32,8 @@ export function EditPageButton({ className }: EditPageButtonProps) {
     }
   }
 
-  // Don't render on server side or if we can't determine the edit URL
-  if (!isClient || !editUrl) {
+  // Don't render on server side
+  if (!isClient) {
     return null
   }
 

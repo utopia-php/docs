@@ -24,15 +24,22 @@ export function getGitHubFilePath(routePath: string): string | null {
     'sign-out': 'src/routes/_auth/sign-out.tsx',
     'example-protected-route':
       'src/routes/_protected/example-protected-route.tsx',
+    // Docs routes
+    docs: 'src/routes/_docs.tsx',
+    'docs/architecture': 'src/routes/_docs/architecture.tsx',
+    'docs/changelog': 'src/routes/_docs/changelog.tsx',
+    'docs/comparison': 'src/routes/_docs/comparison.tsx',
+    'docs/contributing': 'src/routes/_docs/contributing.tsx',
+    'docs/example-comps': 'src/routes/_docs/example-comps.tsx',
   }
 
   // Handle library routes
-  if (cleanPath.startsWith('library/')) {
+  if (cleanPath.startsWith('docs/library/')) {
     // Check if it's a concept route
     if (cleanPath.includes('/concept/')) {
-      return `src/routes/_public/library.$libraryName.concept.$conceptPath.tsx`
+      return `src/routes/_docs/library.$libraryName.concept.$conceptPath.tsx`
     }
-    return `src/routes/_public/library.$libraryName.tsx`
+    return `src/routes/_docs/library.$libraryName.tsx`
   }
 
   // Return mapped file path or null if not found
