@@ -3,6 +3,7 @@ import { DocsNavigation } from './docs-navigation'
 import { DocsToc } from './docs-toc'
 import { SiteHeader } from './site-header'
 import { SiteFooter } from './site-footer'
+import { BackToTopButton } from './back-to-top-button'
 import type { NavItem } from './docs-navigation'
 
 interface DocsLayoutProps {
@@ -51,6 +52,7 @@ export function DocsLayout({
       </div>
 
       <SiteFooter />
+      <BackToTopButton />
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import { SiteHeader } from './site-header'
 import { SiteFooter } from './site-footer'
+import { BackToTopButton } from './back-to-top-button'
 
 interface BlogLayoutProps {
   children: React.ReactNode
@@ -21,6 +22,7 @@ export function BlogLayout({
       </main>
 
       <SiteFooter />
+      <BackToTopButton />
     </div>
   )
 }
