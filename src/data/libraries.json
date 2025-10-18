@@ -19,92 +19,36 @@
           "title": "Routes",
           "path": "routes",
           "description": "Learn how to define routes and actions in Utopia HTTP",
-          "content": "<p>Routes in Utopia HTTP are defined using a fluent API that makes it easy to create RESTful endpoints. Each route can have multiple HTTP methods and can be grouped for better organization.</p><p>The action function receives the request and response objects, allowing you to handle the business logic for each endpoint.</p>",
-          "codeExample": {
-            "language": "php",
-            "title": "routes.php",
-            "code": "<?php\n\nuse Utopia\\Http\\Http;\nuse Utopia\\Http\\Request;\nuse Utopia\\Http\\Response;\n\n// Define a simple GET route\nHttp::get('/users')\n    ->inject('request')\n    ->inject('response')\n    ->action(\n        function(Request $request, Response $response) {\n            $response->json(['users' => []]);\n        }\n    );\n\n// Define a POST route with parameters\nHttp::post('/users/{userId}')\n    ->param('userId', '', new Text(36), 'User ID')\n    ->inject('request')\n    ->inject('response')\n    ->action(\n        function(string $userId, Request $request, Response $response) {\n            // Handle user creation\n            $response->json(['id' => $userId]);\n        }\n    );",
-            "showLineNumbers": true
-          },
-          "additionalInfo": "<p>Routes support all standard HTTP methods: GET, POST, PUT, PATCH, DELETE, OPTIONS, and HEAD. You can also use route groups to organize related routes and apply middleware to multiple routes at once.</p>"
         },
         {
           "title": "Dependency Injection",
           "path": "dependency-injection",
           "description": "Understand how dependency injection works in Utopia HTTP",
-          "content": "<p>Utopia HTTP uses a powerful dependency injection system that automatically resolves and injects dependencies into your route actions. This makes your code more testable and maintainable.</p><p>Dependencies are registered in the container and can be injected using the <code>inject()</code> method on routes.</p>",
-          "codeExample": {
-            "language": "php",
-            "title": "dependency-injection.php",
-            "code": "<?php\n\nuse Utopia\\Http\\Http;\nuse Utopia\\Http\\Container;\nuse Utopia\\Http\\Request;\nuse Utopia\\Http\\Response;\n\n// Register dependencies\n$container = new Container();\n$container->set('database', new Database());\n$container->set('logger', new Logger());\n\n// Inject dependencies into routes\nHttp::get('/users')\n    ->inject('database')\n    ->inject('logger')\n    ->action(\n        function(Database $db, Logger $logger) {\n            $logger->info('Fetching users');\n            $users = $db->query('SELECT * FROM users');\n            return $users;\n        }\n    );",
-            "showLineNumbers": true
-          },
-          "additionalInfo": "<p>The container supports both singleton and transient dependencies. You can also inject the request and response objects, which are automatically available in all routes.</p>"
         },
         {
           "title": "Validation",
           "path": "validation",
           "description": "Learn how to validate and handle route parameters",
-          "content": "<p>Utopia HTTP provides a comprehensive validation system for route parameters. You can define parameters with types, validation rules, and descriptions that are automatically documented.</p><p>Parameters are validated before the action is executed, ensuring type safety and data integrity.</p>",
-          "codeExample": {
-            "language": "php",
-            "title": "validation.php",
-            "code": "<?php\n\nuse Utopia\\Http\\Http;\nuse Utopia\\Validator\\Text;\nuse Utopia\\Validator\\Integer;\nuse Utopia\\Validator\\Email;\n\n// Define route with validated parameters\nHttp::post('/users')\n    ->param('name', '', new Text(100), 'User name')\n    ->param('email', '', new Email(), 'User email')\n    ->param('age', 0, new Integer(18, 120), 'User age')\n    ->inject('request')\n    ->inject('response')\n    ->action(\n        function(string $name, string $email, int $age, Request $request, Response $response) {\n            // Parameters are already validated and typed\n            $user = createUser($name, $email, $age);\n            $response->json($user);\n        }\n    );",
-            "showLineNumbers": true
-          },
-          "additionalInfo": "<p>Utopia HTTP includes many built-in validators for common data types like text, numbers, emails, URLs, and more. You can also create custom validators for specific business logic.</p>"
         },
         {
           "title": "Hooks",
           "path": "hooks",
           "description": "Implement middleware and hooks for cross-cutting concerns",
-          "content": "<p>Hooks and middleware allow you to implement cross-cutting concerns like authentication, logging, CORS, and rate limiting. They can be applied globally or to specific routes.</p><p>Hooks run before and after route execution, while middleware can modify the request/response pipeline.</p>",
-          "codeExample": {
-            "language": "php",
-            "title": "middleware.php",
-            "code": "<?php\n\nuse Utopia\\Http\\Http;\nuse Utopia\\Http\\Request;\nuse Utopia\\Http\\Response;\n\n// Global hook for logging\nHttp::hook('before', function(Request $request, Response $response) {\n    error_log('Request: ' . $request->getMethod() . ' ' . $request->getURI());\n});\n\n// CORS middleware\nHttp::middleware(function(Request $request, Response $response, callable $next) {\n    $response->addHeader('Access-Control-Allow-Origin', '*');\n    $response->addHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');\n    $response->addHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');\n    \n    return $next($request, $response);\n});\n\n// Authentication middleware for protected routes\nHttp::middleware(function(Request $request, Response $response, callable $next) {\n    $token = $request->getHeader('Authorization');\n    if (!$token || !validateToken($token)) {\n        $response->setStatusCode(401);\n        $response->json(['error' => 'Unauthorized']);\n        return $response;\n    }\n    \n    return $next($request, $response);\n});",
-            "showLineNumbers": true
-          },
-          "additionalInfo": "<p>Middleware is executed in the order it's registered. You can also create route-specific middleware by applying it to individual routes or route groups.</p>"
         },
         {
           "title": "Adapters",
           "path": "adapters",
           "description": "Choose the right server adapter for your deployment",
-          "content": "<p>Utopia HTTP supports multiple server adapters, each optimized for different deployment scenarios. Choose the adapter that best fits your performance and compatibility requirements.</p><p>All adapters provide the same API, so you can switch between them without changing your application code.</p>",
-          "codeExample": {
-            "language": "php",
-            "title": "server-adapters.php",
-            "code": "<?php\n\nuse Utopia\\Http\\Http;\nuse Utopia\\Http\\Adapter\\Swoole;\nuse Utopia\\Http\\Adapter\\FPM;\nuse Utopia\\Http\\Adapter\\ReactPHP;\n\n// Swoole adapter (High Performance)\n$server = new Swoole('0.0.0.0', 8000);\n$http = new Http($server, new Container(), 'America/New_York');\n$http->start();\n\n// FPM adapter (Traditional PHP)\n$server = new FPM();\n$http = new Http($server, new Container(), 'America/New_York');\n$http->start();\n\n// ReactPHP adapter (Event-driven)\n$server = new ReactPHP('0.0.0.0', 8000);\n$http = new Http($server, new Container(), 'America/New_York');\n$http->start();",
-            "showLineNumbers": true
-          },
-          "additionalInfo": "<p>Swoole provides the best performance for production environments, while FPM is perfect for traditional shared hosting. ReactPHP offers event-driven architecture for high-concurrency applications.</p>"
         },
         {
           "title": "Labels",
           "path": "labels",
           "description": "Organize and categorize your routes with labels",
-          "content": "<p>Labels allow you to organize and categorize your routes for better documentation and API management. They're particularly useful for grouping related endpoints and generating API documentation.</p><p>Labels can be used to filter routes, generate documentation, and implement route-specific features.</p>",
-          "codeExample": {
-            "language": "php",
-            "title": "labels.php",
-            "code": "<?php\n\nuse Utopia\\Http\\Http;\n\n// Label routes for API versioning\nHttp::get('/v1/users')\n    ->label('version', 'v1')\n    ->label('group', 'users')\n    ->action(function() {\n        // v1 user logic\n    });\n\nHttp::get('/v2/users')\n    ->label('version', 'v2')\n    ->label('group', 'users')\n    ->action(function() {\n        // v2 user logic\n    });\n\n// Label routes for authentication\nHttp::post('/auth/login')\n    ->label('auth', 'public')\n    ->action(function() {\n        // public login endpoint\n    });\n\nHttp::get('/users/profile')\n    ->label('auth', 'protected')\n    ->action(function() {\n        // protected user endpoint\n    });",
-            "showLineNumbers": true
-          },
-          "additionalInfo": "<p>Labels are metadata that don't affect route execution but can be used by middleware, documentation generators, and other tools to understand and categorize your API structure.</p>"
         },
         {
           "title": "Lifecycle",
           "path": "lifecycle",
           "description": "Understand the request lifecycle in Utopia HTTP",
-          "content": "<p>The Utopia HTTP request lifecycle consists of several phases: middleware execution, parameter validation, route matching, action execution, and response handling.</p><p>Understanding the lifecycle helps you implement features like logging, error handling, and performance monitoring effectively.</p>",
-          "codeExample": {
-            "language": "php",
-            "title": "lifecycle.php",
-            "code": "<?php\n\nuse Utopia\\Http\\Http;\nuse Utopia\\Http\\Request;\nuse Utopia\\Http\\Response;\n\n// Lifecycle hooks\nHttp::hook('before', function(Request $request, Response $response) {\n    // 1. Before middleware execution\n    $startTime = microtime(true);\n    $request->setAttribute('startTime', $startTime);\n});\n\nHttp::hook('after', function(Request $request, Response $response) {\n    // 2. After action execution\n    $startTime = $request->getAttribute('startTime');\n    $duration = microtime(true) - $startTime;\n    error_log('Request completed in ' . $duration . ' seconds');\n});\n\nHttp::hook('error', function(\\Throwable $error, Request $request, Response $response) {\n    // 3. Error handling\n    error_log('Request error: ' . $error->getMessage());\n    $response->setStatusCode(500);\n    $response->json(['error' => 'Internal Server Error']);\n});\n\n// Route execution\nHttp::get('/users')\n    ->action(function(Request $request, Response $response) {\n        // 4. Action execution\n        return ['users' => []];\n    });",
-            "showLineNumbers": true
-          },
-          "additionalInfo": "<p>The lifecycle provides multiple hooks for different phases, allowing you to implement cross-cutting concerns like logging, monitoring, and error handling at the appropriate stage of request processing.</p>"
         }
       ]
     },
@@ -155,66 +99,26 @@
           "title": "DNS Server",
           "path": "dns-server",
           "description": "Learn how to set up and configure a DNS server",
-          "content": "<p>The DNS server handles incoming DNS queries and responds with appropriate DNS records. It uses adapters for network communication and resolvers for query processing.</p><p>The server supports multiple adapters including Native PHP Socket and Swoole UDP Server for high-performance DNS resolution.</p>",
-          "codeExample": {
-            "language": "php",
-            "title": "dns-server.php",
-            "code": "<?php\n\nuse Appwrite\\DNS\\Server;\nuse Appwrite\\DNS\\Adapter\\Swoole;\nuse Appwrite\\DNS\\Resolver\\Mock;\n\n// Create a DNS server with Swoole adapter\n$server = new Swoole('0.0.0.0', 8000);\n$resolver = new Mock(); // Custom resolver\n$dns = new Server($server, $resolver);\n\n// Start listening for DNS queries\n$dns->start();",
-            "showLineNumbers": true
-          },
-          "additionalInfo": "<p>The server supports multiple adapters including Native PHP Socket and Swoole UDP Server for high-performance DNS resolution.</p>"
         },
         {
           "title": "DNS Client",
           "path": "dns-client",
           "description": "Query DNS records from any DNS server",
-          "content": "<p>The DNS client allows you to query DNS records from any DNS server. It supports all standard DNS record types and provides a simple API for lookups.</p><p>The client supports all standard DNS record types including A, NS, CNAME, SOA, MX, TXT, AAAA, SRV, and more.</p>",
-          "codeExample": {
-            "language": "php",
-            "title": "dns-client.php",
-            "code": "<?php\n\nuse Appwrite\\DNS\\Client;\n\n// Query different record types\n$client = new Client('8.8.8.8');\n\n$aRecords = $client->query('example.com', 'A');      // IPv4 addresses\n$mxRecords = $client->query('example.com', 'MX');    // Mail servers\n$txtRecords = $client->query('example.com', 'TXT');  // Text records\n$aaaaRecords = $client->query('example.com', 'AAAA'); // IPv6 addresses",
-            "showLineNumbers": true
-          },
-          "additionalInfo": "<p>The client supports all standard DNS record types including A, NS, CNAME, SOA, MX, TXT, AAAA, SRV, and more.</p>"
         },
         {
           "title": "Server Adapters",
           "path": "adapters",
           "description": "Choose the right adapter for your deployment",
-          "content": "<p>Adapters handle the low-level network communication for the DNS server. Choose the adapter that best fits your deployment environment.</p><p>Swoole provides the best performance for production environments, while Native PHP Socket is perfect for development and simple deployments.</p>",
-          "codeExample": {
-            "language": "php",
-            "title": "adapters.php",
-            "code": "<?php\n\nuse Appwrite\\DNS\\Adapter\\Native;\nuse Appwrite\\DNS\\Adapter\\Swoole;\n\n// Native PHP Socket (PHP 8.0+)\n$server = new Native('0.0.0.0', 8000);\n\n// Swoole UDP Server (High Performance)\n$server = new Swoole('0.0.0.0', 8000);\n\n// Workerman (Coming Soon)\n// ReactPHP (Coming Soon)",
-            "showLineNumbers": true
-          },
-          "additionalInfo": "<p>Swoole provides the best performance for production environments, while Native PHP Socket is perfect for development and simple deployments.</p>"
         },
         {
           "title": "Custom Resolvers",
           "path": "resolvers",
           "description": "Create custom DNS resolution logic",
-          "content": "<p>Resolvers process DNS queries and return appropriate responses. You can create custom resolvers by extending the base Resolver class.</p><p>Custom resolvers allow you to implement custom DNS logic, caching, load balancing, or integration with external systems.</p>",
-          "codeExample": {
-            "language": "php",
-            "title": "CustomResolver.php",
-            "code": "<?php\n\nuse Appwrite\\DNS\\Resolver;\nuse Appwrite\\DNS\\Query;\nuse Appwrite\\DNS\\Response;\n\n// Custom resolver example\nclass CustomResolver extends Resolver\n{\n    public function resolve(Query $query): ?Response\n    {\n        // Custom DNS resolution logic\n        if ($query->getName() === 'example.com') {\n            return new Response([\n                'name' => 'example.com',\n                'type' => 'A',\n                'ttl' => 300,\n                'data' => '192.168.1.1'\n            ]);\n        }\n        \n        return null; // Delegate to parent or other resolver\n    }\n}",
-            "showLineNumbers": true
-          },
-          "additionalInfo": "<p>Custom resolvers allow you to implement custom DNS logic, caching, load balancing, or integration with external systems.</p>"
         },
         {
           "title": "Performance Benchmarking",
           "path": "benchmarking",
           "description": "Measure DNS server performance under load",
-          "content": "<p>The library includes a built-in benchmarking tool to measure DNS server performance under load with detailed metrics and analysis.</p><p>Benchmarking helps you understand the performance characteristics of your DNS server and identify bottlenecks.</p>",
-          "codeExample": {
-            "language": "bash",
-            "title": "Terminal",
-            "code": "# Run benchmark with default settings\nphp tests/benchmark.php\n\n# Custom benchmark configuration\nphp tests/benchmark.php --server=127.0.0.1 --port=5300 --iterations=1000 --concurrency=20",
-            "showLineNumbers": true
-          },
-          "additionalInfo": "<p>Benchmarking helps you understand the performance characteristics of your DNS server and identify bottlenecks.</p>"
         }
       ]
     },

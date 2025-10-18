@@ -1,5 +1,5 @@
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { monokai } from 'react-syntax-highlighter/dist/esm/styles/hljs'
+import monokai from 'react-syntax-highlighter/dist/esm/styles/hljs/monokai'
 
 interface CodeExampleProps {
   code: string
@@ -18,12 +18,6 @@ export function CodeExample({
 }: CodeExampleProps) {
   return (
     <div className="space-y-3">
-      <div>
-        <h4 className="text-lg font-semibold text-foreground">{title}</h4>
-        {description && (
-          <p className="text-sm text-muted-foreground mt-1">{description}</p>
-        )}
-      </div>
       <div className="rounded-xl overflow-hidden border border-muted" style={{ backgroundColor: 'oklch(0.141 0.005 285.823)' }}>
         {filename && (
           <div 

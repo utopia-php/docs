@@ -33,13 +33,17 @@ This is a documentation website for Utopia PHP, a collection of micro-libraries 
 - **Reference real implementations**: Mention actual Utopia libraries and their purposes
 - **Use consistent terminology**: Stick to established PHP and Utopia terminology
 - **Include performance considerations**: Mention when performance matters
+- **Cross-reference with links**: When mentioning other Utopia libraries, always add links to their documentation
 
 ### Code Examples
-- **Use complete, runnable examples**: Include all necessary imports and setup
+- **Break into focused parts**: Split large examples into smaller, focused code blocks with explanations
+- **Use progressive complexity**: Start with simple examples and build up to more complex scenarios
+- **Include explanatory text**: Add markdown text between code blocks to explain what each part does
 - **Show realistic scenarios**: Use examples that developers would actually encounter
 - **Include error handling**: Show proper error handling patterns
 - **Use descriptive variable names**: Make code self-documenting
 - **Add comments for complex logic**: Explain non-obvious code sections
+- **End with complete example**: Include a full, runnable example at the end when useful
 
 #### Code Example Format
 Use the `CodeExample` component for all code blocks:
@@ -310,6 +314,7 @@ Include relevant icons for visual clarity:
 - **Show composability**: Demonstrate how libraries work together
 - **Reference real-world usage**: Mention Appwrite as a production example
 - **Explain performance benefits**: When relevant, discuss performance advantages
+- **Link between libraries**: When mentioning other Utopia libraries, always include links to their documentation pages
 
 ### Content Types and Formats
 - **Concept pages**: Explain how things work with practical examples
@@ -324,6 +329,7 @@ Include relevant icons for visual clarity:
 - **Review for clarity**: Content should be clear on first reading
 - **Maintain consistency**: Follow established patterns and conventions
 - **Update regularly**: Keep content current with library changes
+- **Verify cross-references**: Ensure all mentions of other Utopia libraries include proper links
 
 ### Forbidden Practices
 - **No marketing fluff**: Avoid promotional language or excessive enthusiasm
@@ -344,6 +350,7 @@ Include relevant icons for visual clarity:
 - [ ] Clear structure and organization
 - [ ] Practical examples included
 - [ ] Performance considerations mentioned where relevant
+- [ ] Cross-references to other Utopia libraries include proper links
 
 ## Example Content Structure
 
