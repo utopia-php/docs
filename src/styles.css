@@ -1,9 +1,9 @@
+/* Google Fonts - Poppins for titles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 @import 'tailwindcss';
 
 @import 'tw-animate-css';
-
-/* Google Fonts - Poppins for titles */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* Code highlighting styles */
 
@@ -169,6 +169,38 @@ code {
   .prose h1, .prose h2, .prose h3 {
     font-family: 'Poppins', sans-serif !important;
     font-weight: 500 !important; /* Semi-bold weight */
+  }
+  
+  /* Apply Poppins font with bold weight to blog titles */
+  .blog-layout h1,
+  .blog-layout h2,
+  .blog-layout h3,
+  .blog-layout h4,
+  .blog-layout h5,
+  .blog-layout h6 {
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 700 !important; /* Bold weight for blog */
+  }
+  
+  /* Apply bold weight to blog article titles specifically */
+  .blog-article-card h2,
+  .blog-article-card h3,
+  .blog-article-card h4,
+  .blog-article-card h5,
+  .blog-article-card h6 {
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 700 !important; /* Bold weight for blog article titles */
+  }
+  
+  /* Apply bold weight to prose content within blog layouts */
+  .blog-layout .prose h1,
+  .blog-layout .prose h2,
+  .blog-layout .prose h3,
+  .blog-layout .prose h4,
+  .blog-layout .prose h5,
+  .blog-layout .prose h6 {
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 700 !important; /* Bold weight for blog prose content */
   }
   
   p,

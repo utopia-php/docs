@@ -12,7 +12,7 @@ export function BlogLayout({
   title = 'Utopia.php',
 }: BlogLayoutProps) {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen blog-layout">
       <SiteHeader title={title} />
 
       {/* Main Content */}

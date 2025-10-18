@@ -29,7 +29,7 @@ export function BlogArticleCard({
       className="block group"
     >
       <article
-        className={`border rounded-lg overflow-hidden bg-card hover:bg-accent/50 transition-colors ${isFeatured ? 'w-full' : ''}`}
+        className={`blog-article-card border rounded-lg overflow-hidden bg-card hover:bg-accent/50 transition-colors ${isFeatured ? 'w-full' : ''}`}
       >
         {isFeatured ? (
           // Featured layout: image on the side
