@@ -7,7 +7,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover'
-import { CheckCircle, Loader2, Mail } from 'lucide-react'
+import { CheckCircle, Loader2 } from 'lucide-react'
 import { databases } from '@/lib/appwrite-client'
 import { ID } from 'appwrite'
 
@@ -17,14 +17,16 @@ interface EmailSubscriptionPopoverProps {
 
 type SubmissionState = 'idle' | 'loading' | 'success' | 'error'
 
-export function EmailSubscriptionPopover({ children }: EmailSubscriptionPopoverProps) {
+export function EmailSubscriptionPopover({
+  children,
+}: EmailSubscriptionPopoverProps) {
   const [email, setEmail] = useState('')
   const [state, setState] = useState<SubmissionState>('idle')
   const [errorMessage, setErrorMessage] = useState('')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
+
     if (!email.trim()) {
       setErrorMessage('Please enter your email address')
       return
@@ -48,12 +50,12 @@ export function EmailSubscriptionPopover({ children }: EmailSubscriptionPopoverP
         {
           email: email.trim(),
         },
-        []
-    )
-      
+        [],
+      )
+
       setState('success')
       setEmail('')
-      
+
       // Reset to idle after 3 seconds
       setTimeout(() => {
         setState('idle')
@@ -76,9 +78,7 @@ export function EmailSubscriptionPopover({ children }: EmailSubscriptionPopoverP
 
   return (
     <Popover onOpenChange={handleOpenChange}>
-      <PopoverTrigger asChild>
-        {children}
-      </PopoverTrigger>
+      <PopoverTrigger asChild>{children}</PopoverTrigger>
       <PopoverContent className="w-80 p-6" align="end">
         <div className="space-y-4">
           <div className="space-y-2">
@@ -114,10 +114,10 @@ export function EmailSubscriptionPopover({ children }: EmailSubscriptionPopoverP
                   <p className="text-sm text-red-600">{errorMessage}</p>
                 )}
               </div>
-              
-              <Button 
-                type="submit" 
-                className="w-full" 
+
+              <Button
+                type="submit"
+                className="w-full"
                 disabled={state === 'loading' || !email.trim()}
               >
                 {state === 'loading' ? (

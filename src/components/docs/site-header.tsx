@@ -19,10 +19,16 @@ function getTotalStars(): number {
   return allLibraries.reduce((total, library) => total + library.stars, 0)
 }
 
-export function SiteHeader({ title = 'Utopia.php', navItems }: SiteHeaderProps) {
+export function SiteHeader({
+  title = 'Utopia.php',
+  navItems,
+}: SiteHeaderProps) {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 mb-4">
-      <div className="relative flex h-14 mx-auto items-center justify-between px-4" style={{ maxWidth: '1400px' }}>
+      <div
+        className="relative flex h-14 mx-auto items-center justify-between px-4"
+        style={{ maxWidth: '1400px' }}
+      >
         <div className="flex items-center gap-2">
           {navItems && <DocsMobileNav items={navItems} />}
           <a className="flex items-center space-x-1" href="/">
@@ -38,53 +44,55 @@ export function SiteHeader({ title = 'Utopia.php', navItems }: SiteHeaderProps) 
             />
           </a>
         </div>
-        
+
         {/* Center Navigation Links - Absolutely positioned */}
         <nav className="hidden md:flex items-center gap-6 absolute left-1/2 transform -translate-x-1/2">
-          <a 
-            href="/" 
+          <a
+            href="/"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             Home
           </a>
-          <a 
-            href="/#libraries" 
+          <a
+            href="/#libraries"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             Libraries
           </a>
-            <a 
-              href="/docs/changelog" 
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Changelog
-            </a>
-          <a 
-            href="/blog" 
+          <a
+            href="/docs/changelog"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Changelog
+          </a>
+          <a
+            href="/blog"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             Blog
           </a>
         </nav>
-        
+
         <div className="flex items-center gap-4">
-          <a 
-            href={DISCORD_LINK} 
-            target="_blank" 
+          <a
+            href={DISCORD_LINK}
+            target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1 text-sm text-muted-foreground border border-muted rounded-lg px-2 py-1 hover:bg-muted/50 transition-colors hover:text-foreground"
           >
             <DiscordIcon size={14} />
             <span className="font-medium">Discord</span>
           </a>
-          <a 
-            href={GITHUB_LINK} 
-            target="_blank" 
+          <a
+            href={GITHUB_LINK}
+            target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1 text-sm text-muted-foreground border border-muted rounded-lg px-2 py-1 hover:bg-muted/50 transition-colors hover:text-foreground"
           >
             <GitHubIcon size={14} />
-            <span className="font-medium">{getTotalStars().toLocaleString()}</span>
+            <span className="font-medium">
+              {getTotalStars().toLocaleString()}
+            </span>
           </a>
           <DocsThemeToggle />
           <EmailSubscriptionPopover>
@@ -97,4 +105,3 @@ export function SiteHeader({ title = 'Utopia.php', navItems }: SiteHeaderProps) 
     </header>
   )
 }
-

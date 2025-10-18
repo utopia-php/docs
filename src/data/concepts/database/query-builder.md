@@ -50,7 +50,7 @@ $db->update(
 // DELETE with subquery
 $db->delete(
     Query::delete('posts')
-        ->where('user_id', 'IN', 
+        ->where('user_id', 'IN',
             Query::select(['id'])
                 ->from('users')
                 ->where('inactive_since', '<', '2023-01-01')

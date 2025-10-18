@@ -9,33 +9,35 @@ interface CodeExampleProps {
   filename?: string
 }
 
-export function CodeExample({ 
-  code, 
-  language, 
-  title = "Code Example", 
-  description,
-  filename
+export function CodeExample({
+  code,
+  language,
+  filename,
 }: CodeExampleProps) {
   return (
     <div className="space-y-3">
-      <div className="rounded-xl overflow-hidden border border-muted" style={{ backgroundColor: 'oklch(0.141 0.005 285.823)' }}>
+      <div
+        className="rounded-xl overflow-hidden border border-muted"
+        style={{ backgroundColor: 'oklch(0.141 0.005 285.823)' }}
+      >
         {filename && (
-          <div 
-            className="px-4 py-2 text-sm font-medium text-gray-300 border-b border-gray-600/30"
-          >
+          <div className="px-4 py-2 text-sm font-medium text-gray-300 border-b border-gray-600/30">
             {filename}
           </div>
         )}
-        <div className="overflow-x-auto" style={{ backgroundColor: 'oklch(0.141 0.005 285.823)' }}>
+        <div
+          className="overflow-x-auto"
+          style={{ backgroundColor: 'oklch(0.141 0.005 285.823)' }}
+        >
           <SyntaxHighlighter
             language={language}
             style={{
               ...monokai,
-              'hljs': {
+              hljs: {
                 ...monokai.hljs,
                 background: 'transparent !important',
                 backgroundColor: 'transparent !important',
-              }
+              },
             }}
             customStyle={{
               margin: 0,

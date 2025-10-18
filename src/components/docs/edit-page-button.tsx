@@ -23,7 +23,11 @@ export function EditPageButton({ className }: EditPageButtonProps) {
       window.open(editUrl, '_blank', 'noopener,noreferrer')
     } else {
       // Fallback to the main repository if we can't determine the specific file
-      window.open('https://github.com/utopia-php/docs', '_blank', 'noopener,noreferrer')
+      window.open(
+        'https://github.com/utopia-php/docs',
+        '_blank',
+        'noopener,noreferrer',
+      )
     }
   }
 
@@ -33,9 +37,9 @@ export function EditPageButton({ className }: EditPageButtonProps) {
   }
 
   return (
-    <Button 
-      variant="outline" 
-      size="sm" 
+    <Button
+      variant="outline"
+      size="sm"
       className={`h-8 px-3 text-xs shadow-none ${className}`}
       onClick={handleEditPage}
     >

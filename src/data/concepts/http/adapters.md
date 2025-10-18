@@ -41,7 +41,7 @@ $http->start();
 function createServer(): ServerInterface
 {
     $environment = $_ENV['APP_ENV'] ?? 'development';
-    
+
     switch ($environment) {
         case 'production':
             // Use Swoole for production
@@ -50,11 +50,11 @@ function createServer(): ServerInterface
                 'max_request' => 10000,
                 'open_http2_protocol' => true
             ]);
-            
+
         case 'testing':
             // Use FPM for testing
             return new FPMServer();
-            
+
         case 'development':
         default:
             // Use ReactPHP for development

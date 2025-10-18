@@ -19,7 +19,7 @@ Http::error()
     ->action(function(\Throwable $error, Request $request, Response $response) {
         // Log error details
         error_log('Error: ' . $error->getMessage() . ' in ' . $error->getFile() . ':' . $error->getLine());
-        
+
         // Determine error type and response
         if ($error instanceof \InvalidArgumentException) {
             $response->setStatusCode(400)->json([
@@ -62,13 +62,13 @@ Http::get('/users/{id}')
     ->action(function(string $id, Request $request, Response $response) {
         try {
             $user = getUserById($id);
-            
+
             if (!$user) {
                 throw new \InvalidArgumentException('User not found');
             }
-            
+
             $response->json($user);
-            
+
         } catch (\InvalidArgumentException $e) {
             // Handle specific error for this route
             $response->setStatusCode(404)->json([
@@ -93,13 +93,13 @@ class UserNotFoundException extends \Exception
 class ValidationException extends \Exception
 {
     private array $errors;
-    
+
     public function __construct(array $errors)
     {
         $this->errors = $errors;
         parent::__construct('Validation failed', 400);
     }
-    
+
     public function getErrors(): array
     {
         return $this->errors;
@@ -112,11 +112,11 @@ Http::get('/users/{id}')
     ->inject('response')
     ->action(function(string $id, Response $response) {
         $user = getUserById($id);
-        
+
         if (!$user) {
             throw new UserNotFoundException($id);
         }
-        
+
         $response->json($user);
     });
 ```

@@ -16,57 +16,79 @@ function Comparison() {
   return (
     <DocsContent>
       {/* Breadcrumbs */}
-      <Breadcrumbs 
+      <Breadcrumbs
         items={[
           { label: 'Home', href: '/' },
           { label: 'Docs', href: '/docs' },
-          { label: 'Utopia.php & Laravel', current: true }
-        ]} 
+          { label: 'Utopia.php & Laravel', current: true },
+        ]}
       />
-      
+
       <div className="space-y-1 mb-4">
         <h1>Utopia.php & Laravel</h1>
         <p className="text-sm text-muted-foreground">
-          Understanding how Utopia.php micro-libraries and Laravel framework complement each other. 
-          Both are excellent tools for different needs in the PHP ecosystem.
+          Understanding how Utopia.php micro-libraries and Laravel framework
+          complement each other. Both are excellent tools for different needs in
+          the PHP ecosystem.
         </p>
       </div>
 
       <h2 id="overview">Overview</h2>
       <p>
-        Both Utopia.php and Laravel are excellent PHP solutions that serve different purposes 
-        in the ecosystem. Rather than competing, they complement each other beautifully. 
-        Understanding their strengths helps you choose the right tool for each part of your project.
+        Both Utopia.php and Laravel are excellent PHP solutions that serve
+        different purposes in the ecosystem. Rather than competing, they
+        complement each other beautifully. Understanding their strengths helps
+        you choose the right tool for each part of your project.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
         <div className="border rounded-lg p-6">
           <div className="flex items-center gap-2 mb-4">
-            <Badge className="text-white hover:opacity-90" style={{ backgroundColor: '#6474ce' }}>Utopia.php</Badge>
+            <Badge
+              className="text-white hover:opacity-90"
+              style={{ backgroundColor: '#6474ce' }}
+            >
+              Utopia.php
+            </Badge>
           </div>
           <p className="text-sm text-muted-foreground mb-4">
-            A collection of micro-libraries designed for microservice architectures. 
-            Each library solves a specific problem with minimal dependencies (only PHP extensions).
+            A collection of micro-libraries designed for microservice
+            architectures. Each library solves a specific problem with minimal
+            dependencies (only PHP extensions).
           </p>
           <div className="space-y-2">
-            <Badge variant="outline" className="text-xs">Micro-libraries</Badge>
-            <Badge variant="outline" className="text-xs">Minimal Dependencies</Badge>
-            <Badge variant="outline" className="text-xs">Microservices</Badge>
+            <Badge variant="outline" className="text-xs">
+              Micro-libraries
+            </Badge>
+            <Badge variant="outline" className="text-xs">
+              Minimal Dependencies
+            </Badge>
+            <Badge variant="outline" className="text-xs">
+              Microservices
+            </Badge>
           </div>
         </div>
 
         <div className="border rounded-lg p-6">
           <div className="flex items-center gap-2 mb-4">
-            <Badge className="bg-red-500 text-white hover:bg-red-600">Laravel</Badge>
+            <Badge className="bg-red-500 text-white hover:bg-red-600">
+              Laravel
+            </Badge>
           </div>
           <p className="text-sm text-muted-foreground mb-4">
-            A full-stack web application framework with conventions, ORM, templating, 
-            and built-in features for rapid development.
+            A full-stack web application framework with conventions, ORM,
+            templating, and built-in features for rapid development.
           </p>
           <div className="space-y-2">
-            <Badge variant="outline" className="text-xs">Full Framework</Badge>
-            <Badge variant="outline" className="text-xs">Conventions</Badge>
-            <Badge variant="outline" className="text-xs">Rapid Development</Badge>
+            <Badge variant="outline" className="text-xs">
+              Full Framework
+            </Badge>
+            <Badge variant="outline" className="text-xs">
+              Conventions
+            </Badge>
+            <Badge variant="outline" className="text-xs">
+              Rapid Development
+            </Badge>
           </div>
         </div>
       </div>
@@ -76,19 +98,25 @@ function Comparison() {
       <h3 id="architecture">Architecture Philosophy</h3>
       <div className="space-y-4">
         <div className="border-l-4 border-primary pl-4">
-          <h4 className="font-semibold text-primary">Utopia.php: Micro-libraries Approach</h4>
+          <h4 className="font-semibold text-primary">
+            Utopia.php: Micro-libraries Approach
+          </h4>
           <p className="text-sm text-muted-foreground mt-1">
-            Utopia.php follows the Unix philosophy of "do one thing and do it well." Each library 
-            is focused on solving a specific problem with minimal dependencies, allowing you to compose your own architecture.
+            Utopia.php follows the Unix philosophy of "do one thing and do it
+            well." Each library is focused on solving a specific problem with
+            minimal dependencies, allowing you to compose your own architecture.
           </p>
         </div>
-        
+
         <div className="border-l-4 border-red-500 pl-4">
-          <h4 className="font-semibold text-red-500">Laravel: Full-Stack Framework</h4>
+          <h4 className="font-semibold text-red-500">
+            Laravel: Full-Stack Framework
+          </h4>
           <p className="text-sm text-muted-foreground mt-1">
-            Laravel provides a complete ecosystem with conventions, built-in features, 
-            and opinionated structure. It follows the "batteries included" philosophy, 
-            offering everything needed to build web applications.
+            Laravel provides a complete ecosystem with conventions, built-in
+            features, and opinionated structure. It follows the "batteries
+            included" philosophy, offering everything needed to build web
+            applications.
           </p>
         </div>
       </div>
@@ -165,49 +193,61 @@ function Comparison() {
       <h3 id="integration">Working Together</h3>
       <DocsCallout type="info" title="The Best of Both Worlds">
         <p className="mb-3">
-          One of the greatest strengths is that Utopia.php and Laravel work beautifully together. 
-          You can use Utopia.php libraries within Laravel applications or alongside Laravel 
-          in microservice architectures.
+          One of the greatest strengths is that Utopia.php and Laravel work
+          beautifully together. You can use Utopia.php libraries within Laravel
+          applications or alongside Laravel in microservice architectures.
         </p>
         <p className="mb-3">
-          For example, you might use Laravel for your main web application and Utopia.php 
-          libraries for specific microservices, background jobs, or API endpoints that 
-          require maximum performance.
+          For example, you might use Laravel for your main web application and
+          Utopia.php libraries for specific microservices, background jobs, or
+          API endpoints that require maximum performance.
         </p>
         <p>
-          This hybrid approach gives you Laravel's rapid development capabilities where you need them, 
-          and Utopia.php's performance and flexibility where it matters most.
+          This hybrid approach gives you Laravel's rapid development
+          capabilities where you need them, and Utopia.php's performance and
+          flexibility where it matters most.
         </p>
       </DocsCallout>
 
       <h3 id="hybrid-approaches">Hybrid Approaches</h3>
       <div className="space-y-4">
         <div className="border-l-4 border-blue-500 pl-4">
-          <h4 className="font-semibold text-blue-500">Laravel + Utopia.php Microservices</h4>
+          <h4 className="font-semibold text-blue-500">
+            Laravel + Utopia.php Microservices
+          </h4>
           <p className="text-sm text-muted-foreground mt-1">
-            Keep your main Laravel application for the web interface and user management, 
-            while using Utopia.php libraries to build specific microservices for APIs, 
-            data processing, or performance-critical tasks.
+            Keep your main Laravel application for the web interface and user
+            management, while using Utopia.php libraries to build specific
+            microservices for APIs, data processing, or performance-critical
+            tasks.
           </p>
         </div>
-        
+
         <div className="border-l-4 border-green-500 pl-4">
-          <h4 className="font-semibold text-green-500">Utopia.php within Laravel</h4>
+          <h4 className="font-semibold text-green-500">
+            Utopia.php within Laravel
+          </h4>
           <p className="text-sm text-muted-foreground mt-1">
-            Use specific Utopia.php libraries within your Laravel application for performance-critical 
-            components like caching, logging, or HTTP handling, while keeping Laravel's rapid development features.
+            Use specific Utopia.php libraries within your Laravel application
+            for performance-critical components like caching, logging, or HTTP
+            handling, while keeping Laravel's rapid development features.
           </p>
         </div>
       </div>
 
       <DocsCalloutUtopia title="Ready to Get Started?">
         <p className="mb-3">
-          If Utopia.php sounds like the right fit for your project, check out our 
-          <a href="/" className="text-primary hover:underline">libraries</a> to see what's available.
+          If Utopia.php sounds like the right fit for your project, check out
+          our
+          <a href="/" className="text-primary hover:underline">
+            libraries
+          </a>{' '}
+          to see what's available.
         </p>
         <p>
-          Or if you're building with Laravel, consider using specific Utopia.php libraries 
-          for performance-critical components like caching, logging, or HTTP handling.
+          Or if you're building with Laravel, consider using specific Utopia.php
+          libraries for performance-critical components like caching, logging,
+          or HTTP handling.
         </p>
       </DocsCalloutUtopia>
 

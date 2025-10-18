@@ -21,7 +21,7 @@ Http::get('/users')
         $method = $request->getMethod(); // GET, POST, etc.
         $uri = $request->getURI(); // /users?page=1
         $path = $request->getPath(); // /users
-        
+
         $response->json([
             'method' => $method,
             'path' => $path,
@@ -49,12 +49,12 @@ Http::get('/users')
         $page = $request->getQuery('page', 1);
         $limit = $request->getQuery('limit', 10);
         $search = $request->getQuery('search', '');
-        
+
         // Check if parameter exists
         if ($request->hasQuery('filter')) {
             $filter = $request->getQuery('filter');
         }
-        
+
         $response->json([
             'page' => $page,
             'limit' => $limit,
@@ -82,11 +82,11 @@ Http::get('/api/data')
         $userAgent = $request->getHeader('User-Agent', 'Unknown');
         $contentType = $request->getHeader('Content-Type');
         $authorization = $request->getHeader('Authorization');
-        
+
         // Custom headers
         $apiKey = $request->getHeader('X-API-Key');
         $requestId = $request->getHeader('X-Request-ID');
-        
+
         $response->json([
             'userAgent' => $userAgent,
             'hasAuth' => !empty($authorization),
@@ -114,7 +114,7 @@ Http::get('/profile')
         $userId = $request->getAttribute('userId');
         $startTime = $request->getAttribute('startTime');
         $userRole = $request->getAttribute('userRole');
-        
+
         // Check if attribute exists
         if ($request->hasAttribute('userId')) {
             $response->json(['userId' => $userId]);
@@ -141,14 +141,14 @@ Http::post('/users')
     ->action(function(Request $request, Response $response) {
         // Get raw body
         $body = $request->getBody();
-        
+
         // Get parsed payload (JSON/array)
         $payload = $request->getPayload();
-        
+
         // Access specific fields
         $name = $request->getPayload('name');
         $email = $request->getPayload('email');
-        
+
         // Validate required fields
         if ($request->hasPayload('name') && $request->hasPayload('email')) {
             $user = createUser($name, $email);
@@ -175,24 +175,24 @@ Http::post('/upload')
     ->inject('response')
     ->action(function(Request $request, Response $response) {
         $files = $request->getFiles();
-        
+
         if (empty($files)) {
             $response->setStatusCode(400)->json(['error' => 'No files uploaded']);
             return;
         }
-        
+
         $uploadedFiles = [];
-        
+
         foreach ($files as $file) {
             // Validate file
             if ($file->getSize() > 5 * 1024 * 1024) { // 5MB limit
                 continue;
             }
-            
+
             // Generate secure filename
             $filename = uniqid() . '_' . $file->getName();
             $uploadPath = '/uploads/' . $filename;
-            
+
             if ($file->moveTo($uploadPath)) {
                 $uploadedFiles[] = [
                     'originalName' => $file->getName(),
@@ -202,7 +202,7 @@ Http::post('/upload')
                 ];
             }
         }
-        
+
         $response->json(['files' => $uploadedFiles]);
     });
 ```
@@ -226,7 +226,7 @@ Http::get('/users')
         $page = $request->getQuery('page', 1);
         $limit = $request->getQuery('limit', 10);
         $userAgent = $request->getHeader('User-Agent', 'Unknown');
-        
+
         $response->json([
             'method' => $request->getMethod(),
             'path' => $request->getPath(),
@@ -243,7 +243,7 @@ Http::post('/users')
     ->action(function(Request $request, Response $response) {
         $name = $request->getPayload('name');
         $email = $request->getPayload('email');
-        
+
         if ($request->hasPayload('name') && $request->hasPayload('email')) {
             $user = createUser($name, $email);
             $response->json($user, 201);
@@ -258,12 +258,12 @@ Http::post('/upload')
     ->inject('response')
     ->action(function(Request $request, Response $response) {
         $files = $request->getFiles();
-        
+
         foreach ($files as $file) {
             $filename = uniqid() . '_' . $file->getName();
             $file->moveTo('/uploads/' . $filename);
         }
-        
+
         $response->json(['message' => 'Files uploaded successfully']);
     });
 ```

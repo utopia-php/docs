@@ -1,4 +1,3 @@
-import React from 'react'
 import { BlogArticleCard } from './blog-article-card'
 
 interface BlogArticle {
@@ -18,8 +17,8 @@ interface BlogArticleListProps {
 
 export function BlogArticleList({ articles }: BlogArticleListProps) {
   // Separate featured and regular articles
-  const featuredArticles = articles.filter(article => article.featured)
-  const regularArticles = articles.filter(article => !article.featured)
+  const featuredArticles = articles.filter((article) => article.featured)
+  const regularArticles = articles.filter((article) => !article.featured)
 
   return (
     <div className="space-y-12">
@@ -28,7 +27,11 @@ export function BlogArticleList({ articles }: BlogArticleListProps) {
         <section>
           <div className="w-full">
             {featuredArticles.slice(0, 1).map((article) => (
-              <BlogArticleCard key={article.slug} article={article} layout="featured" />
+              <BlogArticleCard
+                key={article.slug}
+                article={article}
+                layout="featured"
+              />
             ))}
           </div>
         </section>

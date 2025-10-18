@@ -11,25 +11,26 @@ export function ConceptPage({ library, concept }: ConceptPageProps) {
   return (
     <div className="space-y-1 mb-4">
       {/* Breadcrumbs */}
-      <Breadcrumbs 
+      <Breadcrumbs
         items={[
           { label: 'Home', href: '/' },
           { label: 'Docs', href: '/docs' },
           { label: 'Libraries', href: '/docs#libraries' },
-          { label: library.name, href: `/docs/library/${getLibrarySlug(library.name)}` },
-          { label: concept.title, current: true }
-        ]} 
+          {
+            label: library.name,
+            href: `/docs/library/${getLibrarySlug(library.name)}`,
+          },
+          { label: concept.title, current: true },
+        ]}
         showCopyPage={false}
       />
-      
+
       <h1>{concept.title}</h1>
-      <p className="text-sm text-muted-foreground">
-        {concept.description}
-      </p>
+      <p className="text-sm text-muted-foreground">{concept.description}</p>
 
       {/* Concept Content */}
       <div className="prose prose-neutral dark:prose-invert max-w-none">
-        <div dangerouslySetInnerHTML={{ __html: concept.content }} />
+        <div dangerouslySetInnerHTML={{ __html: concept.content || '' }} />
       </div>
 
       {/* Code Example */}
@@ -50,12 +51,12 @@ export function ConceptPage({ library, concept }: ConceptPageProps) {
         <div>
           <h3 className="text-xl font-semibold">Additional Information</h3>
           <div className="prose prose-neutral dark:prose-invert max-w-none">
-            <div dangerouslySetInnerHTML={{ __html: concept.additionalInfo }} />
+            <div
+              dangerouslySetInnerHTML={{ __html: concept.additionalInfo || '' }}
+            />
           </div>
         </div>
       )}
-
-
     </div>
   )
 }

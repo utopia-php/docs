@@ -28,12 +28,12 @@ class CreateUsersTable extends Migration
             'created_at' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP',
             'updated_at' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
         ]);
-        
+
         // Add indexes
         $this->db->createIndex('users', 'email', 'UNIQUE');
         $this->db->createIndex('users', 'created_at', 'INDEX');
     }
-    
+
     public function down(): void
     {
         $this->db->dropTable('users');
@@ -51,14 +51,14 @@ class AddUserRolesTable extends Migration
             'role' => 'VARCHAR(50) NOT NULL',
             'created_at' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP'
         ]);
-        
+
         // Add foreign key constraint
         $this->db->addForeignKey('user_roles', 'user_id', 'users', 'id', 'CASCADE');
-        
+
         // Add composite index
         $this->db->createIndex('user_roles', ['user_id', 'role'], 'UNIQUE');
     }
-    
+
     public function down(): void
     {
         $this->db->dropTable('user_roles');

@@ -12,24 +12,23 @@ interface LibraryPageProps {
   breadcrumbItems?: Array<{ label: string; href?: string; current?: boolean }>
 }
 
-export function LibraryPage({ library, showBreadcrumbs = true, breadcrumbItems }: LibraryPageProps) {
+export function LibraryPage({
+  library,
+  showBreadcrumbs = true,
+  breadcrumbItems,
+}: LibraryPageProps) {
   // const relatedLibraries = getRelatedLibraries(library, 3)
 
   return (
     <div className="space-y-1 mb-4">
       {/* Breadcrumbs */}
       {showBreadcrumbs && breadcrumbItems && (
-        <Breadcrumbs 
-          items={breadcrumbItems}
-          showCopyPage={false}
-        />
+        <Breadcrumbs items={breadcrumbItems} showCopyPage={false} />
       )}
-      
+
       <h1>Utopia {library.name}</h1>
-      <p className="text-sm text-muted-foreground">
-        {library.description}
-      </p>
-      
+      <p className="text-sm text-muted-foreground">{library.description}</p>
+
       {/* Metadata Tags */}
       <div className="flex flex-wrap gap-2 mt-2 mb-6">
         <Badge variant="outline" className="text-xs px-2 py-1">
@@ -55,7 +54,7 @@ export function LibraryPage({ library, showBreadcrumbs = true, breadcrumbItems }
           {library.stars} stars
         </Badge>
       </div>
-      
+
       {library.longDescription && (
         <div className="prose prose-zinc dark:prose-invert max-w-none mb-6">
           <p className="text-base leading-7 text-muted-foreground">
@@ -81,7 +80,8 @@ export function LibraryPage({ library, showBreadcrumbs = true, breadcrumbItems }
               <h4 className="font-medium text-sm">{feature}</h4>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              This feature provides essential functionality for {library.name.toLowerCase()} 
+              This feature provides essential functionality for{' '}
+              {library.name.toLowerCase()}
               with robust implementation and comprehensive documentation.
             </p>
           </div>
@@ -89,20 +89,16 @@ export function LibraryPage({ library, showBreadcrumbs = true, breadcrumbItems }
       </div>
 
       <h2 id="get-started">Get Started</h2>
-      <p>
-        Install the library using Composer:
-      </p>
+      <p>Install the library using Composer:</p>
       <CodeExample
         language="bash"
         title="Install with Composer"
         filename="Terminal"
         code={`composer require utopia-php/${library.name.toLowerCase().replace(/\s+/g, '-')}`}
       />
-      
+
       <h3>Basic Usage</h3>
-      <p>
-        Here's a simple example to get you started:
-      </p>
+      <p>Here's a simple example to get you started:</p>
       <CodeExample
         language="php"
         title="Basic HTTP Server"

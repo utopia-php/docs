@@ -7,16 +7,19 @@ interface BlogLayoutProps {
   title?: string
 }
 
-export function BlogLayout({ children, title = 'Utopia.php' }: BlogLayoutProps) {
+export function BlogLayout({
+  children,
+  title = 'Utopia.php',
+}: BlogLayoutProps) {
   return (
     <div className="min-h-screen">
       <SiteHeader title={title} />
-      
+
       {/* Main Content */}
       <main className="mx-auto px-4" style={{ maxWidth: '1400px' }}>
         {children}
       </main>
-      
+
       <SiteFooter />
     </div>
   )

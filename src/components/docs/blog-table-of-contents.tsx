@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface TableOfContentsProps {
   className?: string
@@ -17,12 +17,17 @@ export function BlogTableOfContents({ className = '' }: TableOfContentsProps) {
   useEffect(() => {
     // Extract headings from the page
     const headingElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6')
-    const headingList: Heading[] = Array.from(headingElements).map((heading) => ({
-      id: heading.id || heading.textContent?.toLowerCase().replace(/\s+/g, '-') || '',
-      text: heading.textContent || '',
-      level: parseInt(heading.tagName.charAt(1))
-    }))
-    
+    const headingList: Heading[] = Array.from(headingElements).map(
+      (heading) => ({
+        id:
+          heading.id ||
+          heading.textContent?.toLowerCase().replace(/\s+/g, '-') ||
+          '',
+        text: heading.textContent || '',
+        level: parseInt(heading.tagName.charAt(1)),
+      }),
+    )
+
     setHeadings(headingList)
 
     // Set up intersection observer for active heading
@@ -34,7 +39,7 @@ export function BlogTableOfContents({ className = '' }: TableOfContentsProps) {
           }
         })
       },
-      { rootMargin: '-80px 0px -80% 0px' }
+      { rootMargin: '-80px 0px -80% 0px' },
     )
 
     headingElements.forEach((heading) => {
@@ -58,9 +63,13 @@ export function BlogTableOfContents({ className = '' }: TableOfContentsProps) {
   }
 
   return (
-    <div className={`sticky top-20 max-h-[calc(100vh-5rem)] overflow-y-auto ${className}`}>
+    <div
+      className={`sticky top-20 max-h-[calc(100vh-5rem)] overflow-y-auto ${className}`}
+    >
       <div className="space-y-2">
-        <h3 className="text-sm font-semibold text-foreground mb-3">Table of Contents</h3>
+        <h3 className="text-sm font-semibold text-foreground mb-3">
+          Table of Contents
+        </h3>
         <nav className="space-y-1">
           {headings.map((heading) => (
             <button

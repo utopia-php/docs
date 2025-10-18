@@ -14,18 +14,19 @@ function ExampleComps() {
   return (
     <DocsContent>
       {/* Breadcrumbs */}
-      <Breadcrumbs 
+      <Breadcrumbs
         items={[
           { label: 'Home', href: '/' },
           { label: 'Docs', href: '/docs' },
-          { label: 'Example Components', current: true }
-        ]} 
+          { label: 'Example Components', current: true },
+        ]}
       />
-      
+
       <div className="space-y-1 mb-4">
         <h1>Example Components</h1>
         <p className="text-sm text-muted-foreground">
-          Examples and demonstrations of Utopia.php components and usage patterns.
+          Examples and demonstrations of Utopia.php components and usage
+          patterns.
         </p>
       </div>
 
@@ -65,8 +66,12 @@ function MyDocPage() {
       </DocsCodeBlock>
 
       <DocsCallout type="success" title="Pro Tip">
-        You can use the <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">DocsContent</code> component to
-        automatically apply proper styling to your documentation content.
+        You can use the{' '}
+        <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+          DocsContent
+        </code>{' '}
+        component to automatically apply proper styling to your documentation
+        content.
       </DocsCallout>
 
       <h2 id="components">Components</h2>
@@ -97,8 +102,8 @@ function MyDocPage() {
       </DocsCallout>
 
       <DocsCallout type="success" title="Success Callout">
-        This is a success callout. Use it to highlight positive outcomes or
-        best practices.
+        This is a success callout. Use it to highlight positive outcomes or best
+        practices.
       </DocsCallout>
 
       <h3 id="code-blocks">Code Blocks</h3>
@@ -117,7 +122,10 @@ greet('World')`}
 
       <p>
         You can also use inline code like{' '}
-        <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">const value = 42</code> within your paragraphs.
+        <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+          const value = 42
+        </code>{' '}
+        within your paragraphs.
       </p>
 
       <h2 id="tables">Tables</h2>
@@ -135,37 +143,55 @@ greet('World')`}
         <tbody>
           <tr>
             <td>
-              <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">title</code>
+              <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+                title
+              </code>
             </td>
             <td>
-              <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">string</code>
+              <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+                string
+              </code>
             </td>
             <td>
-              <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">"Documentation"</code>
+              <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+                "Documentation"
+              </code>
             </td>
             <td>The title displayed in the header</td>
           </tr>
           <tr>
             <td>
-              <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">theme</code>
+              <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+                theme
+              </code>
             </td>
             <td>
-              <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">"light" | "dark"</code>
+              <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+                "light" | "dark"
+              </code>
             </td>
             <td>
-              <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">"light"</code>
+              <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+                "light"
+              </code>
             </td>
             <td>The color theme for the documentation</td>
           </tr>
           <tr>
             <td>
-              <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">showToc</code>
+              <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+                showToc
+              </code>
             </td>
             <td>
-              <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">boolean</code>
+              <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+                boolean
+              </code>
             </td>
             <td>
-              <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">true</code>
+              <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+                true
+              </code>
             </td>
             <td>Whether to show the table of contents</td>
           </tr>
@@ -174,14 +200,17 @@ greet('World')`}
 
       <h2 id="advanced-features">Advanced Features</h2>
       <p>
-        Beyond the basics, this template includes several advanced features
-        for power users:
+        Beyond the basics, this template includes several advanced features for
+        power users:
       </p>
 
       <h3 id="custom-navigation">Custom Navigation</h3>
       <p>
         You can customize the navigation structure by passing a custom
-        navigation tree to the <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">DocsNavigation</code>{' '}
+        navigation tree to the{' '}
+        <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+          DocsNavigation
+        </code>{' '}
         component:
       </p>
 
@@ -213,13 +242,13 @@ greet('World')`}
       <h3 id="scroll-spy">Scroll Spy</h3>
       <p>
         The table of contents automatically highlights the current section as
-        you scroll through the page. This is implemented using the
-        Intersection Observer API for optimal performance.
+        you scroll through the page. This is implemented using the Intersection
+        Observer API for optimal performance.
       </p>
 
       <blockquote>
-        "Good documentation is like a good joke. If you have to explain it,
-        it's not that good."
+        "Good documentation is like a good joke. If you have to explain it, it's
+        not that good."
         <br />
         <em>- Anonymous Developer</em>
       </blockquote>
@@ -259,8 +288,8 @@ greet('World')`}
       <p>
         This documentation template provides everything you need to create
         beautiful, functional documentation for your projects. The minimal
-        design keeps the focus on your content while providing all the
-        features users expect from modern documentation.
+        design keeps the focus on your content while providing all the features
+        users expect from modern documentation.
       </p>
 
       <p>
@@ -271,8 +300,12 @@ greet('World')`}
       <hr />
 
       <DocsCallout type="info" title="Quick Start">
-        Install any library with Composer: <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">composer require utopia-php/http</code>. 
-        Each library is self-contained and can be used independently or combined as needed.
+        Install any library with Composer:{' '}
+        <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+          composer require utopia-php/http
+        </code>
+        . Each library is self-contained and can be used independently or
+        combined as needed.
       </DocsCallout>
 
       <p className="text-sm text-muted-foreground">

@@ -1,8 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import {
-  DocsContent,
-  Breadcrumbs,
-} from '@/components/docs'
+import { DocsContent, Breadcrumbs } from '@/components/docs'
 
 export const Route = createFileRoute('/_docs/changelog')({
   component: Changelog,
@@ -15,7 +12,8 @@ const changelogEntries = [
     date: '2024-01-15',
     title: 'Utopia.php v1.0.0 - Production Ready',
     category: 'Release',
-    description: 'Initial production release of Utopia.php micro-libraries with comprehensive HTTP, database, and caching support.',
+    description:
+      'Initial production release of Utopia.php micro-libraries with comprehensive HTTP, database, and caching support.',
     content: `Utopia.php v1.0.0 marks the first production-ready release of our micro-libraries collection. This release includes all core libraries needed for building modern PHP microservices.
 
 - **HTTP Library**: Complete routing and middleware support with PSR-7 compatibility
@@ -33,15 +31,16 @@ This release is production-ready, battle-tested in Appwrite's infrastructure (53
       'Initial production release',
       '40% performance improvement',
       'PSR-7 compliant HTTP library',
-      'Multi-database support'
-    ]
+      'Multi-database support',
+    ],
   },
   {
     id: '2',
     date: '2023-12-20',
     title: 'Storage and Queue Libraries Added',
     category: 'Feature',
-    description: 'New storage and queue libraries for scalable microservice architectures.',
+    description:
+      'New storage and queue libraries for scalable microservice architectures.',
     content: `Added essential libraries for building scalable microservice architectures with persistent storage and background job processing.
 
 - **Storage Library**: S3-compatible object storage with local filesystem fallback
@@ -54,15 +53,16 @@ This release is production-ready, battle-tested in Appwrite's infrastructure (53
       'S3-compatible storage',
       'Redis-backed job queue',
       'Image processing library',
-      'Analytics and metrics'
-    ]
+      'Analytics and metrics',
+    ],
   },
   {
     id: '3',
     date: '2023-11-10',
     title: 'Network and Communication Libraries',
     category: 'Feature',
-    description: 'DNS, HTTP client, and messaging libraries for distributed systems.',
+    description:
+      'DNS, HTTP client, and messaging libraries for distributed systems.',
     content: `Expanded network capabilities with DNS resolution, HTTP client functionality, and pub/sub messaging for distributed systems.
 
 - **DNS Server**: Custom DNS server implementation with caching
@@ -75,15 +75,16 @@ This release is production-ready, battle-tested in Appwrite's infrastructure (53
       'Custom DNS server',
       'HTTP client with retries',
       'Domain validation utilities',
-      'Pub/sub messaging system'
-    ]
+      'Pub/sub messaging system',
+    ],
   },
   {
     id: '4',
     date: '2023-10-05',
     title: 'PHP 8.1+ Support and Performance Optimizations',
     category: 'Improvement',
-    description: 'Full PHP 8.1+ support with significant performance improvements across all libraries.',
+    description:
+      'Full PHP 8.1+ support with significant performance improvements across all libraries.',
     content: `Updated all libraries to leverage PHP 8.1+ features including typed properties, enums, and match expressions for better performance and developer experience.
 
 - **Typed Properties**: Enhanced type safety across all classes
@@ -100,15 +101,16 @@ Breaking changes include minimum PHP version requirement increased to 8.1, some 
       'PHP 8.1+ required',
       '25% performance boost',
       'Enhanced type safety',
-      'Better JIT compatibility'
-    ]
+      'Better JIT compatibility',
+    ],
   },
   {
     id: '5',
     date: '2023-09-15',
     title: 'Security Enhancements and Vulnerability Fixes',
     category: 'Security',
-    description: 'Critical security updates and vulnerability patches across all libraries.',
+    description:
+      'Critical security updates and vulnerability patches across all libraries.',
     content: `Comprehensive security audit and vulnerability fixes to ensure production safety and compliance with security best practices.
 
 - **SQL Injection Prevention**: Enhanced parameterized query handling
@@ -126,31 +128,31 @@ Breaking changes include minimum PHP version requirement increased to 8.1, some 
       'SQL injection prevention',
       'XSS protection',
       'CSRF token validation',
-      'Rate limiting support'
-    ]
-  }
+      'Rate limiting support',
+    ],
+  },
 ]
 
 function Changelog() {
   return (
     <DocsContent>
       {/* Breadcrumbs */}
-      <Breadcrumbs 
+      <Breadcrumbs
         items={[
           { label: 'Home', href: '/' },
           { label: 'Docs', href: '/docs' },
-          { label: 'Changelog', current: true }
-        ]} 
+          { label: 'Changelog', current: true },
+        ]}
       />
-      
+
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-2xl font-semibold mb-2">Changelog</h1>
         <p className="text-sm text-muted-foreground">
           Follow us on{' '}
-          <a 
-            href="https://github.com/utopia-php" 
-            target="_blank" 
+          <a
+            href="https://github.com/utopia-php"
+            target="_blank"
             rel="noopener noreferrer"
             className="text-primary hover:underline"
           >
@@ -172,7 +174,7 @@ function Changelog() {
                 day: 'numeric',
               })}
             </div>
-            
+
             {/* Title */}
             <h2 className="text-xl font-semibold mb-3">{entry.title}</h2>
 
@@ -197,10 +199,13 @@ function Changelog() {
                 if (line.trim() === '') {
                   return <br key={index} />
                 }
-                return <div key={index} className="mb-3">{line}</div>
+                return (
+                  <div key={index} className="mb-3">
+                    {line}
+                  </div>
+                )
               })}
             </div>
-
           </article>
         ))}
       </div>

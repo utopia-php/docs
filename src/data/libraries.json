@@ -10,7 +10,13 @@
       "lastUpdated": "2024-01-15",
       "documentation": "https://docs.utopia-php.com/http",
       "installation": "composer require utopia/http",
-      "features": ["Routing", "Middleware", "Request/Response", "CORS", "Rate Limiting"],
+      "features": [
+        "Routing",
+        "Middleware",
+        "Request/Response",
+        "CORS",
+        "Rate Limiting"
+      ],
       "dependencies": ["PHP 8.1+", "ext-json"],
       "category": "servers",
       "license": "MIT",
@@ -18,37 +24,37 @@
         {
           "title": "Routes",
           "path": "routes",
-          "description": "Learn how to define routes and actions in Utopia HTTP",
+          "description": "Learn how to define routes and actions in Utopia HTTP"
         },
         {
           "title": "Dependency Injection",
           "path": "dependency-injection",
-          "description": "Understand how dependency injection works in Utopia HTTP",
+          "description": "Understand how dependency injection works in Utopia HTTP"
         },
         {
           "title": "Validation",
           "path": "validation",
-          "description": "Learn how to validate and handle route parameters",
+          "description": "Learn how to validate and handle route parameters"
         },
         {
           "title": "Hooks",
           "path": "hooks",
-          "description": "Implement middleware and hooks for cross-cutting concerns",
+          "description": "Implement middleware and hooks for cross-cutting concerns"
         },
         {
           "title": "Adapters",
           "path": "adapters",
-          "description": "Choose the right server adapter for your deployment",
+          "description": "Choose the right server adapter for your deployment"
         },
         {
           "title": "Labels",
           "path": "labels",
-          "description": "Organize and categorize your routes with labels",
+          "description": "Organize and categorize your routes with labels"
         },
         {
           "title": "Lifecycle",
           "path": "lifecycle",
-          "description": "Understand the request lifecycle in Utopia HTTP",
+          "description": "Understand the request lifecycle in Utopia HTTP"
         }
       ]
     },
@@ -62,7 +68,12 @@
       "lastUpdated": "2024-01-10",
       "documentation": "https://docs.utopia-php.com/websocket",
       "installation": "composer require utopia/websocket",
-      "features": ["Real-time Communication", "Event Handling", "Connection Management", "Message Broadcasting"],
+      "features": [
+        "Real-time Communication",
+        "Event Handling",
+        "Connection Management",
+        "Message Broadcasting"
+      ],
       "dependencies": ["PHP 8.1+", "ext-sockets"],
       "category": "servers",
       "license": "MIT"
@@ -76,7 +87,12 @@
       "lastUpdated": "2024-01-07",
       "documentation": "https://docs.utopia-php.com/queue",
       "installation": "composer require utopia/queue",
-      "features": ["Job Queuing", "Worker Management", "Retry Logic", "Priority Queues"],
+      "features": [
+        "Job Queuing",
+        "Worker Management",
+        "Retry Logic",
+        "Priority Queues"
+      ],
       "dependencies": ["PHP 8.1+", "ext-redis"],
       "category": "servers"
     },
@@ -90,7 +106,15 @@
       "lastUpdated": "2025-01-27",
       "documentation": "https://docs.utopia-php.com/dns",
       "installation": "composer require utopia-php/dns",
-      "features": ["DNS Server", "DNS Client", "Multiple Adapters", "Record Types", "Benchmarking", "Mock Resolver", "Custom Resolvers"],
+      "features": [
+        "DNS Server",
+        "DNS Client",
+        "Multiple Adapters",
+        "Record Types",
+        "Benchmarking",
+        "Mock Resolver",
+        "Custom Resolvers"
+      ],
       "dependencies": ["PHP 8.0+", "ext-sockets"],
       "category": "servers",
       "license": "MIT",
@@ -98,27 +122,27 @@
         {
           "title": "DNS Server",
           "path": "dns-server",
-          "description": "Learn how to set up and configure a DNS server",
+          "description": "Learn how to set up and configure a DNS server"
         },
         {
           "title": "DNS Client",
           "path": "dns-client",
-          "description": "Query DNS records from any DNS server",
+          "description": "Query DNS records from any DNS server"
         },
         {
           "title": "Server Adapters",
           "path": "adapters",
-          "description": "Choose the right adapter for your deployment",
+          "description": "Choose the right adapter for your deployment"
         },
         {
           "title": "Custom Resolvers",
           "path": "resolvers",
-          "description": "Create custom DNS resolution logic",
+          "description": "Create custom DNS resolution logic"
         },
         {
           "title": "Performance Benchmarking",
           "path": "benchmarking",
-          "description": "Measure DNS server performance under load",
+          "description": "Measure DNS server performance under load"
         }
       ]
     },
@@ -131,7 +155,12 @@
       "lastUpdated": "2025-01-27",
       "documentation": "https://docs.utopia-php.com/servers",
       "installation": "composer require utopia-php/servers",
-      "features": ["Server Base", "HTTP Server", "WebSocket Server", "Custom Protocols"],
+      "features": [
+        "Server Base",
+        "HTTP Server",
+        "WebSocket Server",
+        "Custom Protocols"
+      ],
       "dependencies": ["PHP 8.0+"],
       "category": "servers",
       "license": "MIT"
@@ -147,7 +176,13 @@
       "lastUpdated": "2024-01-12",
       "documentation": "https://docs.utopia-php.com/fetch",
       "installation": "composer require utopia/fetch",
-      "features": ["Async Requests", "Response Handling", "Error Management", "Headers", "Cookies"],
+      "features": [
+        "Async Requests",
+        "Response Handling",
+        "Error Management",
+        "Headers",
+        "Cookies"
+      ],
       "dependencies": ["PHP 8.1+", "ext-curl"],
       "category": "transport"
     },
@@ -160,7 +195,13 @@
       "lastUpdated": "2024-01-08",
       "documentation": "https://docs.utopia-php.com/domains",
       "installation": "composer require utopia/domains",
-      "features": ["Domain Parsing", "TLD Extraction", "Subdomain Handling", "Validation", "IDN Support"],
+      "features": [
+        "Domain Parsing",
+        "TLD Extraction",
+        "Subdomain Handling",
+        "Validation",
+        "IDN Support"
+      ],
       "dependencies": ["PHP 8.1+", "ext-intl"],
       "category": "transport"
     },
@@ -173,7 +214,12 @@
       "lastUpdated": "2025-01-27",
       "documentation": "https://docs.utopia-php.com/dsn",
       "installation": "composer require utopia-php/dsn",
-      "features": ["DSN Parsing", "Validation", "Multiple Formats", "Database URLs"],
+      "features": [
+        "DSN Parsing",
+        "Validation",
+        "Multiple Formats",
+        "Database URLs"
+      ],
       "dependencies": ["PHP 8.0+"],
       "category": "transport",
       "license": "MIT"
@@ -190,7 +236,13 @@
       "lastUpdated": "2024-01-16",
       "documentation": "https://docs.utopia-php.com/database",
       "installation": "composer require utopia/database",
-      "features": ["Multi-Database Support", "Query Builder", "Migrations", "Connection Pooling", "Transactions"],
+      "features": [
+        "Multi-Database Support",
+        "Query Builder",
+        "Migrations",
+        "Connection Pooling",
+        "Transactions"
+      ],
       "dependencies": ["PHP 8.1+", "ext-pdo"],
       "category": "data",
       "license": "MIT"
@@ -204,7 +256,12 @@
       "lastUpdated": "2025-01-27",
       "documentation": "https://docs.utopia-php.com/migration",
       "installation": "composer require utopia-php/migration",
-      "features": ["Database Migrations", "Version Control", "Rollback Support", "Multiple Databases"],
+      "features": [
+        "Database Migrations",
+        "Version Control",
+        "Rollback Support",
+        "Multiple Databases"
+      ],
       "dependencies": ["PHP 8.0+", "ext-pdo"],
       "category": "data",
       "license": "MIT"
@@ -218,7 +275,12 @@
       "lastUpdated": "2024-01-13",
       "documentation": "https://docs.utopia-php.com/cache",
       "installation": "composer require utopia/cache",
-      "features": ["Multiple Backends", "TTL Support", "Tag-based Invalidation", "Serialization"],
+      "features": [
+        "Multiple Backends",
+        "TTL Support",
+        "Tag-based Invalidation",
+        "Serialization"
+      ],
       "dependencies": ["PHP 8.1+", "ext-json"],
       "category": "data"
     },
@@ -231,7 +293,12 @@
       "lastUpdated": "2024-01-09",
       "documentation": "https://docs.utopia-php.com/storage",
       "installation": "composer require utopia/storage",
-      "features": ["Multi-Provider Support", "File Upload", "CDN Integration", "Metadata Management"],
+      "features": [
+        "Multi-Provider Support",
+        "File Upload",
+        "CDN Integration",
+        "Metadata Management"
+      ],
       "dependencies": ["PHP 8.1+", "ext-curl"],
       "category": "data"
     },
@@ -244,7 +311,12 @@
       "lastUpdated": "2024-01-03",
       "documentation": "https://docs.utopia-php.com/config",
       "installation": "composer require utopia/config",
-      "features": ["Environment Variables", "File-based Config", "Validation", "Type Casting"],
+      "features": [
+        "Environment Variables",
+        "File-based Config",
+        "Validation",
+        "Type Casting"
+      ],
       "dependencies": ["PHP 8.1+", "ext-json"],
       "category": "data"
     },
@@ -273,7 +345,12 @@
       "lastUpdated": "2025-01-27",
       "documentation": "https://docs.utopia-php.com/auth",
       "installation": "composer require utopia-php/auth",
-      "features": ["Authentication", "Authorization", "Multiple Providers", "JWT Support"],
+      "features": [
+        "Authentication",
+        "Authorization",
+        "Multiple Providers",
+        "JWT Support"
+      ],
       "dependencies": ["PHP 8.0+", "ext-json"],
       "category": "security",
       "license": "MIT"
@@ -287,7 +364,12 @@
       "lastUpdated": "2025-01-27",
       "documentation": "https://docs.utopia-php.com/jwt",
       "installation": "composer require utopia-php/jwt",
-      "features": ["JWT Creation", "JWT Validation", "Multiple Algorithms", "Claims Support"],
+      "features": [
+        "JWT Creation",
+        "JWT Validation",
+        "Multiple Algorithms",
+        "Claims Support"
+      ],
       "dependencies": ["PHP 8.0+", "ext-json"],
       "category": "security",
       "license": "MIT"
@@ -301,7 +383,12 @@
       "lastUpdated": "2024-01-06",
       "documentation": "https://docs.utopia-php.com/abuse",
       "installation": "composer require utopia/abuse",
-      "features": ["Rate Limiting", "IP Blocking", "Pattern Detection", "Whitelist Management"],
+      "features": [
+        "Rate Limiting",
+        "IP Blocking",
+        "Pattern Detection",
+        "Whitelist Management"
+      ],
       "dependencies": ["PHP 8.1+", "ext-json"],
       "category": "security"
     }
@@ -316,7 +403,12 @@
       "lastUpdated": "2024-01-02",
       "documentation": "https://docs.utopia-php.com/logger",
       "installation": "composer require utopia/logger",
-      "features": ["Structured Logging", "Multiple Formats", "Log Level Filtering", "Context Support"],
+      "features": [
+        "Structured Logging",
+        "Multiple Formats",
+        "Log Level Filtering",
+        "Context Support"
+      ],
       "dependencies": ["PHP 8.1+", "ext-json"],
       "category": "observability"
     },
@@ -329,7 +421,12 @@
       "lastUpdated": "2024-01-01",
       "documentation": "https://docs.utopia-php.com/audit",
       "installation": "composer require utopia/audit",
-      "features": ["Audit Trail", "User Action Tracking", "System Events", "Compliance"],
+      "features": [
+        "Audit Trail",
+        "User Action Tracking",
+        "System Events",
+        "Compliance"
+      ],
       "dependencies": ["PHP 8.1+", "ext-json"],
       "category": "observability"
     },
@@ -342,7 +439,12 @@
       "lastUpdated": "2025-01-27",
       "documentation": "https://docs.utopia-php.com/telemetry",
       "installation": "composer require utopia-php/telemetry",
-      "features": ["Metrics Collection", "Performance Monitoring", "Health Checks", "Alerting"],
+      "features": [
+        "Metrics Collection",
+        "Performance Monitoring",
+        "Health Checks",
+        "Alerting"
+      ],
       "dependencies": ["PHP 8.0+", "ext-json"],
       "category": "observability",
       "license": "MIT"
@@ -356,7 +458,12 @@
       "lastUpdated": "2023-12-25",
       "documentation": "https://docs.utopia-php.com/analytics",
       "installation": "composer require utopia/analytics",
-      "features": ["Event Collection", "Data Aggregation", "Real-time Analytics", "Custom Metrics"],
+      "features": [
+        "Event Collection",
+        "Data Aggregation",
+        "Real-time Analytics",
+        "Custom Metrics"
+      ],
       "dependencies": ["PHP 8.1+", "ext-json"],
       "category": "observability"
     }
@@ -371,7 +478,12 @@
       "lastUpdated": "2023-12-15",
       "documentation": "https://docs.utopia-php.com/cli",
       "installation": "composer require utopia/cli",
-      "features": ["Argument Parsing", "Command Routing", "Help Generation", "Interactive Mode"],
+      "features": [
+        "Argument Parsing",
+        "Command Routing",
+        "Help Generation",
+        "Interactive Mode"
+      ],
       "dependencies": ["PHP 8.1+", "ext-readline"],
       "category": "platform"
     },
@@ -384,7 +496,12 @@
       "lastUpdated": "2023-12-18",
       "documentation": "https://docs.utopia-php.com/registry",
       "installation": "composer require utopia/registry",
-      "features": ["Dependency Injection", "Service Registration", "Auto-wiring", "Singleton Support"],
+      "features": [
+        "Dependency Injection",
+        "Service Registration",
+        "Auto-wiring",
+        "Singleton Support"
+      ],
       "dependencies": ["PHP 8.1+", "ext-reflection"],
       "category": "platform"
     },
@@ -397,7 +514,12 @@
       "lastUpdated": "2025-01-27",
       "documentation": "https://docs.utopia-php.com/di",
       "installation": "composer require utopia-php/di",
-      "features": ["Dependency Injection", "Service Container", "Auto-wiring", "Singleton Support"],
+      "features": [
+        "Dependency Injection",
+        "Service Container",
+        "Auto-wiring",
+        "Singleton Support"
+      ],
       "dependencies": ["PHP 8.0+", "ext-reflection"],
       "category": "platform",
       "license": "MIT"
@@ -411,7 +533,12 @@
       "lastUpdated": "2023-12-12",
       "documentation": "https://docs.utopia-php.com/system",
       "installation": "composer require utopia/system",
-      "features": ["Process Management", "Environment Detection", "System Info", "Resource Monitoring"],
+      "features": [
+        "Process Management",
+        "Environment Detection",
+        "System Info",
+        "Resource Monitoring"
+      ],
       "dependencies": ["PHP 8.1+", "ext-posix"],
       "category": "platform"
     },
@@ -424,7 +551,12 @@
       "lastUpdated": "2025-01-27",
       "documentation": "https://docs.utopia-php.com/platform",
       "installation": "composer require utopia-php/platform",
-      "features": ["Cross-platform Support", "OS Detection", "Architecture Detection", "Platform Abstraction"],
+      "features": [
+        "Cross-platform Support",
+        "OS Detection",
+        "Architecture Detection",
+        "Platform Abstraction"
+      ],
       "dependencies": ["PHP 8.0+", "ext-posix"],
       "category": "platform",
       "license": "MIT"
@@ -440,7 +572,12 @@
       "lastUpdated": "2024-01-14",
       "documentation": "https://docs.utopia-php.com/ab",
       "installation": "composer require utopia/ab",
-      "features": ["Experiment Management", "Statistical Analysis", "Traffic Splitting", "Conversion Tracking"],
+      "features": [
+        "Experiment Management",
+        "Statistical Analysis",
+        "Traffic Splitting",
+        "Conversion Tracking"
+      ],
       "dependencies": ["PHP 8.1+", "ext-json"],
       "category": "utilities"
     },
@@ -453,7 +590,12 @@
       "lastUpdated": "2025-01-27",
       "documentation": "https://docs.utopia-php.com/balancer",
       "installation": "composer require utopia-php/balancer",
-      "features": ["Load Balancing", "Health Checks", "Multiple Algorithms", "Failover"],
+      "features": [
+        "Load Balancing",
+        "Health Checks",
+        "Multiple Algorithms",
+        "Failover"
+      ],
       "dependencies": ["PHP 8.0+"],
       "category": "utilities",
       "license": "MIT"
@@ -467,7 +609,12 @@
       "lastUpdated": "2025-01-27",
       "documentation": "https://docs.utopia-php.com/view",
       "installation": "composer require utopia-php/view",
-      "features": ["Template Engine", "View Rendering", "Multiple Engines", "Caching"],
+      "features": [
+        "Template Engine",
+        "View Rendering",
+        "Multiple Engines",
+        "Caching"
+      ],
       "dependencies": ["PHP 8.0+"],
       "category": "utilities",
       "license": "MIT"
@@ -481,7 +628,12 @@
       "lastUpdated": "2024-01-04",
       "documentation": "https://docs.utopia-php.com/locale",
       "installation": "composer require utopia/locale",
-      "features": ["Language Detection", "Translation Management", "RTL Support", "Pluralization"],
+      "features": [
+        "Language Detection",
+        "Translation Management",
+        "RTL Support",
+        "Pluralization"
+      ],
       "dependencies": ["PHP 8.1+", "ext-intl"],
       "category": "utilities"
     },
@@ -494,7 +646,13 @@
       "lastUpdated": "2024-01-11",
       "documentation": "https://docs.utopia-php.com/image",
       "installation": "composer require utopia/image",
-      "features": ["Resize & Crop", "Format Conversion", "Filters", "Watermarking", "Optimization"],
+      "features": [
+        "Resize & Crop",
+        "Format Conversion",
+        "Filters",
+        "Watermarking",
+        "Optimization"
+      ],
       "dependencies": ["PHP 8.1+", "ext-gd"],
       "category": "utilities"
     },
@@ -507,7 +665,12 @@
       "lastUpdated": "2025-01-27",
       "documentation": "https://docs.utopia-php.com/detector",
       "installation": "composer require utopia-php/detector",
-      "features": ["Device Detection", "Browser Detection", "OS Detection", "User Agent Parsing"],
+      "features": [
+        "Device Detection",
+        "Browser Detection",
+        "OS Detection",
+        "User Agent Parsing"
+      ],
       "dependencies": ["PHP 8.0+"],
       "category": "utilities",
       "license": "MIT"
@@ -523,7 +686,12 @@
       "lastUpdated": "2023-12-20",
       "documentation": "https://docs.utopia-php.com/pay",
       "installation": "composer require utopia/pay",
-      "features": ["Stripe Integration", "PayPal Support", "Multiple Providers", "Webhook Handling"],
+      "features": [
+        "Stripe Integration",
+        "PayPal Support",
+        "Multiple Providers",
+        "Webhook Handling"
+      ],
       "dependencies": ["PHP 8.1+", "ext-curl"],
       "category": "integrations"
     },
@@ -537,7 +705,13 @@
       "lastUpdated": "2025-01-27",
       "documentation": "https://docs.utopia-php.com/agents",
       "installation": "composer require utopia-php/agents",
-      "features": ["Multiple AI Providers", "Flexible Message Types", "Conversation Management", "Model Selection", "Parameter Control"],
+      "features": [
+        "Multiple AI Providers",
+        "Flexible Message Types",
+        "Conversation Management",
+        "Model Selection",
+        "Parameter Control"
+      ],
       "dependencies": ["PHP 8.0+", "ext-json", "ext-curl"],
       "category": "integrations",
       "license": "MIT"
@@ -551,7 +725,12 @@
       "lastUpdated": "2025-01-27",
       "documentation": "https://docs.utopia-php.com/vcs",
       "installation": "composer require utopia-php/vcs",
-      "features": ["Git Support", "SVN Support", "Version Control", "Repository Management"],
+      "features": [
+        "Git Support",
+        "SVN Support",
+        "Version Control",
+        "Repository Management"
+      ],
       "dependencies": ["PHP 8.0+", "ext-json"],
       "category": "integrations",
       "license": "MIT"
@@ -565,7 +744,12 @@
       "lastUpdated": "2025-01-27",
       "documentation": "https://docs.utopia-php.com/orchestrations",
       "installation": "composer require utopia-php/orchestrations",
-      "features": ["Workflow Management", "Task Coordination", "Service Discovery", "Health Checks"],
+      "features": [
+        "Workflow Management",
+        "Task Coordination",
+        "Service Discovery",
+        "Health Checks"
+      ],
       "dependencies": ["PHP 8.0+", "ext-json"],
       "category": "integrations",
       "license": "MIT"
@@ -579,7 +763,12 @@
       "lastUpdated": "2023-12-28",
       "documentation": "https://docs.utopia-php.com/messaging",
       "installation": "composer require utopia/messaging",
-      "features": ["Message Queues", "Pub/Sub", "Redis Support", "RabbitMQ Support"],
+      "features": [
+        "Message Queues",
+        "Pub/Sub",
+        "Redis Support",
+        "RabbitMQ Support"
+      ],
       "dependencies": ["PHP 8.1+", "ext-redis"],
       "category": "integrations"
     }

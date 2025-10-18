@@ -36,9 +36,7 @@ export function DocsLayout({
           <div className="flex-1 flex justify-center md:ml-56">
             <div className="w-full max-w-4xl py-3 lg:py-4">
               <main>
-                <div className="max-w-3xl mx-auto">
-                  {children}
-                </div>
+                <div className="max-w-3xl mx-auto">{children}</div>
               </main>
             </div>
           </div>

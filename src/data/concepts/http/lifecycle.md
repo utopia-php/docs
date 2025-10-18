@@ -38,7 +38,7 @@ Http::init()
     ->inject('request')
     ->action(function(Request $request) {
         error_log('Request started: ' . $request->getMethod() . ' ' . $request->getURI());
-        
+
         // Set request start time for performance monitoring
         $request->setAttribute('startTime', microtime(true));
     });
@@ -86,9 +86,9 @@ Http::shutdown()
         // Calculate request duration
         $startTime = $request->getAttribute('startTime');
         $duration = microtime(true) - $startTime;
-        
+
         error_log('Response: ' . $response->getStatusCode() . ' (' . $duration . 's)');
-        
+
         // Add CORS headers
         $response->addHeader('Access-Control-Allow-Origin', '*');
     });
@@ -113,7 +113,7 @@ Http::error()
     ->action(function(\Throwable $error, Request $request, Response $response) {
         // Log error details
         error_log('Error: ' . $error->getMessage() . ' in ' . $error->getFile() . ':' . $error->getLine());
-        
+
         // Return appropriate error response
         $response->setStatusCode(500)->json(['error' => 'Internal Server Error']);
     });

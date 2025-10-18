@@ -11,20 +11,21 @@ const GITHUB_BRANCH = 'main'
 export function getGitHubFilePath(routePath: string): string | null {
   // Remove leading slash and handle root path
   const cleanPath = routePath === '/' ? 'index' : routePath.replace(/^\//, '')
-  
+
   // Map route paths to source file paths
   const routeToFileMap: Record<string, string> = {
     '': 'src/routes/_public/index.tsx',
-    'contributing': 'src/routes/_public/contributing.tsx',
-    'changelog': 'src/routes/_public/changelog.tsx',
-    'blog': 'src/routes/_public/blog.tsx',
+    contributing: 'src/routes/_public/contributing.tsx',
+    changelog: 'src/routes/_public/changelog.tsx',
+    blog: 'src/routes/_public/blog.tsx',
     'example-comps': 'src/routes/_public/example-comps.tsx',
     'sign-in': 'src/routes/_auth/sign-in.tsx',
     'sign-up': 'src/routes/_auth/sign-up.tsx',
     'sign-out': 'src/routes/_auth/sign-out.tsx',
-    'example-protected-route': 'src/routes/_protected/example-protected-route.tsx',
+    'example-protected-route':
+      'src/routes/_protected/example-protected-route.tsx',
   }
-  
+
   // Handle library routes
   if (cleanPath.startsWith('library/')) {
     // Check if it's a concept route
@@ -33,7 +34,7 @@ export function getGitHubFilePath(routePath: string): string | null {
     }
     return `src/routes/_public/library.$libraryName.tsx`
   }
-  
+
   // Return mapped file path or null if not found
   return routeToFileMap[cleanPath] || null
 }
@@ -46,7 +47,7 @@ export function getGitHubEditUrl(routePath: string): string | null {
   if (!filePath) {
     return null
   }
-  
+
   return `${GITHUB_REPO_URL}/edit/${GITHUB_BRANCH}/${filePath}`
 }
 

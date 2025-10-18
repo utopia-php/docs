@@ -7,15 +7,15 @@ export const Route = createFileRoute('/_public/blog/$slug')({
 
 function BlogArticle() {
   const { slug } = Route.useParams()
-  
+
   // Article data based on slug
   const getArticleData = (slug: string) => {
     const articles: Record<string, any> = {
       'introducing-utopia-php': {
-        title: "Introducing Utopia.php: A Modern PHP Framework for the Future",
-        author: "Utopia Team",
-        date: "2024-01-15",
-        readTime: "8 min read",
+        title: 'Introducing Utopia.php: A Modern PHP Framework for the Future',
+        author: 'Utopia Team',
+        date: '2024-01-15',
+        readTime: '8 min read',
         content: `
           <p>We're excited to announce the official release of Utopia.php, a revolutionary PHP framework designed to bring modern development practices to the PHP ecosystem. Built from the ground up with performance, developer experience, and scalability in mind.</p>
           
@@ -39,13 +39,13 @@ function BlogArticle() {
           
           <h2 id="whats-next">What's Next?</h2>
           <p>This is just the beginning. We have an exciting roadmap ahead with new features, performance improvements, and community contributions.</p>
-        `
+        `,
       },
       'building-scalable-applications': {
-        title: "Building Scalable PHP Applications with Utopia.php",
-        author: "Utopia Team",
-        date: "2024-01-20",
-        readTime: "12 min read",
+        title: 'Building Scalable PHP Applications with Utopia.php',
+        author: 'Utopia Team',
+        date: '2024-01-20',
+        readTime: '12 min read',
         content: `
           <p>In this comprehensive guide, we'll explore how to build scalable PHP applications using Utopia.php's powerful features and modern architectural patterns.</p>
           
@@ -75,13 +75,13 @@ function BlogArticle() {
           
           <h2 id="conclusion">Conclusion</h2>
           <p>Building scalable applications with Utopia.php requires careful planning and the right architectural decisions. By following these patterns and best practices, you can create applications that grow with your business needs.</p>
-        `
+        `,
       },
       'performance-optimization-tips': {
-        title: "Performance Optimization Tips for PHP Applications",
-        author: "Utopia Team",
-        date: "2024-01-25",
-        readTime: "6 min read",
+        title: 'Performance Optimization Tips for PHP Applications',
+        author: 'Utopia Team',
+        date: '2024-01-25',
+        readTime: '6 min read',
         content: `
           <p>Discover proven techniques to optimize your PHP applications for better performance and scalability.</p>
           
@@ -96,13 +96,13 @@ function BlogArticle() {
           
           <h2 id="memory-management">Memory Management</h2>
           <p>Optimize memory usage by avoiding memory leaks and using efficient data structures.</p>
-        `
+        `,
       },
       'modern-php-development': {
-        title: "Modern PHP Development Best Practices",
-        author: "Utopia Team",
-        date: "2024-01-30",
-        readTime: "10 min read",
+        title: 'Modern PHP Development Best Practices',
+        author: 'Utopia Team',
+        date: '2024-01-30',
+        readTime: '10 min read',
         content: `
           <p>Explore the latest best practices and patterns for modern PHP development with Utopia.php.</p>
           
@@ -117,13 +117,13 @@ function BlogArticle() {
           
           <h2 id="testing">Testing</h2>
           <p>Write comprehensive tests including unit tests, integration tests, and end-to-end tests.</p>
-        `
+        `,
       },
       'testing-strategies': {
-        title: "Comprehensive Testing Strategies for PHP Applications",
-        author: "Utopia Team",
-        date: "2024-02-05",
-        readTime: "9 min read",
+        title: 'Comprehensive Testing Strategies for PHP Applications',
+        author: 'Utopia Team',
+        date: '2024-02-05',
+        readTime: '9 min read',
         content: `
           <p>Learn how to implement effective testing strategies for your PHP applications using Utopia.php's testing tools.</p>
           
@@ -138,13 +138,13 @@ function BlogArticle() {
           
           <h2 id="test-automation">Test Automation</h2>
           <p>Set up automated testing pipelines to run tests on every code change.</p>
-        `
+        `,
       },
       'deployment-guide': {
-        title: "Production Deployment Guide for Utopia.php Applications",
-        author: "Utopia Team",
-        date: "2024-02-10",
-        readTime: "15 min read",
+        title: 'Production Deployment Guide for Utopia.php Applications',
+        author: 'Utopia Team',
+        date: '2024-02-10',
+        readTime: '15 min read',
         content: `
           <p>A complete guide to deploying your Utopia.php applications to production with best practices and security considerations.</p>
           
@@ -162,33 +162,35 @@ function BlogArticle() {
           
           <h2 id="backup-recovery">Backup and Recovery</h2>
           <p>Implement robust backup and recovery procedures to protect your data.</p>
-        `
+        `,
+      },
+    }
+
+    return (
+      articles[slug] || {
+        title: 'Article Not Found',
+        author: 'Utopia Team',
+        date: '2024-01-01',
+        readTime: '1 min read',
+        content: `<p>The requested article could not be found.</p>`,
       }
-    }
-    
-    return articles[slug] || {
-      title: "Article Not Found",
-      author: "Utopia Team",
-      date: "2024-01-01",
-      readTime: "1 min read",
-      content: `<p>The requested article could not be found.</p>`
-    }
+    )
   }
-  
+
   const article = getArticleData(slug)
 
   return (
     <BlogLayout>
       <div className="max-w-6xl mx-auto">
         {/* Breadcrumbs */}
-        <Breadcrumbs 
+        <Breadcrumbs
           items={[
             { label: 'Home', href: '/' },
-            { label: 'Blog', href: '/blog' }
-          ]} 
+            { label: 'Blog', href: '/blog' },
+          ]}
           showCopyPage={false}
         />
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-3">
@@ -199,34 +201,36 @@ function BlogArticle() {
                 <div className="flex items-center gap-4 text-sm text-muted-foreground mb-6">
                   <span>By {article.author}</span>
                   <span>•</span>
-                  <time dateTime={article.date}>{new Date(article.date).toLocaleDateString('en-US', { 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric' 
-                  })}</time>
+                  <time dateTime={article.date}>
+                    {new Date(article.date).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    })}
+                  </time>
                   <span>•</span>
                   <span>{article.readTime}</span>
                 </div>
               </header>
-              
+
               {/* Article Content */}
-              <div 
+              <div
                 className="space-y-6"
                 dangerouslySetInnerHTML={{ __html: article.content }}
               />
-              
+
               {/* Article Footer */}
               <footer className="mt-12 pt-8 border-t">
                 <div className="flex gap-4">
-                  <a 
-                    href="/blog" 
+                  <a
+                    href="/blog"
                     className="inline-flex items-center px-4 py-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-md transition-colors"
                   >
                     ← Back to Blog
                   </a>
-                  <a 
-                    href="https://github.com/utopia-php" 
-                    target="_blank" 
+                  <a
+                    href="https://github.com/utopia-php"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
                   >
@@ -236,7 +240,7 @@ function BlogArticle() {
               </footer>
             </article>
           </div>
-          
+
           {/* Table of Contents Sidebar */}
           <div className="lg:col-span-1">
             <BlogTableOfContents />

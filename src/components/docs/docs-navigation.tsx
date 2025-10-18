@@ -2,7 +2,13 @@ import * as React from 'react'
 import { cn } from '@/lib/utils'
 import { ChevronRight, ArrowLeft } from 'lucide-react'
 import { Link, useRouterState } from '@tanstack/react-router'
-import { getAllLibraries, getCategories, getLibrarySlug, findLibraryByName, getLibraryConcepts } from '@/lib/libraries'
+import {
+  getAllLibraries,
+  getCategories,
+  getLibrarySlug,
+  findLibraryByName,
+  getLibraryConcepts,
+} from '@/lib/libraries'
 
 export interface NavItem {
   title: string
@@ -20,13 +26,15 @@ interface DocsNavigationProps {
 function generateLibraryNavItems(): NavItem[] {
   const categories = getCategories()
   const allLibraries = getAllLibraries()
-  
-  return categories.map(category => {
-    const categoryLibraries = allLibraries.filter(lib => lib.category === category)
-    
+
+  return categories.map((category) => {
+    const categoryLibraries = allLibraries.filter(
+      (lib) => lib.category === category,
+    )
+
     return {
       title: category.charAt(0).toUpperCase() + category.slice(1),
-      items: categoryLibraries.map(library => ({
+      items: categoryLibraries.map((library) => ({
         title: library.name,
         href: `/docs/library/${getLibrarySlug(library.name)}`,
       })),
@@ -40,19 +48,19 @@ function generateLibrarySpecificNavItems(libraryName: string): NavItem[] {
   if (!library) return defaultNavItems
 
   const concepts = getLibraryConcepts(library)
-  
+
   const navItems: NavItem[] = [
     {
       title: 'Overview',
       href: `/docs/library/${getLibrarySlug(library.name)}`,
-    }
+    },
   ]
 
   // Add concepts if they exist
   if (concepts.length > 0) {
     navItems.push({
       title: 'Concepts',
-      items: concepts.map(concept => ({
+      items: concepts.map((concept) => ({
         title: concept.title,
         href: `/docs/library/${getLibrarySlug(library.name)}/concept/${concept.path}`,
       })),
@@ -116,29 +124,31 @@ export function DocsNavigation({
 }: DocsNavigationProps) {
   const router = useRouterState()
   const isLibraryPage = router.location.pathname.includes('/docs/library/')
-  
+
   // Extract library name from URL for library pages
   const getLibraryName = () => {
     if (!isLibraryPage) return null
     const pathParts = router.location.pathname.split('/')
     // For concept pages, library name is the third-to-last part
     // For regular library pages, it's the last part
-    const librarySlug = pathParts.includes('concept') 
+    const librarySlug = pathParts.includes('concept')
       ? pathParts[pathParts.length - 3] // /docs/library/http/concept/dependency-injection -> http
       : pathParts[pathParts.length - 1] // /docs/library/http -> http
     // Convert slug back to proper case (e.g., "dns" -> "DNS")
-    return librarySlug.split('-').map(word => 
-      word.charAt(0).toUpperCase() + word.slice(1)
-    ).join(' ')
+    return librarySlug
+      .split('-')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ')
   }
-  
+
   const libraryName = getLibraryName()
-  
+
   // Use library-specific navigation if we're on a library page
-  const navigationItems = isLibraryPage && libraryName 
-    ? generateLibrarySpecificNavItems(libraryName)
-    : items
-  
+  const navigationItems =
+    isLibraryPage && libraryName
+      ? generateLibrarySpecificNavItems(libraryName)
+      : items
+
   return (
     <nav className="space-y-2">
       {/* Back button for library pages */}
@@ -153,7 +163,7 @@ export function DocsNavigation({
           </Link>
         </div>
       )}
-      
+
       {/* Library title for library pages */}
       {isLibraryPage && libraryName && (
         <div className="pb-2">
@@ -162,7 +172,7 @@ export function DocsNavigation({
           </h3>
         </div>
       )}
-      
+
       {navigationItems.map((item, index) => (
         <NavSection key={index} item={item} />
       ))}
@@ -257,7 +267,7 @@ function NavLink({ item }: { item: NavItem }) {
         rel="noopener noreferrer"
         className={cn(
           'flex items-center justify-between rounded-md px-2 py-1 text-sm transition-colors hover:bg-accent',
-          'text-muted-foreground hover:text-foreground'
+          'text-muted-foreground hover:text-foreground',
         )}
       >
         <span>{item.title}</span>

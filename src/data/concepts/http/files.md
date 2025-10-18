@@ -18,32 +18,32 @@ Http::post('/upload')
     ->inject('response')
     ->action(function(Request $request, Response $response) {
         $files = $request->getFiles();
-        
+
         if (empty($files)) {
             $response->setStatusCode(400)->json(['error' => 'No files uploaded']);
             return;
         }
-        
+
         $file = $files[0]; // First uploaded file
-        
+
         // Validate file
         if ($file->getSize() > 5 * 1024 * 1024) { // 5MB limit
             $response->setStatusCode(400)->json(['error' => 'File too large']);
             return;
         }
-        
+
         // Check file type
         $allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
         if (!in_array($file->getType(), $allowedTypes)) {
             $response->setStatusCode(400)->json(['error' => 'Invalid file type']);
             return;
         }
-        
+
         // Generate secure filename
         $extension = pathinfo($file->getName(), PATHINFO_EXTENSION);
         $filename = uniqid() . '.' . $extension;
         $uploadPath = '/uploads/' . $filename;
-        
+
         // Move file to secure location
         if ($file->moveTo($uploadPath)) {
             $response->json([
@@ -64,16 +64,16 @@ Http::post('/upload-multiple')
     ->action(function(Request $request, Response $response) {
         $files = $request->getFiles();
         $uploadedFiles = [];
-        
+
         foreach ($files as $file) {
             // Validate each file
             if ($file->getSize() > 2 * 1024 * 1024) { // 2MB per file
                 continue; // Skip oversized files
             }
-            
+
             $filename = uniqid() . '_' . $file->getName();
             $uploadPath = '/uploads/' . $filename;
-            
+
             if ($file->moveTo($uploadPath)) {
                 $uploadedFiles[] = [
                     'originalName' => $file->getName(),
@@ -83,7 +83,7 @@ Http::post('/upload-multiple')
                 ];
             }
         }
-        
+
         $response->json([
             'message' => 'Files processed',
             'uploaded' => count($uploadedFiles),
@@ -97,12 +97,12 @@ Http::get('/files/{filename}')
     ->inject('response')
     ->action(function(string $filename, Response $response) {
         $filePath = '/uploads/' . $filename;
-        
+
         if (!file_exists($filePath)) {
             $response->setStatusCode(404)->json(['error' => 'File not found']);
             return;
         }
-        
+
         // Get file information
         $fileInfo = [
             'name' => $filename,
@@ -110,7 +110,7 @@ Http::get('/files/{filename}')
             'type' => mime_content_type($filePath),
             'modified' => date('Y-m-d H:i:s', filemtime($filePath))
         ];
-        
+
         $response->json($fileInfo);
     });
 ```

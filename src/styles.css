@@ -15,7 +15,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-html, body {
+html,
+body {
   @apply w-full;
   overscroll-behavior: none;
   -webkit-overflow-scrolling: touch;
@@ -153,7 +154,23 @@ code {
   body {
     @apply bg-background text-foreground;
   }
-  p, h1, h2, h3, h4, h5, h6, span, div, a, button, input, textarea, label, li, td, th {
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  span,
+  div,
+  a,
+  button,
+  input,
+  textarea,
+  label,
+  li,
+  td,
+  th {
     @apply leading-relaxed;
   }
 }
@@ -163,7 +180,7 @@ pre {
 }
 
 /* Code block styling - Monokai theme with black background */
-pre[class*="language-"] {
+pre[class*='language-'] {
   background: #000000 !important;
   color: #f8f8f2 !important;
   border: none;
@@ -174,7 +191,7 @@ pre[class*="language-"] {
   opacity: 1 !important;
 }
 
-code[class*="language-"] {
+code[class*='language-'] {
   @apply text-sm font-mono;
   background: #000000 !important;
   color: #f8f8f2 !important;
@@ -184,14 +201,14 @@ code[class*="language-"] {
 }
 
 /* Ensure consistent background for both light and dark modes */
-.dark pre[class*="language-"],
-.light pre[class*="language-"] {
+.dark pre[class*='language-'],
+.light pre[class*='language-'] {
   background: #000000 !important;
   opacity: 1 !important;
 }
 
-.dark code[class*="language-"],
-.light code[class*="language-"] {
+.dark code[class*='language-'],
+.light code[class*='language-'] {
   background: #000000 !important;
   opacity: 1 !important;
 }
@@ -205,7 +222,7 @@ pre.line-numbers {
 
 /* Line numbers styling */
 pre .linenumber {
-  padding-right: 2.5em!important;
+  padding-right: 2.5em !important;
 }
 
 pre.line-numbers > code {

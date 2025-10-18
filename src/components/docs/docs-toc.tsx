@@ -19,10 +19,11 @@ export function DocsToc({ items, maxLevel = 4 }: DocsTocProps) {
   React.useEffect(() => {
     // Auto-generate TOC from page headings if not provided
     if (!items) {
-      const selector = Array.from({ length: maxLevel - 1 }, (_, i) => 
-        `.docs-content h${i + 2}`
+      const selector = Array.from(
+        { length: maxLevel - 1 },
+        (_, i) => `.docs-content h${i + 2}`,
       ).join(', ')
-      
+
       const headings = document.querySelectorAll(selector)
       const generatedItems: TocItem[] = Array.from(headings).map((heading) => {
         const id =

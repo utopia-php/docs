@@ -8,10 +8,10 @@ interface DocsCalloutUtopiaProps {
   className?: string
 }
 
-export function DocsCalloutUtopia({ 
-  title, 
-  children, 
-  className 
+export function DocsCalloutUtopia({
+  title,
+  children,
+  className,
 }: DocsCalloutUtopiaProps) {
   return (
     <div

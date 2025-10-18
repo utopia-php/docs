@@ -14,11 +14,7 @@ export function UtopiaPlaceholder() {
   return (
     <div className="flex-grow flex flex-col justify-center items-center gap-6 text-center">
       <img
-        src={
-          theme === 'dark'
-            ? '/logo-dark.svg'
-            : '/logo-light.svg'
-        }
+        src={theme === 'dark' ? '/logo-dark.svg' : '/logo-light.svg'}
         alt="Utopia.php Logo"
         className="size-14"
       />

@@ -20,7 +20,7 @@ Http::get('/users')
             ['id' => 1, 'name' => 'John Doe'],
             ['id' => 2, 'name' => 'Jane Smith']
         ]];
-        
+
         $response->json($users);
     });
 
@@ -49,7 +49,7 @@ Http::post('/users')
     ->inject('response')
     ->action(function(Request $request, Response $response) {
         $user = createUser($request->getPayload());
-        
+
         if ($user) {
             $response->json($user, 201); // Created
         } else {
@@ -62,12 +62,12 @@ Http::get('/users/{id}')
     ->inject('response')
     ->action(function(string $id, Response $response) {
         $user = getUserById($id);
-        
+
         if (!$user) {
             $response->setStatusCode(404)->json(['error' => 'User not found']);
             return;
         }
-        
+
         $response->json($user);
     });
 ```
@@ -88,15 +88,15 @@ Http::get('/api/data')
         // Cache headers
         $response->addHeader('Cache-Control', 'public, max-age=3600');
         $response->addHeader('ETag', '"abc123"');
-        
+
         // CORS headers
         $response->addHeader('Access-Control-Allow-Origin', '*');
         $response->addHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-        
+
         // Custom headers
         $response->addHeader('X-API-Version', '1.0');
         $response->addHeader('X-Rate-Limit', '1000');
-        
+
         $response->json(['data' => 'cached data']);
     });
 ```
@@ -124,7 +124,7 @@ Http::get('/about')
     <p>Welcome to our Utopia HTTP API!</p>
 </body>
 </html>';
-        
+
         $response->html($html);
     });
 ```
@@ -145,15 +145,15 @@ Http::get('/download/{filename}')
     ->inject('response')
     ->action(function(string $filename, Response $response) {
         $filePath = '/uploads/' . $filename;
-        
+
         if (file_exists($filePath)) {
             // Determine content type
             $contentType = mime_content_type($filePath);
-            
+
             // Set download headers
             $response->addHeader('Content-Disposition', 'attachment; filename="' . $filename . '"');
             $response->addHeader('Content-Length', filesize($filePath));
-            
+
             $response->file($filePath, $contentType);
         } else {
             $response->setStatusCode(404)->json(['error' => 'File not found']);
@@ -203,14 +203,14 @@ Http::get('/stream')
         $response->addHeader('Content-Type', 'text/plain');
         $response->addHeader('Transfer-Encoding', 'chunked');
         $response->addHeader('Cache-Control', 'no-cache');
-        
+
         // Stream data in chunks
         for ($i = 0; $i < 10; $i++) {
             $response->write("Chunk $i\n");
             flush();
             sleep(1);
         }
-        
+
         $response->end();
     });
 ```
@@ -244,7 +244,7 @@ Http::post('/api/users')
             $response->setStatusCode(400)->json(['error' => 'Invalid data']);
             return;
         }
-        
+
         $response->json(['message' => 'User created'], 201);
     });
 

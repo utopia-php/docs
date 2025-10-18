@@ -55,23 +55,26 @@ export function getAllLibraries(): Library[] {
     ...data.platform,
     ...data.utilities,
     ...data.integrations,
-  ].filter(lib => !lib.deprecated)
+  ].filter((lib) => !lib.deprecated)
 }
 
 // Find a library by name (case-insensitive) or by URL slug
 export function findLibraryByName(name: string): Library | null {
   const libraries = getAllLibraries()
-  return libraries.find(lib => 
-    lib.name.toLowerCase() === name.toLowerCase() ||
-    getLibrarySlug(lib.name) === name.toLowerCase()
-  ) || null
+  return (
+    libraries.find(
+      (lib) =>
+        lib.name.toLowerCase() === name.toLowerCase() ||
+        getLibrarySlug(lib.name) === name.toLowerCase(),
+    ) || null
+  )
 }
 
 // Get libraries by category (excluding deprecated)
 export function getLibrariesByCategory(category: string): Library[] {
   const data = librariesData as LibrariesData
   let libraries: Library[] = []
-  
+
   switch (category.toLowerCase()) {
     case 'servers':
       libraries = data.servers
@@ -100,13 +103,22 @@ export function getLibrariesByCategory(category: string): Library[] {
     default:
       return []
   }
-  
-  return libraries.filter(lib => !lib.deprecated)
+
+  return libraries.filter((lib) => !lib.deprecated)
 }
 
 // Get all categories
 export function getCategories(): string[] {
-  return ['servers', 'transport', 'data', 'security', 'observability', 'platform', 'utilities', 'integrations']
+  return [
+    'servers',
+    'transport',
+    'data',
+    'security',
+    'observability',
+    'platform',
+    'utilities',
+    'integrations',
+  ]
 }
 
 // Get library statistics
@@ -115,15 +127,18 @@ export function getLibraryStats() {
   const totalStars = libraries.reduce((sum, lib) => sum + lib.stars, 0)
   const totalLibraries = libraries.length
   const categories = getCategories()
-  
+
   return {
     totalLibraries,
     totalStars,
-    categories: categories.map(category => ({
+    categories: categories.map((category) => ({
       name: category,
       count: getLibrariesByCategory(category).length,
-      stars: getLibrariesByCategory(category).reduce((sum, lib) => sum + lib.stars, 0)
-    }))
+      stars: getLibrariesByCategory(category).reduce(
+        (sum, lib) => sum + lib.stars,
+        0,
+      ),
+    })),
   }
 }
 
@@ -131,19 +146,25 @@ export function getLibraryStats() {
 export function searchLibraries(query: string): Library[] {
   const libraries = getAllLibraries()
   const lowercaseQuery = query.toLowerCase()
-  
-  return libraries.filter(lib => 
-    lib.name.toLowerCase().includes(lowercaseQuery) ||
-    lib.description.toLowerCase().includes(lowercaseQuery) ||
-    lib.features.some(feature => feature.toLowerCase().includes(lowercaseQuery))
+
+  return libraries.filter(
+    (lib) =>
+      lib.name.toLowerCase().includes(lowercaseQuery) ||
+      lib.description.toLowerCase().includes(lowercaseQuery) ||
+      lib.features.some((feature) =>
+        feature.toLowerCase().includes(lowercaseQuery),
+      ),
   )
 }
 
 // Get related libraries (same category, excluding current)
-export function getRelatedLibraries(library: Library, limit: number = 3): Library[] {
+export function getRelatedLibraries(
+  library: Library,
+  limit: number = 3,
+): Library[] {
   const categoryLibraries = getLibrariesByCategory(library.category)
   return categoryLibraries
-    .filter(lib => lib.name !== library.name)
+    .filter((lib) => lib.name !== library.name)
     .slice(0, limit)
 }
 
@@ -158,7 +179,7 @@ export function formatLastUpdated(dateString: string): string {
   return date.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
-    day: 'numeric'
+    day: 'numeric',
   })
 }
 
@@ -169,18 +190,21 @@ export function getLibrarySlug(name: string): string {
 
 // Get library URL from slug
 export function getLibraryNameFromSlug(slug: string): string {
-  return slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
+  return slug.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase())
 }
 
 // Find a concept by path within a library
-export function findConceptByPath(library: Library, conceptPath: string): Concept | null {
+export function findConceptByPath(
+  library: Library,
+  conceptPath: string,
+): Concept | null {
   if (!library.concepts) {
     return null
   }
-  
-  return library.concepts.find(concept => 
-    concept.path === conceptPath
-  ) || null
+
+  return (
+    library.concepts.find((concept) => concept.path === conceptPath) || null
+  )
 }
 
 // Get all concepts for a library
@@ -190,5 +214,8 @@ export function getLibraryConcepts(library: Library): Concept[] {
 
 // Get concept URL slug
 export function getConceptSlug(title: string): string {
-  return title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')
+  return title
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9-]/g, '')
 }
