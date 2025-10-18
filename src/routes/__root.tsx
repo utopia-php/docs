@@ -4,6 +4,8 @@ import {
   createRootRouteWithContext,
 } from '@tanstack/react-router'
 import appCss from '../styles.css?url'
+import { useEffect } from 'react'
+import { useLocation } from '@tanstack/react-router'
 
 import type { QueryClient } from '@tanstack/react-query'
 import { Toaster } from '@/components/ui/sonner'
@@ -53,6 +55,19 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         href: appCss,
       },
       {
+        rel: 'preconnect',
+        href: 'https://fonts.googleapis.com',
+      },
+      {
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+        crossOrigin: 'anonymous',
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap',
+      },
+      {
         rel: 'icon',
         type: 'image/svg+xml',
         href: '/favicon.svg',
@@ -97,6 +112,21 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
   shellComponent: RootDocument,
 })
 
+function ScrollToTop() {
+  const location = useLocation()
+  
+  useEffect(() => {
+    // Scroll to top on route change with smooth behavior
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'instant'
+    })
+  }, [location.pathname])
+  
+  return null
+}
+
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="w-full" suppressHydrationWarning>
@@ -110,6 +140,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           enableSystem
           disableTransitionOnChange
         >
+          <ScrollToTop />
           {children}
           <Toaster />
           {/* <TanStackDevtools

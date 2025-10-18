@@ -28,6 +28,25 @@ export function SiteFooter() {
           </p>
         </div>
       </div>
+      <div className="flex justify-center items-center mt-2 gap-2">
+        <span className="text-sm text-muted-foreground">Backed by</span>
+        <a
+          href="https://appwrite.io"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="https://appwrite.io/images/logos/appwrite.svg"
+            alt="Appwrite"
+            className="h-4 w-auto hidden dark:block"
+          />
+          <img
+            src="https://appwrite.io/images/logos/appwrite-light.svg"
+            alt="Appwrite"
+            className="h-4 w-auto dark:hidden"
+          />
+        </a>
+      </div>
     </footer>
   )
 }

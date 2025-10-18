@@ -2,6 +2,9 @@
 
 @import 'tw-animate-css';
 
+/* Google Fonts - Poppins for titles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 /* Code highlighting styles */
 
 @custom-variant dark (&:is(.dark *));
@@ -65,6 +68,7 @@ code {
   --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.871 0.006 286.286);
+  --font-poppins: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
 .dark {
@@ -100,6 +104,7 @@ code {
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(0.274 0.006 286.033);
   --sidebar-ring: oklch(0.442 0.017 285.786);
+  --font-poppins: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
 @theme inline {
@@ -154,6 +159,18 @@ code {
   body {
     @apply bg-background text-foreground;
   }
+  /* Apply Poppins font to all headings */
+  h1, h2, h3 {
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 500 !important; /* Semi-bold weight */
+  }
+  
+  /* Apply Poppins font to prose content headings */
+  .prose h1, .prose h2, .prose h3 {
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 500 !important; /* Semi-bold weight */
+  }
+  
   p,
   h1,
   h2,
