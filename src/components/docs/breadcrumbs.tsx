@@ -47,7 +47,7 @@ export function Breadcrumbs({ items, showCopyPage = true }: BreadcrumbsProps) {
         ))}
       </div>
       <div className="flex items-center gap-2">
-        <EditPageButton />
+        {showCopyPage && <EditPageButton />}
         {showCopyPage && <CopyPageDropdown />}
       </div>
     </nav>

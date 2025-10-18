@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
-import { Button } from '@/components/ui/button'
 
 export function DocsThemeToggle() {
   const { theme, setTheme } = useTheme()
@@ -14,17 +13,16 @@ export function DocsThemeToggle() {
 
   if (!mounted) {
     return (
-      <Button variant="ghost" size="icon" className="h-9 w-9">
+      <button className="flex items-center gap-1 text-sm text-muted-foreground border border-muted rounded-lg px-2 py-1 hover:bg-muted/50 transition-colors hover:text-foreground cursor-pointer">
         <Sun className="h-4 w-4" />
-      </Button>
+        <span className="font-medium">Theme</span>
+      </button>
     )
   }
 
   return (
-    <Button
-      variant="ghost"
-      size="icon"
-      className="h-9 w-9"
+    <button
+      className="flex items-center gap-1 text-sm text-muted-foreground border border-muted rounded-lg px-2 py-1 hover:bg-muted/50 transition-colors hover:text-foreground cursor-pointer"
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
       aria-label="Toggle theme"
     >
@@ -33,6 +31,7 @@ export function DocsThemeToggle() {
       ) : (
         <Moon className="h-4 w-4" />
       )}
-    </Button>
+      <span className="font-medium">Theme</span>
+    </button>
   )
 }
