@@ -63,19 +63,19 @@ This release is production-ready, battle-tested in Appwrite's infrastructure (53
     category: 'Feature',
     description:
       'DNS, HTTP client, and messaging libraries for distributed systems.',
-    content: `Expanded network capabilities with DNS resolution, HTTP client functionality, and pub/sub messaging for distributed systems.
+    content: `Expanded network capabilities with DNS resolution, HTTP client functionality, and messaging for distributed systems.
 
 - **DNS Server**: Custom DNS server implementation with caching
 - **Fetch Library**: HTTP client with retry logic and connection pooling
 - **Domains Library**: Domain parsing, validation, and manipulation utilities
-- **Messaging**: Pub/sub system with Redis backend for inter-service communication`,
+- **Messaging**: Email, SMS, and push notification library with multiple adapter support`,
     tags: ['feature', 'network', 'dns', 'messaging'],
     authors: ['Appwrite Team'],
     highlights: [
       'Custom DNS server',
       'HTTP client with retries',
       'Domain validation utilities',
-      'Pub/sub messaging system',
+      'Multi-adapter messaging system',
     ],
   },
   {

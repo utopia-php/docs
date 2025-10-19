@@ -76,7 +76,7 @@ export function SiteFooter() {
           {/* Main navigation sections */}
           {sitemapSections.map((section, index) => (
             <div key={index}>
-              <h3 className="font-semibold text-xs mb-2 text-foreground">
+              <h3 className="font-semibold text-sm mb-2 text-foreground">
                 {section.title}
               </h3>
               <ul className="space-y-1">
@@ -84,7 +84,7 @@ export function SiteFooter() {
                   <li key={linkIndex}>
                     <Link
                       to={link.href}
-                      className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {link.title}
                     </Link>
@@ -96,7 +96,7 @@ export function SiteFooter() {
 
           {/* Popular Libraries Column */}
           <div>
-            <h3 className="font-semibold text-xs mb-2 text-foreground">
+            <h3 className="font-semibold text-sm mb-2 text-foreground">
               Popular libraries
             </h3>
             <ul className="space-y-1">
@@ -104,7 +104,7 @@ export function SiteFooter() {
                 <li key={index}>
                   <Link
                     to={library.href}
-                    className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                   >
                     {library.title}
                   </Link>
@@ -115,7 +115,7 @@ export function SiteFooter() {
 
           {/* Community Column */}
           <div>
-            <h3 className="font-semibold text-xs mb-2 text-foreground">
+            <h3 className="font-semibold text-sm mb-2 text-foreground">
               Community
             </h3>
             <ul className="space-y-1">
@@ -126,7 +126,7 @@ export function SiteFooter() {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
+                      className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {link.icon}
                       {link.title}
@@ -134,7 +134,7 @@ export function SiteFooter() {
                   ) : (
                     <Link
                       to={link.href}
-                      className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {link.title}
                     </Link>

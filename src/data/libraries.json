@@ -223,6 +223,28 @@
       "dependencies": ["PHP 8.0+"],
       "category": "transport",
       "license": "MIT"
+    },
+    {
+      "name": "Emails",
+      "stars": 0,
+      "description": "Emails parser library for parsing and validating email addresses.",
+      "longDescription": "Utopia Emails is a simple and lite library for parsing and validating email addresses. This library is aiming to be as simple and easy to learn and use. The library provides comprehensive email validation, classification, and parsing capabilities. It can identify free email services (Gmail, Yahoo, etc.), disposable email services (10minutemail, etc.), and corporate email addresses. The library includes advanced validation rules for both local and domain parts, supports various email formats, and provides normalization features. It also includes a comprehensive import system for managing domain lists and automatic classification of email providers.",
+      "githubUrl": "https://github.com/utopia-php/emails",
+      "version": "1.0.0",
+      "lastUpdated": "2025-01-27",
+      "documentation": "https://docs.utopia-php.com/emails",
+      "installation": "composer require utopia-php/emails",
+      "features": [
+        "Email Parsing",
+        "Email Validation",
+        "Email Classification",
+        "Domain Management",
+        "Normalization",
+        "Multiple Validators"
+      ],
+      "dependencies": ["PHP 8.0+"],
+      "category": "transport",
+      "license": "MIT"
     }
   ],
   "data": [
@@ -757,20 +779,21 @@
     {
       "name": "Messaging",
       "stars": 22,
-      "description": "Message queue and pub/sub system with Redis and RabbitMQ support.",
+      "description": "Sending emails, SMS, and push notifications supporting multiple providers.",
       "githubUrl": "https://github.com/utopia-php/messaging",
-      "version": "2.0.0",
-      "lastUpdated": "2023-12-28",
+      "version": "0.19.0",
+      "lastUpdated": "2024-10-14",
       "documentation": "https://docs.utopia-php.com/messaging",
-      "installation": "composer require utopia/messaging",
+      "installation": "composer require utopia-php/messaging",
       "features": [
-        "Message Queues",
-        "Pub/Sub",
-        "Redis Support",
-        "RabbitMQ Support"
+        "Email Messaging",
+        "SMS Messaging",
+        "Push Notifications",
+        "Multiple Adapters"
       ],
-      "dependencies": ["PHP 8.1+", "ext-redis"],
-      "category": "integrations"
+      "dependencies": ["PHP 8.0+", "ext-json", "ext-curl"],
+      "category": "integrations",
+      "license": "MIT"
     }
   ]
 }
