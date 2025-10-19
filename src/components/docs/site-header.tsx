@@ -54,10 +54,10 @@ export function SiteHeader({
             Home
           </a>
           <a
-            href="/#libraries"
+            href="/docs/architecture"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            Libraries
+            Architecture
           </a>
           <a
             href="/docs/changelog"

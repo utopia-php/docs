@@ -116,47 +116,71 @@ function Architecture() {
         ecosystem. Each library is designed to handle a specific domain:
       </p>
 
-      <h3 id="network-category">Network</h3>
+      <h3 id="servers-category">Servers</h3>
       <p>
-        Libraries like <code>HTTP</code>, <code>WebSocket</code>,{' '}
-        <code>DNS</code>,<code>Fetch</code>, and <code>Domains</code> handle all
-        network-related functionality. Each focuses on a specific protocol or
+        Server libraries like <code>HTTP</code>, <code>WebSocket</code>,{' '}
+        <code>DNS</code>, <code>Queue</code>, and <code>Servers</code> handle all
+        server-side functionality. Each focuses on a specific protocol or
         communication method, from HTTP routing and real-time WebSocket
-        connections to DNS resolution and domain validation.
+        connections to DNS resolution and job queuing.
+      </p>
+
+      <h3 id="transport-category">Transport</h3>
+      <p>
+        Transport libraries like <code>Fetch</code>, <code>Domains</code>, and{' '}
+        <code>DSN</code> handle network communication, domain parsing, and data
+        source name validation. These libraries provide the foundation for
+        external communication and data validation.
       </p>
 
       <h3 id="data-category">Data</h3>
       <p>
         The data category includes libraries for <code>Database</code>,{' '}
-        <code>Cache</code>,<code>Storage</code>, <code>Queue</code>,{' '}
-        <code>AB</code>, <code>Abuse</code>,<code>Config</code>,{' '}
-        <code>Image</code>, and <code>Locale</code>. Each provides a clean
+        <code>Migration</code>, <code>Cache</code>, <code>Storage</code>,{' '}
+        <code>Config</code>, and <code>Compression</code>. Each provides a clean
         abstraction for different data storage, processing, and management
         needs.
       </p>
 
-      <h3 id="logs-category">Logs</h3>
+      <h3 id="security-category">Security</h3>
       <p>
-        Logging libraries like <code>Logger</code> and <code>Audit</code>{' '}
-        provide structured logging, audit trails, and system monitoring
-        capabilities for tracking application behavior and compliance
-        requirements.
+        Security libraries like <code>Auth</code>, <code>JWT</code>, and{' '}
+        <code>Abuse</code> provide authentication, authorization, and abuse
+        detection capabilities. These libraries help secure your applications
+        and protect against malicious activity.
       </p>
 
-      <h3 id="services-category">Services</h3>
+      <h3 id="observability-category">Observability</h3>
       <p>
-        Higher-level services like <code>Agents</code>, <code>Analytics</code>,
-        <code>Messaging</code>, <code>Orchestrations</code>, and{' '}
-        <code>Pay</code> provide business logic, AI capabilities, and
-        integration with external services.
+        Observability libraries like <code>Logger</code>, <code>Audit</code>,{' '}
+        <code>Telemetry</code>, and <code>Analytics</code> provide structured
+        logging, audit trails, system monitoring, and analytics capabilities for
+        tracking application behavior and performance.
       </p>
 
-      <h3 id="other-category">Other</h3>
+      <h3 id="platform-category">Platform</h3>
       <p>
-        Supporting libraries like <code>CLI</code>, <code>Platform</code>,
-        <code>Registry</code>, and <code>System</code> provide essential
-        utilities for command-line interfaces, dependency injection, and system
-        management.
+        Platform libraries like <code>CLI</code>, <code>Registry</code>,{' '}
+        <code>DI</code>, <code>System</code>, and <code>Platform</code> provide
+        essential utilities for command-line interfaces, dependency injection,
+        and system management.
+      </p>
+
+      <h3 id="utilities-category">Utilities</h3>
+      <p>
+        Utility libraries like <code>AB</code>, <code>Balancer</code>,{' '}
+        <code>View</code>, <code>Locale</code>, <code>Image</code>, and{' '}
+        <code>Detector</code> provide specialized functionality for A/B testing,
+        load balancing, templating, internationalization, image processing, and
+        device detection.
+      </p>
+
+      <h3 id="integrations-category">Integrations</h3>
+      <p>
+        Integration libraries like <code>Pay</code>, <code>Agents</code>,{' '}
+        <code>VCS</code>, <code>Orchestrations</code>, and <code>Messaging</code>{' '}
+        provide business logic, AI capabilities, version control, service
+        orchestration, and integration with external services.
       </p>
 
       <h2 id="example-architecture">Example: building a microservice</h2>
@@ -247,24 +271,27 @@ $http->start();`}
 
       <ul>
         <li>
-          <strong>API Gateway</strong> - Uses <code>HTTP</code>,{' '}
-          <code>Abuse</code>, and <code>Domains</code>
+          <strong>API Gateway</strong> - Uses <code>HTTP</code> (servers),{' '}
+          <code>Abuse</code> (security), and <code>Domains</code> (transport)
         </li>
         <li>
-          <strong>User Service</strong> - Uses <code>Database</code>,{' '}
-          <code>Cache</code>, <code>Logger</code>, and <code>Audit</code>
+          <strong>User Service</strong> - Uses <code>Database</code> (data),{' '}
+          <code>Cache</code> (data), <code>Logger</code> (observability), and{' '}
+          <code>Audit</code> (observability)
         </li>
         <li>
-          <strong>Notification Service</strong> - Uses <code>Messaging</code>,{' '}
-          <code>Queue</code>, <code>WebSocket</code>, and <code>Fetch</code>
+          <strong>Notification Service</strong> - Uses <code>Messaging</code>{' '}
+          (integrations), <code>Queue</code> (servers), <code>WebSocket</code>{' '}
+          (servers), and <code>Fetch</code> (transport)
         </li>
         <li>
-          <strong>Analytics Service</strong> - Uses <code>Analytics</code>,{' '}
-          <code>Storage</code>, <code>Config</code>, and <code>AB</code>
+          <strong>Analytics Service</strong> - Uses <code>Analytics</code>{' '}
+          (observability), <code>Storage</code> (data), <code>Config</code>{' '}
+          (data), and <code>AB</code> (utilities)
         </li>
         <li>
-          <strong>AI Service</strong> - Uses <code>Agents</code>,{' '}
-          <code>Config</code>, and <code>Logger</code>
+          <strong>AI Service</strong> - Uses <code>Agents</code> (integrations),{' '}
+          <code>Config</code> (data), and <code>Logger</code> (observability)
         </li>
       </ul>
 

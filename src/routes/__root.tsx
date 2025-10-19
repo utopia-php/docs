@@ -21,6 +21,12 @@ const scripts: React.DetailedHTMLProps<
   HTMLScriptElement
 >[] = []
 
+// Plausible analytics
+scripts.push({
+  src: 'https://plausible.io/js/pa-7v8FKhNkbRYkuV7LFyLeA.js',
+  async: true,
+})
+
 if (import.meta.env.VITE_INSTRUMENTATION_SCRIPT_SRC) {
   scripts.push({
     src: import.meta.env.VITE_INSTRUMENTATION_SCRIPT_SRC,
@@ -132,6 +138,14 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     <html lang="en" className="w-full" suppressHydrationWarning>
       <head>
         <HeadContent />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+              plausible.init()
+            `,
+          }}
+        />
       </head>
       <body className="w-full">
         <ThemeProvider

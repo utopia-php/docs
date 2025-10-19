@@ -17,6 +17,7 @@ import { Route as SplatRouteImport } from './routes/$'
 import { Route as PublicIndexRouteImport } from './routes/_public/index'
 import { Route as PublicBlogRouteImport } from './routes/_public/blog'
 import { Route as ProtectedExampleProtectedRouteRouteImport } from './routes/_protected/example-protected-route'
+import { Route as DocsSecurityRouteImport } from './routes/_docs/security'
 import { Route as DocsExampleCompsRouteImport } from './routes/_docs/example-comps'
 import { Route as DocsContributingRouteImport } from './routes/_docs/contributing'
 import { Route as DocsComparisonRouteImport } from './routes/_docs/comparison'
@@ -67,6 +68,11 @@ const ProtectedExampleProtectedRouteRoute =
     path: '/example-protected-route',
     getParentRoute: () => ProtectedRoute,
   } as any)
+const DocsSecurityRoute = DocsSecurityRouteImport.update({
+  id: '/security',
+  path: '/security',
+  getParentRoute: () => DocsRoute,
+} as any)
 const DocsExampleCompsRoute = DocsExampleCompsRouteImport.update({
   id: '/example-comps',
   path: '/example-comps',
@@ -140,6 +146,7 @@ export interface FileRoutesByFullPath {
   '/comparison': typeof DocsComparisonRoute
   '/contributing': typeof DocsContributingRoute
   '/example-comps': typeof DocsExampleCompsRoute
+  '/security': typeof DocsSecurityRoute
   '/example-protected-route': typeof ProtectedExampleProtectedRouteRoute
   '/blog': typeof PublicBlogRouteWithChildren
   '/': typeof PublicIndexRoute
@@ -158,6 +165,7 @@ export interface FileRoutesByTo {
   '/comparison': typeof DocsComparisonRoute
   '/contributing': typeof DocsContributingRoute
   '/example-comps': typeof DocsExampleCompsRoute
+  '/security': typeof DocsSecurityRoute
   '/example-protected-route': typeof ProtectedExampleProtectedRouteRoute
   '/blog': typeof PublicBlogRouteWithChildren
   '/': typeof PublicIndexRoute
@@ -181,6 +189,7 @@ export interface FileRoutesById {
   '/_docs/comparison': typeof DocsComparisonRoute
   '/_docs/contributing': typeof DocsContributingRoute
   '/_docs/example-comps': typeof DocsExampleCompsRoute
+  '/_docs/security': typeof DocsSecurityRoute
   '/_protected/example-protected-route': typeof ProtectedExampleProtectedRouteRoute
   '/_public/blog': typeof PublicBlogRouteWithChildren
   '/_public/': typeof PublicIndexRoute
@@ -201,6 +210,7 @@ export interface FileRouteTypes {
     | '/comparison'
     | '/contributing'
     | '/example-comps'
+    | '/security'
     | '/example-protected-route'
     | '/blog'
     | '/'
@@ -219,6 +229,7 @@ export interface FileRouteTypes {
     | '/comparison'
     | '/contributing'
     | '/example-comps'
+    | '/security'
     | '/example-protected-route'
     | '/blog'
     | '/'
@@ -241,6 +252,7 @@ export interface FileRouteTypes {
     | '/_docs/comparison'
     | '/_docs/contributing'
     | '/_docs/example-comps'
+    | '/_docs/security'
     | '/_protected/example-protected-route'
     | '/_public/blog'
     | '/_public/'
@@ -315,6 +327,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/example-protected-route'
       preLoaderRoute: typeof ProtectedExampleProtectedRouteRouteImport
       parentRoute: typeof ProtectedRoute
+    }
+    '/_docs/security': {
+      id: '/_docs/security'
+      path: '/security'
+      fullPath: '/security'
+      preLoaderRoute: typeof DocsSecurityRouteImport
+      parentRoute: typeof DocsRoute
     }
     '/_docs/example-comps': {
       id: '/_docs/example-comps'
@@ -438,6 +457,7 @@ interface DocsRouteChildren {
   DocsComparisonRoute: typeof DocsComparisonRoute
   DocsContributingRoute: typeof DocsContributingRoute
   DocsExampleCompsRoute: typeof DocsExampleCompsRoute
+  DocsSecurityRoute: typeof DocsSecurityRoute
   DocsLibraryLibraryNameRoute: typeof DocsLibraryLibraryNameRouteWithChildren
 }
 
@@ -447,6 +467,7 @@ const DocsRouteChildren: DocsRouteChildren = {
   DocsComparisonRoute: DocsComparisonRoute,
   DocsContributingRoute: DocsContributingRoute,
   DocsExampleCompsRoute: DocsExampleCompsRoute,
+  DocsSecurityRoute: DocsSecurityRoute,
   DocsLibraryLibraryNameRoute: DocsLibraryLibraryNameRouteWithChildren,
 }
 

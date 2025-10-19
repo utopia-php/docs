@@ -80,7 +80,7 @@ function generateLibrarySpecificNavItems(libraryName: string): NavItem[] {
 // Default navigation structure
 export const defaultNavItems: NavItem[] = [
   {
-    title: 'Getting Started',
+    title: 'Overview',
     items: [
       {
         title: 'Introduction',
@@ -99,7 +99,7 @@ export const defaultNavItems: NavItem[] = [
         href: '/docs/contributing',
       },
       {
-        title: 'Vs. Laravel',
+        title: '& Laravel',
         href: '/docs/comparison',
       },
     ],
@@ -114,6 +114,15 @@ export const defaultNavItems: NavItem[] = [
       {
         title: 'Example comps',
         href: '/docs/example-comps',
+      },
+    ],
+  },
+  {
+    title: 'Advanced',
+    items: [
+      {
+        title: 'Security',
+        href: '/docs/security',
       },
     ],
   },
