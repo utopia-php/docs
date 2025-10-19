@@ -80,29 +80,24 @@ function generateLibrarySpecificNavItems(libraryName: string): NavItem[] {
 // Default navigation structure
 export const defaultNavItems: NavItem[] = [
   {
-    title: 'Overview',
-    items: [
-      {
-        title: 'Introduction',
-        href: '/',
-      },
-      {
-        title: 'Architecture',
-        href: '/docs/architecture',
-      },
-      {
-        title: 'Changelog',
-        href: '/docs/changelog',
-      },
-      {
-        title: 'Contributing',
-        href: '/docs/contributing',
-      },
-      {
-        title: '& Laravel',
-        href: '/docs/comparison',
-      },
-    ],
+    title: 'Introduction',
+    href: '/',
+  },
+  {
+    title: 'Architecture',
+    href: '/docs/architecture',
+  },
+  {
+    title: 'Changelog',
+    href: '/docs/changelog',
+  },
+  {
+    title: 'Contributing',
+    href: '/docs/contributing',
+  },
+  {
+    title: 'vs Laravel',
+    href: '/docs/comparison',
   },
   {
     title: 'Libraries',
