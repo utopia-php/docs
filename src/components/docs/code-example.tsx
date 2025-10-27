@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Light as SyntaxHighlighter } from 'react-syntax-highlighter'
-import monokai from 'react-syntax-highlighter/dist/cjs/styles/hljs/monokai'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import vscDarkPlus from 'react-syntax-highlighter/dist/cjs/styles/prism/vsc-dark-plus'
 import { Button } from '@/components/ui/button'
 import { Check, Copy } from 'lucide-react'
 
@@ -12,6 +12,23 @@ interface CodeExampleProps {
   filename?: string
 }
 
+// Map of language aliases for better support
+const languageMap: Record<string, string> = {
+  'js': 'javascript',
+  'ts': 'typescript',
+  'php': 'php',
+  'bash': 'bash',
+  'sh': 'bash',
+  'shell': 'bash',
+  'json': 'json',
+  'html': 'markup',
+  'xml': 'markup',
+  'css': 'css',
+  'sql': 'sql',
+  'yaml': 'yaml',
+  'yml': 'yaml',
+}
+
 export function CodeExample({
   code,
   language,
@@ -20,6 +37,9 @@ export function CodeExample({
   description,
 }: CodeExampleProps) {
   const [copied, setCopied] = React.useState(false)
+
+  // Normalize language and provide fallback
+  const normalizedLanguage = languageMap[language.toLowerCase()] || language.toLowerCase() || 'text'
 
   const copyToClipboard = async () => {
     try {
@@ -84,15 +104,8 @@ export function CodeExample({
             minWidth: 0
           }}>
             <SyntaxHighlighter
-              language={language}
-              style={{
-                ...monokai,
-                hljs: {
-                  ...monokai.hljs,
-                  background: 'transparent !important',
-                  backgroundColor: 'transparent !important',
-                },
-              }}
+              language={normalizedLanguage}
+              style={vscDarkPlus}
               customStyle={{
                 margin: 0,
                 borderRadius: 0,
