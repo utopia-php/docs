@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter'
-import monokai from 'react-syntax-highlighter/dist/esm/styles/hljs/monokai'
+import monokai from 'react-syntax-highlighter/dist/cjs/styles/hljs/monokai'
 import { Button } from '@/components/ui/button'
 import { Check, Copy } from 'lucide-react'
 
