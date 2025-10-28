@@ -27,21 +27,21 @@ export function Breadcrumbs({ items, showCopyPage = true }: BreadcrumbsProps) {
   }
 
   return (
-    <nav className="flex items-center justify-between text-sm text-muted-foreground mb-6">
-      <div className="flex items-center space-x-1">
+    <nav className="flex items-center justify-end sm:justify-between gap-2 mb-6">
+      <div className="hidden sm:flex flex-wrap items-center gap-x-1 gap-y-1 min-w-0 flex-1">
         {breadcrumbItems.map((item, index) => (
           <div key={index} className="flex items-center">
-            {index > 0 && <span className="text-muted-foreground mr-1">/</span>}
+            {index > 0 && <span className="text-muted-foreground mr-1 hidden sm:inline">/</span>}
             {item.href ? (
               <Link
                 to={item.href}
-                className="hover:text-foreground transition-colors"
+                className="hover:text-foreground transition-colors text-xs sm:text-sm text-muted-foreground line-clamp-1"
               >
                 {item.label}
               </Link>
             ) : (
               <span
-                className={item.current ? 'text-foreground font-medium' : ''}
+                className={`${item.current ? 'text-foreground font-medium' : ''} text-xs sm:text-sm text-muted-foreground line-clamp-1`}
               >
                 {item.label}
               </span>
@@ -49,7 +49,7 @@ export function Breadcrumbs({ items, showCopyPage = true }: BreadcrumbsProps) {
           </div>
         ))}
       </div>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 flex-shrink-0">
         {showCopyPage && <EditPageButton />}
         {showCopyPage && <CopyPageDropdown />}
       </div>

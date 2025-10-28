@@ -20,29 +20,17 @@ export function SiteFooter() {
       ],
     },
     {
-      title: 'Libraries',
+      title: 'Categories',
       links: categories.map((category) => ({
         title: category.charAt(0).toUpperCase() + category.slice(1),
         href: `/docs/libraries?category=${category}`,
       })),
     },
-    {
-      title: 'Examples',
-      links: [
-        { title: 'Example components', href: '/docs/example-comps' },
-      ],
-    },
-    {
-      title: 'Advanced',
-      links: [
-        { title: 'Security', href: '/docs/security' },
-      ],
-    },
   ]
 
   const popularLibraries = libraries
     .sort((a, b) => b.stars - a.stars)
-    .slice(0, 4)
+    .slice(0, 10)
     .map((library) => ({
       title: library.name,
       href: `/docs/library/${getLibrarySlug(library.name)}`,
@@ -69,28 +57,57 @@ export function SiteFooter() {
   ]
 
   return (
-    <footer className="border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 mt-8">
+    <footer className="border-t-0 md:border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 mt-8">
       {/* Sitemap Section */}
       <div className="px-4 md:px-6 lg:px-8 py-6" style={{ maxWidth: '1400px', margin: '0 auto' }}>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-4 gap-20 lg:gap-32 justify-items-start">
           {/* Main navigation sections */}
           {sitemapSections.map((section, index) => (
             <div key={index}>
               <h3 className="font-semibold text-sm mb-2 text-foreground">
                 {section.title}
               </h3>
-              <ul className="space-y-1">
-                {section.links.map((link, linkIndex) => (
-                  <li key={linkIndex}>
-                    <Link
-                      to={link.href}
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      {link.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              {section.links.length >= 6 ? (
+                <div className="flex gap-x-12">
+                  <ul className="space-y-1 flex-1">
+                    {section.links.slice(0, 5).map((link, linkIndex) => (
+                      <li key={linkIndex}>
+                        <Link
+                          to={link.href}
+                          className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                          {link.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                  <ul className="space-y-1 flex-1">
+                    {section.links.slice(5).map((link, linkIndex) => (
+                      <li key={linkIndex + 5}>
+                        <Link
+                          to={link.href}
+                          className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                          {link.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : (
+                <ul className="space-y-1">
+                  {section.links.map((link, linkIndex) => (
+                    <li key={linkIndex}>
+                      <Link
+                        to={link.href}
+                        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        {link.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           ))}
 
@@ -99,18 +116,47 @@ export function SiteFooter() {
             <h3 className="font-semibold text-sm mb-2 text-foreground">
               Popular libraries
             </h3>
-            <ul className="space-y-1">
-              {popularLibraries.map((library, index) => (
-                <li key={index}>
-                  <Link
-                    to={library.href}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {library.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            {popularLibraries.length >= 6 ? (
+              <div className="flex gap-x-12">
+                <ul className="space-y-1 flex-1">
+                  {popularLibraries.slice(0, 5).map((library, index) => (
+                    <li key={index}>
+                      <Link
+                        to={library.href}
+                        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        {library.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <ul className="space-y-1 flex-1">
+                  {popularLibraries.slice(5).map((library, index) => (
+                    <li key={index + 5}>
+                      <Link
+                        to={library.href}
+                        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        {library.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              <ul className="space-y-1">
+                {popularLibraries.map((library, index) => (
+                  <li key={index}>
+                    <Link
+                      to={library.href}
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {library.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
 
           {/* Community Column */}
@@ -118,30 +164,83 @@ export function SiteFooter() {
             <h3 className="font-semibold text-sm mb-2 text-foreground">
               Community
             </h3>
-            <ul className="space-y-1">
-              {communityLinks.map((link, index) => (
-                <li key={index}>
-                  {link.external ? (
-                    <a
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      {link.icon}
-                      {link.title}
-                    </a>
-                  ) : (
-                    <Link
-                      to={link.href}
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      {link.title}
-                    </Link>
-                  )}
-                </li>
-              ))}
-            </ul>
+            {communityLinks.length >= 6 ? (
+              <div className="flex gap-x-12">
+                <ul className="space-y-1 flex-1">
+                  {communityLinks.slice(0, 5).map((link, index) => (
+                    <li key={index}>
+                      {link.external ? (
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                          {link.icon}
+                          {link.title}
+                        </a>
+                      ) : (
+                        <Link
+                          to={link.href}
+                          className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                          {link.title}
+                        </Link>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+                <ul className="space-y-1 flex-1">
+                  {communityLinks.slice(5).map((link, index) => (
+                    <li key={index + 5}>
+                      {link.external ? (
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                          {link.icon}
+                          {link.title}
+                        </a>
+                      ) : (
+                        <Link
+                          to={link.href}
+                          className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                          {link.title}
+                        </Link>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              <ul className="space-y-1">
+                {communityLinks.map((link, index) => (
+                  <li key={index}>
+                    {link.external ? (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        {link.icon}
+                        {link.title}
+                      </a>
+                    ) : (
+                      <Link
+                        to={link.href}
+                        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        {link.title}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         </div>
       </div>

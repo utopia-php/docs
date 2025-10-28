@@ -75,7 +75,7 @@ export function CodeExample({
       )}
 
       <div 
-        className="rounded-xl border border-muted relative group"
+        className="rounded-xl border border-muted relative"
         style={{ 
           backgroundColor: 'oklch(0.141 0.005 285.823)',
           width: '100%',
@@ -138,11 +138,11 @@ export function CodeExample({
         <Button
           size="icon"
           variant="ghost"
-          className="absolute top-12 right-2 h-7 w-7 sm:h-8 sm:w-8 opacity-0 transition-opacity hover:opacity-100 group-hover:opacity-100 text-white hover:text-white touch-manipulation z-10"
+          className="absolute top-12 right-2 h-7 w-7 sm:h-8 sm:w-8 text-white hover:text-black touch-manipulation z-10"
           onClick={copyToClipboard}
         >
           {copied ? (
-            <Check className="h-3 w-3 sm:h-4 sm:w-4 text-white" />
+            <Check className="h-3 w-3 sm:h-4 sm:w-4" />
           ) : (
             <Copy className="h-3 w-3 sm:h-4 sm:w-4" />
           )}

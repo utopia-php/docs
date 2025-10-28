@@ -100,7 +100,7 @@ export const defaultNavItems: NavItem[] = [
     href: '/docs/comparison',
   },
   {
-    title: 'Libraries',
+    title: 'Categories',
     items: generateLibraryNavItems(),
   },
   {
