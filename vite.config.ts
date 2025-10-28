@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+import { resolve } from 'path'
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import viteReact from '@vitejs/plugin-react'
 import viteTsConfigPaths from 'vite-tsconfig-paths'
@@ -28,6 +29,13 @@ const config = defineConfig({
     host: '::',
     allowedHosts: true,
     hmr: true,
+  },
+  resolve: {
+    alias: {
+      // Stub lowlight to prevent highlight.js errors since we use Prism
+      'lowlight': resolve(__dirname, './src/lib/lowlight-stub'),
+      'lowlight/lib/core': resolve(__dirname, './src/lib/lowlight-stub/lib/core'),
+    },
   },
 })
 
