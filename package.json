@@ -8,7 +8,7 @@
     "build": "vite build --sourcemap",
     "build:node": "FOR_SITES=true vite build",
     "serve": "vite preview",
-    "test": "vitest run",
+    "test": "vitest run --passWithNoTests",
     "lint": "eslint",
     "format": "prettier --write .",
     "check": "tsr generate && prettier --write . && tsc -b --noEmit",
