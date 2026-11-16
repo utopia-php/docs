@@ -70,7 +70,7 @@
         "zod": "^4.1.11",
       },
       "devDependencies": {
-        "@tanstack/eslint-config": "^0.4.0",
+        "@tanstack/eslint-config": "^0.5.0",
         "@tanstack/nitro-v2-vite-plugin": "^1.133.3",
         "@tanstack/router-cli": "^1.132.21",
         "@testing-library/dom": "^10.4.0",
@@ -597,7 +597,7 @@
 
     "@tanstack/devtools-ui": ["@tanstack/devtools-ui@0.7.2", "", { "dependencies": { "clsx": "^2.1.1", "dayjs": "^1.11.19", "goober": "^2.1.16", "solid-js": "^1.9.13" } }, "sha512-Ij6EpEXkx13OOVMJPCJpMzWzVV/mcsqfXM4d+ZjqCrQtgbt7cd2rsCseuKuYNmuGhJiOLYNXzYU5da7UqCY54g=="],
 
-    "@tanstack/eslint-config": ["@tanstack/eslint-config@0.4.0", "", { "dependencies": { "@eslint/js": "^10.0.1", "@stylistic/eslint-plugin": "^5.8.0", "eslint-plugin-import-x": "^4.16.1", "eslint-plugin-n": "^17.24.0", "globals": "^17.3.0", "typescript-eslint": "^8.55.0", "vue-eslint-parser": "^10.4.0" }, "peerDependencies": { "eslint": "^9.0.0 || ^10.0.0" } }, "sha512-V+Cd81W/f65dqKJKpytbwTGx9R+IwxKAHsG/uJ3nSLYEh36hlAr54lRpstUhggQB8nf/cP733cIw8DuD2dzQUg=="],
+    "@tanstack/eslint-config": ["@tanstack/eslint-config@0.5.0", "", { "dependencies": { "@eslint/js": "^10.0.1", "@stylistic/eslint-plugin": "^5.10.0", "eslint-plugin-import-x": "^4.17.1", "eslint-plugin-n": "^17.24.0", "globals": "^17.13.0", "typescript-eslint": "^8.72.0", "vue-eslint-parser": "^10.4.1" }, "peerDependencies": { "eslint": "^9.0.0 || ^10.0.0" } }, "sha512-ViENA1MY9G9PN+xCRPI4aVUgHWZqQdlhiAWi/Gxw9PP4rvsmlyPYx8wLm6Xw7Mb8coRUvNZt3NxKiyQCeulY7w=="],
 
     "@tanstack/history": ["@tanstack/history@1.162.5", "", {}, "sha512-w1+YvwmTkwt5n8yUqEH3IWZ9DsmorCZW/EQ3KYHnqEgIkOZpH54NvW6/Epq3Dzb8H0ifIeYX8PExvrNLIH5FIA=="],
 
